@@ -5,10 +5,14 @@ import { SiteFooter } from "@/components/site-footer";
 import { siteConfig } from "@/site.config";
 import { EmergencyBar } from "@/components/emergency-bar";
 import localFont from "next/font/local";
+import { Host_Grotesk, Newsreader } from "next/font/google";
+import { LegacyChrome } from "@/components/legacy-chrome";
 import { Analytics } from "@/components/analytics";
 
 const displayFont = localFont({ src: [{ path: "../fonts/cormorant-garamond-500.woff2", weight: "500" }, { path: "../fonts/cormorant-garamond-600.woff2", weight: "600" }], variable: "--font-display", display: "swap" });
 const bodyFont = localFont({ src: [{ path: "../fonts/manrope-400.woff2", weight: "400" }, { path: "../fonts/manrope-600.woff2", weight: "600" }, { path: "../fonts/manrope-700.woff2", weight: "700" }], variable: "--font-body", display: "swap" });
+const sansFont = Host_Grotesk({ subsets: ["latin", "latin-ext"], weight: ["300", "400", "500"], variable: "--font-sans", display: "swap" });
+const serifFont = Newsreader({ subsets: ["latin"], style: ["italic"], weight: ["300"], variable: "--font-serif", display: "swap" });
 const brandFont = localFont({ src: "../fonts/cinzel-600.woff2", variable: "--font-brand", display: "swap" });
 
 export const metadata: Metadata = {
@@ -22,5 +26,5 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const legalService = { "@context": "https://schema.org", "@type": "LegalService", name: siteConfig.name, slogan: siteConfig.tagline, url: siteConfig.url, telephone: siteConfig.phoneHref.replace("tel:", ""), image: `${siteConfig.url}/brand/og.png`, areaServed: { "@type": "Country", name: "México" }, address: { "@type": "PostalAddress", addressLocality: "Guadalajara", addressRegion: "Jalisco", addressCountry: "MX" } };
-  return <html lang="es-MX"><body className={`${displayFont.variable} ${bodyFont.variable} ${brandFont.variable} pb-[72px] md:pb-0`}><a href="#contenido" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-paper focus:p-3">Saltar al contenido</a><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(legalService).replace(/</g, "\\u003c") }} /><SiteHeader /><main id="contenido">{children}</main><SiteFooter /><EmergencyBar /><Analytics /></body></html>;
+  return <html lang="es-MX"><body className={`${displayFont.variable} ${bodyFont.variable} ${brandFont.variable} ${sansFont.variable} ${serifFont.variable} pb-[72px] md:pb-0`}><a href="#contenido" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-paper focus:p-3">Saltar al contenido</a><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(legalService).replace(/</g, "\\u003c") }} /><LegacyChrome><SiteHeader /></LegacyChrome><main id="contenido">{children}</main><LegacyChrome><SiteFooter /><EmergencyBar /></LegacyChrome><Analytics /></body></html>;
 }
