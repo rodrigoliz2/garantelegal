@@ -1,36 +1,176 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, MessageCircle, Phone } from "lucide-react";
-import { emergencyPhoneHref, emergencyWhatsAppHref, appointmentMessage } from "@/lib/contact";
+import { MessageCircle, Phone } from "lucide-react";
+import { appointmentMessage, emergencyPhoneHref, emergencyWhatsAppHref } from "@/lib/contact";
 import { prisma } from "@/lib/prisma";
-import { siteConfig, whatsappHref } from "@/site.config";
+import { areaImage } from "@/lib/areas";
+import { provided, siteConfig, whatsappHref } from "@/site.config";
+import { ParallaxImage } from "@/components/site/parallax-image";
+import { PracticeList } from "@/components/site/practice-list";
+import { RevealHeading } from "@/components/site/reveal-heading";
+import { AttorneyCredit } from "@/components/site/attorney";
+import { IllustrationEntrada, IllustrationRevision, IllustrationRuta } from "@/components/site/illustrations";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { title: `Abogados en ${siteConfig.city} | ${siteConfig.name}`, description: `Asistencia jurídica inmediata y consultas en materias constitucional, administrativa, civil y mercantil. Sede en ${siteConfig.city}; atención nacional.` };
+export const metadata: Metadata = {
+  title: { absolute: `Abogados en ${siteConfig.city} | ${siteConfig.name}` },
+  description: `Asistencia jurídica ante detenciones y multas, y consultas en materia constitucional, administrativa, civil y mercantil. Sede en ${siteConfig.city}; atención nacional.`
+};
 
-const practices = [
-  { name: "Urgencias", slug: "urgencias", detail: "Arresto por alcoholímetro · Detenciones · Vehículo retenido · Localización de personas" },
-  { name: "Administrativo", slug: "administrativo", detail: "Multas y fotomultas · Clausuras · Licencias y permisos · Juicio de nulidad" },
-  { name: "Constitucional", slug: "constitucional", detail: "Amparo indirecto y directo · Suspensión del acto reclamado · Derechos humanos" },
-  { name: "Civil", slug: "civil", detail: "Contratos · Arrendamiento · Adeudos · Responsabilidad civil · Sucesiones" },
-  { name: "Mercantil", slug: "mercantil", detail: "Pagarés · Sociedades · Contratos mercantiles · Conflictos entre socios" }
+const heroLines = ["Defensa jurídica", "con criterio, desde", "la primera llamada."];
+
+const steps = [
+  { Illustration: IllustrationEntrada, title: "Nos cuentas qué pasó", text: "Por teléfono, WhatsApp o en una consulta agendada. Basta con lo esencial: qué ocurrió, cuándo y qué autoridad intervino." },
+  { Illustration: IllustrationRevision, title: "Revisamos documentos y plazos", text: "Leemos lo que tengas, como boletas, contratos o notificaciones, y ubicamos los plazos que pueden estar corriendo." },
+  { Illustration: IllustrationRuta, title: "Explicamos las vías y los honorarios", text: "Te decimos qué opciones existen, cuánto suelen tardar y cuánto cuesta cada una. Tú decides si avanzamos." }
 ];
 
 export default async function HomePage() {
-  const [cases, testimonials] = await Promise.all([
-    siteConfig.sections.cases ? prisma.caseStudy.findMany({ where: { published: true, consented: true }, take: 2, include: { area: true }, orderBy: { createdAt: "desc" } }) : [],
-    siteConfig.sections.testimonials ? prisma.testimonial.findMany({ where: { published: true, consented: true }, take: 2, orderBy: { date: "desc" } }) : []
+  const [areas, posts] = await Promise.all([
+    prisma.practiceArea.findMany({ orderBy: { sortOrder: "asc" }, include: { services: { where: { published: true }, orderBy: { sortOrder: "asc" }, select: { name: true } } } }),
+    prisma.post.findMany({ where: { published: true }, orderBy: { createdAt: "desc" }, take: 3, select: { slug: true, title: true, summary: true } })
   ]);
-  return <>
-    <section className="relative overflow-hidden bg-navy text-white"><div className="container-page relative grid gap-10 py-16 lg:min-h-[650px] lg:grid-cols-[1.25fr_.75fr] lg:items-center lg:py-24">
-      <div className="relative z-10"><p className="eyebrow tracking-[.19em] text-[#d9b879]">{siteConfig.city} · Atención en todo México</p><h1 className="display mt-7 max-w-[12ch] text-[clamp(3.2rem,8vw,7rem)]">Soluciones legales <em className="font-medium text-[#d3ab70]">estratégicas.</em></h1><p className="mt-6 max-w-xl text-lg leading-relaxed text-[#e2e8eb]">Defensa inmediata ante detenciones y multas, y representación en materia constitucional, administrativa, civil y mercantil para personas y empresas.</p><div className="mt-8 flex flex-col gap-3 sm:flex-row"><Link href="/urgencias" className="btn btn-emergency"><span>Necesito asistencia urgente</span><ArrowRight size={18} aria-hidden="true" /></Link><Link href="/agendar" className="btn border border-white/60 bg-transparent text-white">Agendar consulta</Link></div><div className="mt-12 grid max-w-2xl grid-cols-3 gap-3 border-t border-white/20 pt-6"><div><p className="font-display text-xl text-[#d3ab70] md:text-2xl">Urgente</p><p className="mt-1 text-xs text-[#d5dce0] md:text-sm">Contacto directo</p></div><div><p className="font-display text-xl text-[#d3ab70] md:text-2xl">Estratégico</p><p className="mt-1 text-xs text-[#d5dce0] md:text-sm">Revisión técnica</p></div><div><p className="font-display text-xl text-[#d3ab70] md:text-2xl">Nacional</p><p className="mt-1 text-xs text-[#d5dce0] md:text-sm">Atención en México</p></div></div></div>
-      <div className="relative hidden min-h-[470px] items-end justify-center lg:flex"><svg className="absolute left-1/2 top-0 h-[510px] w-[340px] -translate-x-1/2 text-[#b9955b]" viewBox="0 0 340 510" fill="none" aria-hidden="true"><path d="M65 45h210v16H65zM78 61h184l-12 18H90zM102 79v412m27-412v412m27-412v412m27-412v412m27-412v412m27-412v412" stroke="currentColor" strokeWidth="1.2" /></svg><div className="relative z-10 mb-6 w-full max-w-sm border-t-4 border-slate bg-ivory p-6 text-ink"><p className="eyebrow text-brass">Línea de asistencia inmediata</p><a href={emergencyPhoneHref} className="display mt-2 block text-4xl font-semibold tracking-tight" data-event="clic_llamar" data-origin="inicio-hero">{siteConfig.phoneDisplay}</a><p className="mt-3 text-sm">{siteConfig.emergencyHours}</p><a className="btn btn-secondary mt-5 w-full" href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" data-event="clic_whatsapp" data-origin="inicio-hero"><MessageCircle size={18} aria-hidden="true" />Escribir por WhatsApp</a></div></div>
-    </div></section>
-    <section className="section-pad bg-ivory"><div className="container-page grid gap-12 md:grid-cols-2"><div><p className="eyebrow text-brass">Si la detención es ahora</p><h2 className="display mt-4 max-w-lg text-4xl md:text-5xl">Alcoholímetro, arresto administrativo o vehículo en el corralón.</h2><p className="mt-5 max-w-lg">No hace falta llenar ningún formulario. Llama o escribe y el despacho revisa contigo qué datos hacen falta.</p><a className="btn btn-emergency mt-6" href={emergencyPhoneHref} data-event="clic_llamar" data-origin="inicio-urgencia"><Phone size={18} aria-hidden="true" />Llamar ahora</a></div><ol className="border-t border-[#526174]/40">{[["I", "Anota el lugar", "Pregunta a dónde trasladan a la persona y registra la hora y la autoridad."], ["II", "Ten a mano tres datos", "Nombre completo, lugar de la detención y hora aproximada."], ["III", "Guarda los documentos", "Conserva la boleta o aviso que recibas para revisarlo durante la consulta."]].map(([number, title, detail]) => <li className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-[#526174]/30 py-6" key={number}><span className="font-display text-3xl italic text-brass">{number}</span><div><h3 className="font-bold">{title}</h3><p className="mt-1 text-sm text-slate">{detail}</p></div></li>)}</ol></div></section>
-    <section className="section-pad bg-paper"><div className="container-page"><div className="flex flex-wrap items-end justify-between gap-4"><div><p className="eyebrow text-brass">Áreas de práctica</p><h2 className="display mt-3 text-4xl md:text-5xl">Cinco materias, un solo criterio.</h2></div><Link href="/servicios" className="font-bold underline">Ver todos los servicios</Link></div><div className="mt-8 border-t border-[#526174]/40">{practices.map((practice, index) => <Link className="group grid gap-2 border-b border-[#526174]/25 py-6 hover:bg-ivory md:grid-cols-[3rem_1fr_1.5fr] md:items-center md:gap-7" href={`/servicios/${practice.slug}`} key={practice.slug}><span className="eyebrow text-brass">0{index + 1}</span><h3 className="display text-3xl">{practice.name}</h3><p className="text-sm text-slate">{practice.detail} <ArrowRight className="ml-1 inline-block transition-transform group-hover:translate-x-1" size={15} aria-hidden="true" /></p></Link>)}</div></div></section>
-    <section id="proceso" className="section-pad bg-navy text-white"><div className="container-page"><p className="eyebrow text-[#d9b879]">Cómo trabajamos</p><h2 className="display mt-4 max-w-3xl text-4xl md:text-5xl">Primero entendemos el asunto. Después explicamos las opciones.</h2><div className="mt-12 grid gap-7 md:grid-cols-3">{[["Primero", "Escuchamos", "Conocemos los hechos, los documentos y los plazos que pueden estar corriendo."], ["Después", "Trazamos la estrategia", "Explicamos las vías posibles, sus tiempos orientativos y los honorarios antes de avanzar."], ["Siempre", "Nos comunicamos", "Acordamos contigo cómo informar los avances del asunto."]].map(([when, title, detail]) => <div className="border-t border-[#b9955b]/70 pt-5" key={when}><p className="font-display text-2xl italic text-[#d3ab70]">{when}</p><h3 className="mt-4 font-bold">{title}</h3><p className="mt-2 text-sm text-[#d5dce0]">{detail}</p></div>)}</div></div></section>
-    {(cases.length > 0 || testimonials.length > 0) && <section className="section-pad bg-paper"><div className="container-page"><p className="eyebrow text-brass">Contenido verificado</p><h2 className="display mt-3 text-4xl">Experiencias documentadas</h2><div className="mt-8 grid gap-4 md:grid-cols-2">{cases.map(item => <article className="card p-6" key={item.id}><p className="eyebrow text-brass">{item.area.name}</p><h3 className="display mt-3 text-2xl">{item.title}</h3><p className="mt-3">{item.result}</p><p className="mt-3 text-sm">Este caso no predice otros resultados.</p></article>)}{testimonials.map(item => <blockquote className="card p-6" key={item.id}><p className="font-display text-2xl">“{item.text}”</p><footer className="mt-4 text-sm">{item.author} · {item.date.toLocaleDateString("es-MX", { timeZone: "UTC" })}</footer></blockquote>)}</div></div></section>}
-    <section className="section-pad bg-ivory"><div className="container-page flex flex-wrap items-center justify-between gap-8"><div><h2 className="display max-w-xl text-4xl md:text-5xl">No prometemos resultados. Explicamos cada paso.</h2><p className="mt-4 max-w-xl">Las credenciales profesionales se publicarán cuando el despacho aporte datos verificables.</p></div><Link href="/nosotros" className="font-bold underline">Conocer la firma</Link></div></section>
-    <section className="section-pad bg-paper"><div className="container-page flex flex-wrap items-center justify-between gap-7"><div><h2 className="display text-4xl md:text-5xl">Agenda tu consulta jurídica.</h2><p className="mt-3 max-w-xl">Presencial en Guadalajara, por videollamada o teléfono. Elige día y hora; recibirás un folio de solicitud.</p></div><div className="flex flex-wrap gap-3"><Link className="btn btn-primary" href="/agendar">Elegir día y hora</Link><a className="btn btn-secondary" href={whatsappHref(appointmentMessage())} target="_blank" rel="noopener noreferrer" data-event="clic_whatsapp" data-origin="inicio-agendar">Agendar por WhatsApp</a></div></div></section>
-  </>;
+  const practice = areas.filter(area => area.services.length > 0).map(area => ({ slug: area.slug, name: area.name, description: area.description, services: area.services.map(service => service.name), image: areaImage(area.slug) }));
+  const attorney = provided(siteConfig.leadAttorney);
+  const license = provided(siteConfig.professionalLicense);
+
+  return (
+    <>
+      {/* 1. Hero */}
+      <section className="seq on-dark relative -mt-[var(--header-h)] flex min-h-[calc(100dvh-var(--bar-h))] flex-col justify-end overflow-hidden bg-black text-white">
+        <ParallaxImage src="/fotos/arcos-guadalajara.jpg" alt="Arcos de cantera en un edificio histórico de Guadalajara" priority quality={70} sizes="100vw" settle className="!absolute inset-0" imageClassName="object-[50%_60%]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgb(10_10_10/.88)_0%,rgb(10_10_10/.55)_45%,rgb(10_10_10/.3)_100%)]" aria-hidden="true" />
+        <div className="wrap relative grid gap-8 pb-10 pt-36 md:pb-28 lg:grid-cols-12 lg:items-end lg:gap-10">
+          <h1 className="t-hero lg:col-span-8">
+            {heroLines.map((line, index) => <span className="line" key={line} style={{ "--i": index } as React.CSSProperties}><span>{line}</span></span>)}
+          </h1>
+          <div className="lg:col-span-4 lg:pb-3">
+            <p className="seq-in t-lead max-w-[38ch] text-g-200" style={{ "--d": "380ms" } as React.CSSProperties}>Sede en Guadalajara, atención en todo México. Urgencias por detención o multa y asuntos constitucionales, administrativos, civiles y mercantiles.</p>
+            <div className="seq-in mt-7 flex flex-col gap-2 sm:flex-row" style={{ "--d": "480ms" } as React.CSSProperties}>
+              <Link href="/agendar" className="b b-invert">Agendar consulta</Link>
+              <Link href="/urgencias" className="b b-urgent">Tengo una urgencia</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Franja de urgencias */}
+      <section aria-labelledby="urgencia" className="border-b border-g-200">
+        <div className="wrap grid gap-8 py-14 md:py-20 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-6">
+            <h2 id="urgencia" className="t-h2">¿Hay una detención en este momento?</h2>
+            <p className="t-muted mt-5 max-w-[46ch]">Alcoholímetro, arresto administrativo o vehículo en el corralón. Llama o escribe; no hace falta llenar ningún formulario.</p>
+          </div>
+          <div className="lg:col-span-5 lg:col-start-8">
+            <a href={emergencyPhoneHref} className="u block w-fit text-[clamp(2.25rem,5vw,4.25rem)] font-light leading-[1.05] tracking-[-0.045em]" data-event="clic_llamar" data-origin="inicio-urgencia">{siteConfig.phoneDisplay}</a>
+            <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+              <a href={emergencyPhoneHref} className="b b-urgent" data-event="clic_llamar" data-origin="inicio-urgencia"><Phone size={18} strokeWidth={1.75} aria-hidden="true" />Llamar ahora</a>
+              <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="b b-line" data-event="clic_whatsapp" data-origin="inicio-urgencia"><MessageCircle size={18} strokeWidth={1.75} aria-hidden="true" />WhatsApp</a>
+            </div>
+            <p className="t-small mt-5"><Link href="/urgencias" className="u">Qué hacer mientras tanto</Link></p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Áreas de práctica */}
+      <section aria-labelledby="areas" className="section">
+        <div className="wrap">
+          <div className="mb-12 flex flex-col justify-between gap-6 md:mb-16 md:flex-row md:items-end">
+            <RevealHeading id="areas" lines={["Áreas de práctica"]} className="t-h1" />
+            <Link href="/servicios" className="u self-start md:self-auto">Todos los servicios</Link>
+          </div>
+          <PracticeList items={practice} />
+        </div>
+      </section>
+
+      {/* 4. La firma */}
+      <section aria-labelledby="firma" className="on-dark bg-black text-white">
+        <div className="wrap grid gap-14 py-24 md:py-32 lg:grid-cols-12 lg:gap-10">
+          <div className="flex flex-col justify-between gap-14 lg:col-span-7">
+            <RevealHeading id="firma" lines={["No prometemos resultados.", "Explicamos cada opción,", "sus tiempos y su costo."]} className="t-h2" />
+            <div className="grid gap-8 sm:grid-cols-3">
+              {[["Escuchar", "Revisamos los hechos y los documentos antes de opinar."], ["Explicar", "Presentamos las vías posibles, sus tiempos orientativos y su alcance."], ["Acompañar", "Acordamos contigo cómo y cada cuándo informar los avances."]].map(([title, text]) => (
+                <div key={title} className="border-t border-g-900 pt-5">
+                  <h3 className="text-[1.125rem] font-medium">{title}</h3>
+                  <p className="t-muted mt-2 text-[.9375rem]">{text}</p>
+                </div>
+              ))}
+            </div>
+            <Link href="/nosotros" className="u self-start">Conocer la firma</Link>
+          </div>
+          <div className="lg:col-span-4 lg:col-start-9">
+            <ParallaxImage src="/fotos/cabanas-interior.jpg" alt="Interior del Hospicio Cabañas, Guadalajara" sizes="(min-width: 1024px) 30vw, 100vw" quality={60} className="aspect-[4/5] md:aspect-[16/10] lg:aspect-[4/5]" />
+            {attorney && license && <AttorneyCredit name={attorney} license={license} className="mt-6" />}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Cómo empieza un asunto: columna fija y pasos que avanzan */}
+      <section aria-labelledby="proceso" id="proceso" className="section">
+        <div className="wrap grid gap-14 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-[calc(var(--header-h)+48px)]">
+              <RevealHeading id="proceso-titulo" lines={["Cómo empieza", "un asunto"]} className="t-h1" />
+              <p className="t-muted mt-6 max-w-[40ch]">Sin compromiso de contratar. Si el asunto no es de nuestras materias, te lo decimos.</p>
+              <Link href="/agendar" className="b b-solid mt-8">Agendar consulta</Link>
+            </div>
+          </div>
+          <ol className="grid gap-20 lg:col-span-6 lg:col-start-7 lg:gap-0">
+            {steps.map(({ Illustration, title, text }) => (
+              <li key={title} className="grid content-center gap-6 lg:min-h-[72vh]">
+                <Illustration className="w-[150px] text-black md:w-[190px]" />
+                <h3 className="t-h3 max-w-[22ch]">{title}</h3>
+                <p className="t-muted max-w-[44ch]">{text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* 6. Guías recientes (solo si hay publicadas) */}
+      {posts.length > 0 && (
+        <section aria-labelledby="guias" className="border-t border-g-200 bg-g-50">
+          <div className="wrap py-24 md:py-32">
+            <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+              <RevealHeading id="guias" lines={["Guías"]} className="t-h1" />
+              <Link href="/guias" className="u self-start md:self-auto">Todas las guías</Link>
+            </div>
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+              <Link href={`/guias/${posts[0].slug}`} className="group lg:col-span-7">
+                <h3 className="t-h2 max-w-[18ch] transition-transform duration-[260ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2">{posts[0].title}</h3>
+                <p className="t-muted mt-5 max-w-[52ch]">{posts[0].summary}</p>
+                <span className="u mt-6">Leer la guía</span>
+              </Link>
+              {posts.length > 1 && (
+                <ul className="grid content-start gap-10 lg:col-span-4 lg:col-start-9">
+                  {posts.slice(1).map(post => (
+                    <li key={post.slug} className="border-t border-g-200 pt-6">
+                      <Link href={`/guias/${post.slug}`} className="group block">
+                        <h3 className="t-h3 transition-transform duration-[260ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1">{post.title}</h3>
+                        <p className="t-muted mt-3 text-[.9375rem]">{post.summary}</p>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 7. Contacto y agendado */}
+      <section aria-labelledby="agendar" className="grid lg:grid-cols-2">
+        <ParallaxImage src="/fotos/escalera.jpg" alt="Escalera interior con barandal, en blanco y negro" sizes="(min-width: 1024px) 50vw, 100vw" quality={60} className="aspect-[4/3] lg:aspect-auto lg:min-h-[640px]" />
+        <div className="wrap flex flex-col justify-center py-20 lg:max-w-[720px] lg:py-28 lg:pl-16">
+          <RevealHeading id="agendar" lines={["Agenda", "una consulta"]} className="t-h1" />
+          <p className="t-lead t-muted mt-6 max-w-[40ch]">Presencial en Guadalajara, por videollamada o por teléfono. Eliges día y hora y recibes un folio de solicitud.</p>
+          <div className="mt-8 flex flex-col gap-2 sm:flex-row">
+            <Link href="/agendar" className="b b-solid">Elegir día y hora</Link>
+            <a href={whatsappHref(appointmentMessage())} target="_blank" rel="noopener noreferrer" className="b b-line" data-event="clic_whatsapp" data-origin="inicio-agendar">Agendar por WhatsApp</a>
+          </div>
+          <p className="t-small t-muted mt-8">¿Prefieres escribir con calma? <Link href="/contacto" className="u text-black">Envíanos un mensaje</Link>.</p>
+        </div>
+      </section>
+    </>
+  );
 }
