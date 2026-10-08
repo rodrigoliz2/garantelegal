@@ -19,7 +19,7 @@ Versión monocroma, octubre de 2026. Reemplaza la paleta azul marino, latón y m
 | `--g-200` | `#E5E5E5` | Divisores sobre blanco |
 | `--g-50` | `#F5F5F5` | Fondos de franja y avisos |
 | `--white` | `#FFFFFF` | Fondo principal |
-| `--urgent` | `#C8102E` | **Solo** acciones de urgencia: «Llamar ahora» y «Tengo una urgencia» |
+| `--urgent` | `#C8102E` | **Solo** acciones de urgencia: «Llamar por WhatsApp» y «Tengo una urgencia» |
 
 Prohibido: azul marino, dorado, marfil, degradados de color, sombras pesadas y vidrio esmerilado. El hero usa un velo negro neutro sobre la fotografía para dar contraste al texto; no es un degradado de color.
 

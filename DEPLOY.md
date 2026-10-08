@@ -57,7 +57,7 @@ Vercel puede mostrar destinos particulares para el proyecto. **Si difieren, usa 
 ## 6. Comprobación antes de anunciar el sitio
 
 1. Abre `/`, `/urgencias`, `/agendar`, `/contacto`, `/styleguide` y `/admin` en móvil y escritorio. Verifica barra fija, contenido y ausencia de marcadores pendientes.
-2. Prueba el enlace `tel:` y WhatsApp en iPhone y Android reales. Si WhatsApp no abre el chat correcto, revisa el prefijo internacional con el despacho y ajusta **solo** `src/site.config.ts`.
+2. Prueba los enlaces de WhatsApp (618 282 9873) en iPhone y Android reales; el despacho no usa enlaces `tel:` porque solo atiende llamadas por WhatsApp. Si WhatsApp no abre el chat correcto, revisa el prefijo internacional con el despacho y ajusta **solo** `src/site.config.ts`.
 3. Reserva una cita y envía un contacto de prueba con Turnstile real. Confirma folio en el panel, bloqueo de horario ocupado y recepción real de correo en el buzón del despacho y del cliente.
 4. Comprueba `sitemap.xml`, `robots.txt`, Open Graph y los eventos de Plausible si se configuró.
 5. Ejecuta Lighthouse móvil sobre la URL publicada y compara con `docs/lighthouse/`. La medición local no sustituye la prueba de producción.

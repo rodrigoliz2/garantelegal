@@ -30,3 +30,14 @@
 - /casos-de-exito responde 404 mientras no haya casos reales con consentimiento.
 - El panel interno no se rediseñó (fuera del alcance). Hereda la paleta monocroma a través de las clases heredadas remapeadas en `globals.css` y `tailwind.config.js`.
 - El correo transaccional pasó a monocromo con wordmark en texto. Usa Helvetica del sistema: los clientes de correo no cargan fuentes web.
+
+## Contacto solo por WhatsApp y textos definitivos (8 de octubre de 2026)
+
+- Por instrucción del abogado titular, la línea cambió de 669 212 2543 a **618 282 9873** y solo atiende por WhatsApp. Se eliminaron todos los enlaces `tel:` (`phoneHref` ya no existe en `site.config.ts`). Las acciones de urgencia abren el chat del despacho con el mensaje prellenado de urgencia y dicen «Llamar por WhatsApp» o «Llamar o escribir por WhatsApp». Un enlace no puede iniciar una llamada de WhatsApp; abre el chat, y desde ahí se llama.
+- La barra móvil pasó de dos botones (llamar y WhatsApp) a uno solo, porque ambos abrían el mismo chat. La prueba E2E ahora comprueba ese botón y que no exista ningún enlace `tel:`.
+- El evento de analítica de estas acciones es `clic_whatsapp` con su origen; `clic_llamar` dejó de usarse.
+- La modalidad de cita «Llamada» se muestra como «Llamada por WhatsApp». El valor interno `PHONE` no cambió.
+- Correo de contacto: contacto@garantejuridico.com.
+- El abogado titular dio por buenos los textos jurídicos. Se retiraron las leyendas de borrador y se pulieron el aviso de privacidad, los términos (ley aplicable: tribunales de Guadalajara, Jalisco), las guías y las descripciones de servicios. Los textos limpios están en `prisma/seed.ts` y se aplicaron también a la base de datos local. `publicText()` se conserva como red de seguridad.
+- Se conserva un único aviso de no asesoría en el pie, porque el brief lo exige como requisito de publicación («El contenido de este sitio es informativo…»).
+- `BRIEF.md` no se modificó: es el documento original y conserva el número anterior como antecedente.
