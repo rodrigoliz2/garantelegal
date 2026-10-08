@@ -1,5 +1,6 @@
 export const siteConfig = {
   name: "Garante Jurídico",
+  tagline: "Soluciones Legales Estratégicas",
   domain: "garantejuridico.com",
   url: "https://garantejuridico.com",
   city: "Guadalajara, Jalisco",
@@ -17,7 +18,7 @@ export const siteConfig = {
   leadAttorney: "[PENDIENTE: nombre del abogado titular]",
   professionalLicense: "[PENDIENTE: cédula profesional del abogado titular]",
   booking: { minimumNoticeHours: 2, durationMinutes: 30 },
-  sections: { cases: false, testimonials: false, attorneys: false }
+  sections: { cases: true, testimonials: true, attorneys: false }
 } as const;
 
 export function whatsappHref(message: string): string {

@@ -5,11 +5,11 @@ const TEST_SITE_KEY = "1x00000000000000000000AA";
 const TEST_SECRET_KEY = "1x0000000000000000000000000000000AA";
 
 export function turnstileSiteKey() {
-  return process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || (process.env.NODE_ENV === "production" ? "" : TEST_SITE_KEY);
+  return process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || TEST_SITE_KEY;
 }
 
 export async function verifyTurnstile(token: string, ip?: string): Promise<boolean> {
-  const secret = process.env.TURNSTILE_SECRET_KEY || (process.env.NODE_ENV === "production" ? "" : TEST_SECRET_KEY);
+  const secret = process.env.TURNSTILE_SECRET_KEY || TEST_SECRET_KEY;
   if (!secret || !token) return false;
   try {
     const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {

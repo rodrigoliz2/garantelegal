@@ -1,21 +1,16 @@
-@import "@fontsource/fraunces/latin-500.css";
-@import "@fontsource/fraunces/latin-600.css";
-@import "@fontsource/dm-sans/latin-400.css";
-@import "@fontsource/dm-sans/latin-600.css";
-@import "@fontsource/dm-sans/latin-700.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --navy: #152634;
-  --ink: #172a37;
-  --ivory: #f5f1e8;
-  --paper: #fffcf6;
-  --brass: #a77829;
-  --emergency: #a9292e;
-  --font-display: "Fraunces";
-  --font-body: "DM Sans";
+  --navy: #101f32;
+  --ink: #101f32;
+  --ivory: #f5f0e6;
+  --paper: #ffffff;
+  --brass: #b9955b;
+  --brass-text: #6d4f25;
+  --slate: #526174;
+  --emergency: #bd3434;
 }
 
 * { box-sizing: border-box; }
@@ -28,9 +23,13 @@ button, input, select, textarea { font: inherit; }
 button, a, input, select, textarea { min-height: 44px; }
 .container-page { width: min(100% - 2rem, 1180px); margin-inline: auto; }
 .eyebrow { font-size: .75rem; line-height: 1.2; letter-spacing: .16em; font-weight: 700; text-transform: uppercase; }
+.text-brass { color: var(--brass-text); }
 .display { font-family: var(--font-display), serif; line-height: 1.08; letter-spacing: -.035em; }
+.brand-type { font-family: var(--font-brand), serif; letter-spacing: .08em; }
 .section-pad { padding-block: clamp(4rem, 8vw, 8rem); }
 .card { background: var(--paper); border: 1px solid #d8d3c8; border-radius: 4px; }
+.card.bg-navy { background: var(--navy); }
+.card.bg-ivory { background: var(--ivory); }
 .field { display: block; width: 100%; min-height: 48px; border: 1px solid #797b79; border-radius: 3px; background: var(--paper); padding: .65rem .8rem; color: var(--ink); }
 .field:focus { outline: 3px solid var(--brass); outline-offset: 1px; }
 .btn { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: .55rem; border-radius: 3px; padding: .7rem 1.15rem; font-weight: 700; text-decoration: none; cursor: pointer; transition: background-color .15s ease, transform .15s ease; }
@@ -38,6 +37,6 @@ button, a, input, select, textarea { min-height: 44px; }
 .btn-primary { background: var(--navy); color: white; }
 .btn-secondary { background: var(--paper); border: 1px solid var(--navy); color: var(--navy); }
 .btn-emergency { background: var(--emergency); color: white; }
-.btn-brass { background: var(--brass); color: white; }
+.btn-brass { background: var(--brass); color: var(--navy); }
 .prose-copy p { margin-block: 1rem; max-width: 68ch; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }

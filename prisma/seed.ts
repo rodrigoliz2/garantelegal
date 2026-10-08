@@ -70,6 +70,14 @@ async function main() {
     }
   }
 
+  const guides = [
+    { slug: "que-hacer-alcoholimetro", title: "Qué hacer ante una detención por alcoholímetro", summary: "Datos útiles para pedir orientación jurídica si una persona fue arrestada tras una prueba de alcoholímetro.", content: "[BORRADOR JURÍDICO: validar por el abogado titular antes de publicar]. Si una persona fue detenida tras una prueba de alcoholímetro, anota el lugar, la hora y la autoridad que intervino. Pregunta a qué centro de sanciones administrativas será trasladada.\n\nConserva la boleta o cualquier documento entregado, sin divulgar datos sensibles por formularios públicos. Comunícate con el despacho para revisar el caso concreto. Las reglas y vías de defensa pueden variar según la entidad federativa." },
+    { slug: "como-impugnar-multa", title: "Cómo revisar una multa para impugnarla", summary: "Una guía inicial para ordenar la boleta, los hechos y los documentos antes de una consulta.", content: "[BORRADOR JURÍDICO: validar por el abogado titular antes de publicar]. Conserva la boleta completa y anota cuándo y dónde se notificó. Reúne fotografías, comprobantes y otros documentos relacionados.\n\nLos plazos y la autoridad competente dependen del lugar y del tipo de sanción. En una consulta se revisa si existe una vía de impugnación y qué documentos se necesitan." },
+    { slug: "vehiculo-corralon", title: "Qué reunir si un vehículo fue enviado al corralón", summary: "Documentos y datos básicos para consultar la recuperación de un vehículo retenido.", content: "[BORRADOR JURÍDICO: validar por el abogado titular antes de publicar]. Identifica el depósito, la autoridad que ordenó el traslado y la boleta o inventario que te entregaron. Ten a mano los documentos del vehículo y tu identificación.\n\nLos requisitos de liberación varían por entidad y motivo de retención. El despacho puede revisar la documentación y explicar los pasos posibles en tu situación." },
+    { slug: "que-es-amparo", title: "Qué es un amparo", summary: "Explicación general de esta vía judicial y de por qué requiere revisar el acto concreto.", content: "[BORRADOR JURÍDICO: validar por el abogado titular antes de publicar]. El amparo es un proceso judicial que puede solicitar protección frente a determinados actos de autoridad. No aplica automáticamente a cualquier conflicto.\n\nPara evaluar su procedencia se necesitan los hechos, documentos, autoridad involucrada y fechas relevantes. Un abogado debe revisar los plazos y la vía específica del caso." }
+  ];
+  for (const guide of guides) await prisma.post.upsert({ where: { slug: guide.slug }, update: {}, create: { ...guide, published: true } });
+
   const email = process.env.ADMIN_EMAIL;
   const password = process.env.ADMIN_PASSWORD;
   if (!email || !password) throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD are required for the seed.");
