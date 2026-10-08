@@ -91,7 +91,7 @@ async function main() {
   const password = process.env.ADMIN_PASSWORD;
   if (!email || !password) throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD are required for the seed.");
   await prisma.adminUser.upsert({ where: { email }, update: { name: process.env.ADMIN_NAME || "Administrador", passwordHash: await hash(password, 12) }, create: { email, name: process.env.ADMIN_NAME || "Administrador", passwordHash: await hash(password, 12) } });
-  console.log(`Seeded ${areas.length} practice areas and development admin ${email}.`);
+  console.log(`Semilla aplicada: ${areas.length} áreas de práctica, guías y administrador ${email}.`);
 }
 
 // Solo se ejecuta como script (npm run db:seed), no al importarse.
