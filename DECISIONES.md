@@ -41,3 +41,11 @@
 - El abogado titular dio por buenos los textos jurídicos. Se retiraron las leyendas de borrador y se pulieron el aviso de privacidad, los términos (ley aplicable: tribunales de Guadalajara, Jalisco), las guías y las descripciones de servicios. Los textos limpios están en `prisma/seed.ts` y se aplicaron también a la base de datos local. `publicText()` se conserva como red de seguridad.
 - Se conserva un único aviso de no asesoría en el pie, porque el brief lo exige como requisito de publicación («El contenido de este sitio es informativo…»).
 - `BRIEF.md` no se modificó: es el documento original y conserva el número anterior como antecedente.
+
+## Preparación para producción (8 de octubre de 2026)
+
+- Vulnerabilidades de producción en cero sin cambiar de versión mayor. Con `overrides` se fuerzan `postcss@^8.5.29` dentro de Next 15.5 (Next fija la 8.4.31) y `deepmerge-ts@^8.0.2` dentro de `@prisma/config`. npm proponía saltar a Next 16 y bajar a Prisma 6.12; las dos opciones se descartaron por el riesgo. Prisma `validate`, `generate` y `migrate status` funcionan con la versión forzada.
+- Vitest pasó de 3 a 5 para eliminar los dos avisos críticos (vitest y tinypool). La configuración y las pruebas no cambiaron.
+- En Tailwind 3 se forzaron `postcss-nested@^7.0.2` y `postcss-selector-parser@^7.1.6`. Se comprobó que el CSS generado es idéntico byte a byte antes y después.
+- Riesgo aceptado: 7 avisos «altos» solo de desarrollo, de la cadena `braces` sin versión corregida. Detalle en DEPLOY.md.
+- LCP del inicio en Lighthouse móvil: 3.1 s simulados (rendimiento 94). El elemento LCP es la foto del hero (37 KB en AVIF, prioridad alta, unos 350 ms sin simulación). Bajarlo más exigiría quitar CSS o JS del arranque; no se justifica con el puntaje actual.

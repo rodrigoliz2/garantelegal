@@ -2,9 +2,13 @@
 
 Arquitectura prevista: aplicación en **Vercel**, PostgreSQL en **Neon**, dominio y DNS en **Cloudflare**, correo en **Resend**. Esta entrega no realiza el despliegue.
 
-## 1. Completar datos y revisar contenido
+## 1. Datos del despacho y estado del código
 
-Sustituye los siete marcadores de [PENDIENTES.md](PENDIENTES.md) en `src/site.config.ts`; establece el mismo correo en `CONTACT_EMAIL`. El abogado titular debe aprobar los borradores jurídicos, aviso de privacidad, términos, credenciales y uso de los nombres locales de centros de sanciones. Publica casos o testimonios solo si son reales, anonimizados y consentidos. Sustituye los SVG de marca por el archivo maestro si se dispone de él.
+El código está listo para producción en la rama `main`. Los textos jurídicos están aprobados por el abogado titular (8 de octubre de 2026) y el contacto es solo por WhatsApp al 618 282 9873, con correo contacto@garantejuridico.com.
+
+Antes o después del primer despliegue, completa en `src/site.config.ts` los datos marcados como `[PENDIENTE: …]` (nombre y cédula del titular, dirección, horario, honorarios y costo de la consulta). Mientras falten, el sitio los oculta, así que no bloquean la publicación. La lista está en [PENDIENTES.md](PENDIENTES.md). Publica casos o testimonios solo si son reales, anonimizados y consentidos.
+
+**Dependencias:** `npm audit --omit=dev` (lo que corre en producción) reporta 0 vulnerabilidades. Las que corrige `overrides` en `package.json` son `postcss` dentro de Next 15, `deepmerge-ts` dentro de Prisma y `postcss-nested`/`postcss-selector-parser` dentro de Tailwind 3. Al actualizar Next, Prisma o Tailwind, revisa si los `overrides` siguen haciendo falta y quítalos cuando la versión nueva ya traiga la corrección. Quedan 7 avisos solo de desarrollo, de la cadena `braces` → `micromatch` → `fast-glob`/`chokidar`, que entra por Tailwind 3 y `eslint-config-next`. No existe versión corregida de `braces`, y estas herramientas solo procesan archivos del propio repositorio al compilar; no llegan al sitio publicado. Se eliminan al migrar a Tailwind 4 y a una versión futura de `eslint-config-next`.
 
 ## 2. Crear Neon y aplicar la base de datos
 
