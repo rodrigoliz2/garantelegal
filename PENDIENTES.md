@@ -22,3 +22,24 @@ Estos datos deben revisarse antes de publicar. También falta la validación jur
 15. [PENDIENTE: revisar y resolver avisos de dependencias antes de publicar]
 
 Los marcadores compuestos de las plantillas corporativas («correo y dirección», «cargo y cédula») se resuelven con los puntos anteriores. La revisión final del aviso y de cada texto jurídico corresponde al abogado titular.
+
+## Rediseño monocromo (octubre de 2026)
+
+Desde el rediseño, los datos marcados como `[PENDIENTE: …]` en `site.config.ts` **no se muestran al público**: la función `provided()` los oculta y las secciones que dependen de ellos desaparecen. Al completar cada dato en `site.config.ts`, aparece solo en el sitio.
+
+| Dato | Dónde aparecerá al completarlo |
+| --- | --- |
+| Nombre y cédula del abogado titular (1, 2) | Bloque «La firma» del inicio y /nosotros, con enlace al Registro Nacional de Profesionistas |
+| Retrato real del abogado titular | Espacio reservado en «La firma»; hoy se muestra una foto de arquitectura, nunca una persona de archivo |
+| Dirección de la oficina (3) | Pie, /contacto, /agendar y aviso de privacidad |
+| Horario de la línea de urgencias (4) | /urgencias y /contacto |
+| Honorarios o política de cotización (5) | /contacto |
+| Costo de la consulta (6) | /agendar |
+| Correo de contacto (7) | Pie, /contacto y páginas legales (hoy remiten al teléfono) |
+
+16. [PENDIENTE: archivo vectorial del logotipo definitivo (`public/brand/logo.svg`); hoy se usa un wordmark tipográfico]
+17. [PENDIENTE: rehacer en monocromo la papelería de `public/brand/templates/` y los SVG con monograma de la versión anterior]
+18. [PENDIENTE: casos documentados y testimonios reales con consentimiento; /casos-de-exito responde 404 mientras no haya]
+19. [PENDIENTE: validar los textos jurídicos de servicios y guías; los marcadores `[BORRADOR JURÍDICO: …]` siguen en la base de datos y se ocultan al público con `publicText()`]
+20. [PENDIENTE: plazos orientativos por servicio; hoy se dice que se estiman en la consulta]
+21. [PENDIENTE: revisar textos de la sección «La firma» y la cita «No prometemos resultados. Explicamos cada paso.» con el abogado titular]
