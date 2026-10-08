@@ -1,8 +1,25 @@
 import type { Metadata } from "next";
-import { siteConfig } from "@/site.config";
+import { provided, siteConfig } from "@/site.config";
+import { LegalPage } from "@/components/site/legal-page";
 
 export const metadata: Metadata = { title: "Aviso de privacidad" };
 
 export default function PrivacyPage() {
-  return <article className="container-page section-pad max-w-4xl"><p className="eyebrow text-brass">Borrador para revisión del abogado titular</p><h1 className="display mt-3 text-5xl">Aviso de privacidad</h1><p className="mt-6 rounded border-l-4 border-brass bg-paper p-5 font-semibold">Este documento es un borrador. Debe completarse y validarse por el abogado titular antes de publicar el sitio.</p><div className="prose-copy mt-8 space-y-8"><section><h2 className="display text-3xl">Responsable y domicilio</h2><p>{siteConfig.name}, con sede en {siteConfig.city}, es responsable del tratamiento de los datos proporcionados en este sitio. Domicilio: {siteConfig.address}. Correo para asuntos de privacidad: {siteConfig.contactEmail}.</p></section><section><h2 className="display text-3xl">Datos que se recaban</h2><p>Para responder solicitudes de contacto o cita se solicitan nombre, teléfono, correo opcional, servicio de interés, modalidad, horario y una descripción breve opcional. Evita incluir datos sensibles en el formulario; los detalles del asunto se revisan en consulta.</p></section><section><h2 className="display text-3xl">Finalidades</h2><p>Los datos se utilizan para responder la consulta, gestionar citas, comunicarse contigo y dar seguimiento a la solicitud. [PENDIENTE: validar finalidades secundarias, si existen].</p></section><section><h2 className="display text-3xl">Transferencias y proveedores</h2><p>La operación del sitio puede implicar proveedores de alojamiento, base de datos, protección contra abuso y correo electrónico. [PENDIENTE: validar transferencias, encargados y mecanismos aplicables].</p></section><section><h2 className="display text-3xl">Derechos y revocación</h2><p>Para ejercer derechos de acceso, rectificación, cancelación u oposición, o revocar el consentimiento, escribe a {siteConfig.contactEmail}. [PENDIENTE: procedimiento, plazos y persona responsable].</p></section><section><h2 className="display text-3xl">Seguridad y cambios</h2><p>El sitio usa HTTPS y restringe el acceso al panel del despacho. Los cambios a este aviso se publicarán en esta ruta. [PENDIENTE: fecha de última actualización y política de conservación].</p></section></div><p className="mt-10 text-sm">Referencia de revisión: <a className="underline" href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" target="_blank" rel="noopener noreferrer">Ley Federal de Protección de Datos Personales en Posesión de los Particulares</a>. Este enlace no sustituye la revisión jurídica.</p></article>;
+  const address = provided(siteConfig.address);
+  const email = provided(siteConfig.contactEmail);
+  const contact = email ? <>escribe a <a href={`mailto:${email}`}>{email}</a></> : <>comunícate al {siteConfig.phoneDisplay}</>;
+  return (
+    <LegalPage
+      title="Aviso de privacidad"
+      sections={[
+        { id: "responsable", title: "Responsable", body: <p>{siteConfig.name}, con sede en {siteConfig.city}, es responsable del tratamiento de los datos proporcionados en este sitio.{address ? ` Domicilio: ${address}.` : ""} Para asuntos de privacidad, {contact}.</p> },
+        { id: "datos", title: "Datos que se recaban", body: <p>Para responder solicitudes de contacto o cita se solicitan nombre, teléfono, correo opcional, servicio de interés, modalidad, horario y una descripción breve opcional. Evita incluir datos sensibles en el formulario; los detalles del asunto se revisan en consulta.</p> },
+        { id: "finalidades", title: "Finalidades", body: <p>Los datos se utilizan para responder la consulta, gestionar citas, comunicarse contigo y dar seguimiento a la solicitud.</p> },
+        { id: "proveedores", title: "Transferencias y proveedores", body: <p>La operación del sitio puede implicar proveedores de alojamiento, base de datos, protección contra abuso y correo electrónico.</p> },
+        { id: "derechos", title: "Derechos y revocación", body: <p>Para ejercer derechos de acceso, rectificación, cancelación u oposición, o revocar el consentimiento, {contact}.</p> },
+        { id: "seguridad", title: "Seguridad y cambios", body: <p>El sitio usa HTTPS y restringe el acceso al panel del despacho. Los cambios a este aviso se publicarán en esta ruta.</p> }
+      ]}
+      footnote={<p>Referencia de revisión: <a className="underline underline-offset-2" href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" target="_blank" rel="noopener noreferrer">Ley Federal de Protección de Datos Personales en Posesión de los Particulares</a>. Este enlace no sustituye la revisión jurídica.</p>}
+    />
+  );
 }
