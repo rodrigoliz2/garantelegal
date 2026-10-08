@@ -1,0 +1,139 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model PracticeArea {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String
+  sortOrder   Int       @default(0)
+  services    Service[]
+  caseStudies CaseStudy[]
+}
+
+model Service {
+  id          String        @id @default(cuid())
+  areaId      String
+  area        PracticeArea  @relation(fields: [areaId], references: [id])
+  name        String
+  slug        String
+  summary     String
+  description String        @default("")
+  appliesWhen String        @default("")
+  documents   Json          @default("[]")
+  steps       Json          @default("[]")
+  faqs        Json          @default("[]")
+  isEmergency Boolean       @default(false)
+  published   Boolean       @default(false)
+  sortOrder   Int           @default(0)
+  appointments Appointment[]
+  leads       Lead[]
+
+  @@unique([areaId, slug])
+  @@index([published, isEmergency])
+}
+
+model Appointment {
+  id                String   @id @default(cuid())
+  folio             String   @unique
+  serviceId         String
+  service           Service  @relation(fields: [serviceId], references: [id])
+  modality          String
+  startsAt          DateTime @db.Timestamptz(3)
+  endsAt            DateTime @db.Timestamptz(3)
+  status            String   @default("PENDING")
+  clientName        String
+  clientPhone       String
+  clientEmail       String?
+  notes             String   @default("")
+  privacyAcceptedAt DateTime @db.Timestamptz(3)
+  createdAt         DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt         DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([startsAt, status])
+}
+
+model AvailabilityRule {
+  id          String  @id @default(cuid())
+  weekday     Int
+  startMinute Int
+  endMinute   Int
+  modality    String
+  active      Boolean @default(true)
+
+  @@unique([weekday, startMinute, endMinute, modality])
+}
+
+model BlockedSlot {
+  id       String   @id @default(cuid())
+  startsAt DateTime @db.Timestamptz(3)
+  endsAt   DateTime @db.Timestamptz(3)
+  reason   String
+
+  @@index([startsAt, endsAt])
+}
+
+model Lead {
+  id                String   @id @default(cuid())
+  origin            String
+  serviceId         String?
+  service           Service? @relation(fields: [serviceId], references: [id])
+  clientName        String
+  clientPhone       String
+  clientEmail       String?
+  message           String
+  status            String   @default("NEW")
+  privacyAcceptedAt DateTime @db.Timestamptz(3)
+  createdAt         DateTime @default(now()) @db.Timestamptz(3)
+}
+
+model CaseStudy {
+  id          String       @id @default(cuid())
+  areaId      String
+  area        PracticeArea @relation(fields: [areaId], references: [id])
+  title       String
+  problem     String
+  strategy    String
+  result      String
+  duration    String
+  consented   Boolean      @default(false)
+  published   Boolean      @default(false)
+  createdAt   DateTime     @default(now()) @db.Timestamptz(3)
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  author    String
+  text      String
+  date      DateTime @db.Date
+  source    String
+  consented Boolean  @default(false)
+  published Boolean  @default(false)
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  summary     String
+  content     String
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt   DateTime @updatedAt @db.Timestamptz(3)
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         String   @default("ADMIN")
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now()) @db.Timestamptz(3)
+}
