@@ -7,7 +7,7 @@
         "rule": "overused-font",
         "value": "arial",
         "createdAt": "2026-10-08T04:44:51.680Z",
-        "reason": "Agent: Arial is the web-safe fallback in transactional email HTML for broad email-client rendering; the website uses the approved Cinzel, Cormorant Garamond and Manrope fonts"
+        "reason": "Agent: Helvetica is the system fallback in transactional email HTML for broad email-client rendering; the website uses Host Grotesk and Newsreader via next/font"
       }
     ]
   }

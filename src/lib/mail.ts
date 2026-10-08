@@ -6,7 +6,7 @@ function escapeHtml(value: string) {
 }
 
 function mailHtml(subject: string, body: string) {
-  return `<div style="margin:0;background:#F5F0E6;padding:24px;font-family:Arial,sans-serif;color:#101F32"><div style="max-width:640px;margin:auto;background:#FFFFFF"><div style="background:#101F32;padding:24px"><img src="${siteConfig.url}/brand/templates/email-header.png" width="320" height="69" alt="${escapeHtml(siteConfig.name)} — ${escapeHtml(siteConfig.tagline)}" style="display:block;max-width:100%;height:auto" /></div><div style="padding:28px"><h1 style="font-size:24px;margin:0 0 18px">${escapeHtml(subject)}</h1><p style="white-space:pre-line;line-height:1.6">${escapeHtml(body)}</p></div><div style="border-top:1px solid #B9955B;padding:18px 28px;font-size:12px">${escapeHtml(siteConfig.tagline)} · Contenido informativo.</div></div></div>`;
+  return `<div style="margin:0;background:#F5F5F5;padding:24px;font-family:'Helvetica Neue',Helvetica,sans-serif;color:#0A0A0A"><div style="max-width:640px;margin:auto;background:#FFFFFF"><div style="background:#0A0A0A;padding:24px 28px;color:#FFFFFF;font-size:20px;letter-spacing:-0.02em">Garante <span style="font-weight:300">Jurídico</span></div><div style="padding:28px"><h1 style="font-size:24px;font-weight:400;letter-spacing:-0.02em;margin:0 0 18px">${escapeHtml(subject)}</h1><p style="white-space:pre-line;line-height:1.6">${escapeHtml(body)}</p></div><div style="border-top:1px solid #E5E5E5;padding:18px 28px;font-size:12px;color:#525252">${escapeHtml(siteConfig.tagline)}. Contenido informativo.</div></div></div>`;
 }
 
 export async function sendMail({ to, subject, text }: { to?: string | null; subject: string; text: string }) {
