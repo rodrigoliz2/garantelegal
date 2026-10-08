@@ -137,3 +137,9 @@ model AdminUser {
   active       Boolean  @default(true)
   createdAt    DateTime @default(now()) @db.Timestamptz(3)
 }
+
+model RateLimitBucket {
+  key         String   @id
+  windowStart DateTime @db.Timestamptz(3)
+  count       Int      @default(0)
+}
