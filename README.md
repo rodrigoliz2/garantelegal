@@ -82,3 +82,4 @@ Los recordatorios mediante WhatsApp Business, pago en línea, sincronización co
 Los criterios que requieren dispositivos, correo o cuentas reales permanecen abiertos hasta su prueba por el despacho. La lista de verificación de publicación está en [DEPLOY.md](DEPLOY.md).
 
 `npm audit` reportó avisos en dependencias actuales, incluidos Next.js y Prisma, al 7 de octubre de 2026. Se conservaron las versiones probadas para cerrar esta entrega; revisa y actualiza esas dependencias con pruebas completas antes de publicar. Esto se anota en [DECISIONES.md](DECISIONES.md).
+# garantelegal
