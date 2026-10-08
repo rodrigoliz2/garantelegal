@@ -1,6 +1,6 @@
 # Garante Jurídico
 
-Sitio y sistema de captación para un despacho con sede en Guadalajara, Jalisco, y atención en toda la República Mexicana. El público puede llamar, abrir WhatsApp, consultar servicios y solicitar una cita. El despacho administra agenda, prospectos, disponibilidad y contenido desde `/admin`.
+Sitio y sistema de captación para un despacho con sede en Guadalajara, Jalisco, y atención en toda la República Mexicana. El público puede llamar o escribir por WhatsApp (618 282 9873; el despacho no atiende llamadas convencionales), consultar servicios y solicitar una cita. El despacho administra agenda, prospectos, disponibilidad y contenido desde `/admin`.
 
 El contenido jurídico y los textos legales son **borradores para revisión del abogado titular**. Los datos por confirmar están en [PENDIENTES.md](PENDIENTES.md). No publiques el sitio antes de resolverlos.
 
@@ -68,7 +68,7 @@ Los recordatorios mediante WhatsApp Business, pago en línea, sincronización co
 
 | Criterio de fase 1 | Estado y evidencia |
 | --- | --- |
-| Llamar o abrir WhatsApp en máximo dos toques desde cualquier página móvil | ✅ Barra fija global en `src/components/emergency-bar.tsx`; prueba `e2e/core-flows.spec.ts`; auditoría en `docs/screenshots/`. |
+| Llamar o escribir por WhatsApp en un toque desde cualquier página móvil | ✅ Barra fija global en `src/components/site/urgent-bar.tsx`; prueba `e2e/core-flows.spec.ts`; auditoría en `docs/screenshots/`. |
 | Enlaces abren el número correcto en iPhone y Android reales | ⬜ Los `href` se verifican automáticamente; falta probarlos en teléfonos reales. |
 | Crear una cita completa y verla en el panel con folio | ✅ Prueba E2E de cita y panel en `e2e/core-flows.spec.ts`. |
 | Dos personas no reservan el mismo horario | ✅ Restricción de exclusión en `prisma/migrations/`; prueba de concurrencia en `tests/concurrency.test.ts`. |
@@ -81,6 +81,4 @@ Los recordatorios mediante WhatsApp Business, pago en línea, sincronización co
 
 Los criterios que requieren dispositivos, correo o cuentas reales permanecen abiertos hasta su prueba por el despacho. La lista de verificación de publicación está en [DEPLOY.md](DEPLOY.md).
 
-`npm audit` reportó avisos en dependencias actuales, incluidos Next.js y Prisma, al 7 de octubre de 2026. Se conservaron las versiones probadas para cerrar esta entrega; revisa y actualiza esas dependencias con pruebas completas antes de publicar. Esto se anota en [DECISIONES.md](DECISIONES.md).
-# garantelegal
-# garantelegal
+`npm audit --omit=dev` (dependencias de producción) reporta 0 vulnerabilidades al 8 de octubre de 2026, gracias a los `overrides` de `package.json`. Los avisos restantes son solo de herramientas de desarrollo; el detalle está en [DEPLOY.md](DEPLOY.md) y [DECISIONES.md](DECISIONES.md).
