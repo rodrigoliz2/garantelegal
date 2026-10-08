@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import { MessageCircle, Phone, ArrowRight } from "lucide-react";
+import { MessageCircle, Phone } from "lucide-react";
 import { emergencyPhoneHref, emergencyWhatsAppHref } from "@/lib/contact";
-import { siteConfig } from "@/site.config";
+import { provided, siteConfig } from "@/site.config";
 
 export const metadata: Metadata = {
   title: "Urgencias jurídicas por detención y alcoholímetro",
   description: `Ayuda jurídica ante detenciones y arrestos por alcoholímetro. Sede en ${siteConfig.city}, atención nacional.`
 };
 
+// Página de aterrizaje para urgencias: sin animaciones, sin fotografías, todo estático.
 const steps = [
-  { title: "Llama o escribe", text: "Dinos dónde está la persona y quién la tiene bajo custodia. No necesitas llenar un formulario antes de contactar." },
+  { title: "Llama o escribe", text: "Dinos dónde está la persona y qué autoridad la tiene bajo custodia. No necesitas llenar un formulario antes." },
   { title: "Ten los datos a mano", text: "Nombre de la persona, lugar de la detención o centro de sanciones administrativas y hora aproximada." },
   { title: "Revisamos la situación", text: "El despacho escucha el caso y explica las opciones disponibles según la autoridad y el lugar." }
 ];
+
+const checklist = ["Nombre completo de la persona detenida y un teléfono donde localizarte.", "Ciudad, lugar o autoridad que realizó la detención.", "Hora aproximada y la boleta o documento que recibió, si existe."];
 
 const faqs = [
   { question: "¿Debo esperar a tener todos los documentos?", answer: "No. Puedes llamar con los datos disponibles y reunir el resto después." },
@@ -21,14 +24,62 @@ const faqs = [
 ];
 
 export default function EmergenciesPage() {
-  return <>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(faq => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }).replace(/</g, "\\u003c") }} />
-    <section className="bg-navy py-16 text-white md:py-24"><div className="container-page grid gap-10 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
-      <div><p className="eyebrow text-[#dbbf83]">Contacto inmediato · {siteConfig.city}</p><h1 className="display mt-5 max-w-3xl text-[clamp(3rem,8vw,6rem)]">Ante una detención, habla con una persona.</h1><p className="mt-6 max-w-xl text-lg text-[#e2e8eb]">Asistencia jurídica por arresto por alcoholímetro, detenciones y traslado a un centro de sanciones administrativas. Atención en {siteConfig.coverage}.</p></div>
-      <div className="rounded bg-paper p-5 text-ink md:p-7"><p className="eyebrow text-brass">Actúa ahora</p><div className="mt-5 grid gap-3"><a className="btn btn-emergency w-full text-lg" href={emergencyPhoneHref} data-event="clic_llamar" data-origin="urgencias"><Phone aria-hidden="true" />Llamar ahora</a><a className="btn btn-primary w-full text-lg" href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" data-event="clic_whatsapp" data-origin="urgencias"><MessageCircle aria-hidden="true" />Escribir por WhatsApp</a></div><p className="mt-5 text-sm">{siteConfig.emergencyHours}. Si no logramos atender la llamada, deja un mensaje por WhatsApp.</p></div>
-    </div></section>
-    <section className="section-pad container-page"><p className="eyebrow text-brass">Qué hacer ahora</p><h2 className="display mt-3 max-w-2xl text-4xl md:text-5xl">Tres pasos sencillos</h2><div className="mt-8 grid gap-4 md:grid-cols-3">{steps.map((step, i) => <div className="card p-6" key={step.title}><span className="eyebrow text-brass">0{i + 1}</span><h3 className="display mt-5 text-2xl">{step.title}</h3><p className="mt-3">{step.text}</p></div>)}</div></section>
-    <section className="bg-paper section-pad"><div className="container-page grid gap-8 md:grid-cols-2"><div><p className="eyebrow text-brass">Al comunicarte</p><h2 className="display mt-3 text-4xl">Datos que ayudan a orientarte</h2></div><ul className="space-y-4">{["Nombre de la persona detenida y cómo contactarte.", "Ciudad, lugar o autoridad que realizó la detención.", "Hora aproximada y documento o boleta que recibió, si existe."].map(item => <li className="flex gap-3 border-b border-[#d8d3c8] pb-4" key={item}><ArrowRight className="mt-1 shrink-0 text-brass" size={18} aria-hidden="true" />{item}</li>)}</ul></div></section>
-    <section className="section-pad container-page"><p className="eyebrow text-brass">Preguntas frecuentes</p><h2 className="display mt-3 text-4xl">Antes de llamar</h2><div className="mt-7 max-w-3xl space-y-5">{faqs.map(faq => <div key={faq.question}><h3 className="font-bold">{faq.question}</h3><p>{faq.answer}</p></div>)}</div><p className="mt-8 border-t border-[#d8d3c8] pt-5 text-sm"><strong>Borrador para revisión del abogado titular:</strong> «El Torito» (CDMX) y «la Curva» (Guadalajara) son nombres locales que deben comprobarse antes de publicar. El contenido es informativo y no sustituye una consulta jurídica.</p></section>
-  </>;
+  const hours = provided(siteConfig.emergencyHours);
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(faq => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }).replace(/</g, "\\u003c") }} />
+
+      <section className="border-b border-g-200">
+        <div className="wrap grid gap-10 pb-12 pt-10 md:pb-20 md:pt-16 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <h1 className="t-h1 max-w-[14ch]">Ante una detención, habla con una persona.</h1>
+            <p className="t-lead t-muted mt-6 max-w-[48ch]">Asistencia jurídica por arresto por alcoholímetro, detenciones y traslado a un centro de sanciones administrativas. Atención en {siteConfig.coverage}.</p>
+          </div>
+          <div className="lg:col-span-5">
+            <a href={emergencyPhoneHref} className="b b-urgent b-lg w-full" data-event="clic_llamar" data-origin="urgencias"><Phone size={20} strokeWidth={1.75} aria-hidden="true" />Llamar ahora</a>
+            <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="b b-solid b-lg mt-2 w-full" data-event="clic_whatsapp" data-origin="urgencias"><MessageCircle size={20} strokeWidth={1.75} aria-hidden="true" />Escribir por WhatsApp</a>
+            <p className="mt-5 text-[clamp(1.75rem,3vw,2.5rem)] font-light leading-none tracking-[-0.04em]"><a href={emergencyPhoneHref} className="u" data-event="clic_llamar" data-origin="urgencias-numero">{siteConfig.phoneDisplay}</a></p>
+            <p className="t-small t-muted mt-4">{hours ? `${hours}. ` : ""}Si no logramos atender la llamada, deja un mensaje por WhatsApp.</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="ahora" className="wrap grid gap-10 py-20 md:py-28 lg:grid-cols-12">
+        <h2 id="ahora" className="t-h2 lg:col-span-4">Qué hacer ahora</h2>
+        <ol className="grid gap-10 md:grid-cols-3 lg:col-span-8">
+          {steps.map(step => (
+            <li key={step.title} className="border-t border-black pt-5">
+              <h3 className="t-h3">{step.title}</h3>
+              <p className="t-muted mt-3">{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section aria-labelledby="datos" className="on-dark bg-black text-white">
+        <div className="wrap grid gap-10 py-20 md:py-28 lg:grid-cols-12">
+          <h2 id="datos" className="t-h2 lg:col-span-5">Datos que ayudan a orientarte</h2>
+          <ul className="grid gap-0 lg:col-span-6 lg:col-start-7">
+            {checklist.map(item => <li key={item} className="border-t border-g-900 py-5 text-[1.125rem] leading-snug last:border-b">{item}</li>)}
+          </ul>
+        </div>
+      </section>
+
+      <section aria-labelledby="preguntas" className="wrap grid gap-10 py-20 md:py-28 lg:grid-cols-12">
+        <h2 id="preguntas" className="t-h2 lg:col-span-4">Antes de llamar</h2>
+        <div className="lg:col-span-7 lg:col-start-6">
+          {faqs.map(faq => (
+            <details key={faq.question} className="group border-t border-g-200 last-of-type:border-b">
+              <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 py-4 text-[1.125rem] font-medium [&::-webkit-details-marker]:hidden">
+                {faq.question}
+                <span aria-hidden="true" className="text-[1.5rem] font-light leading-none group-open:rotate-45">+</span>
+              </summary>
+              <p className="t-muted pb-6 pr-8">{faq.answer}</p>
+            </details>
+          ))}
+          <p className="t-small t-muted mt-10 max-w-[60ch]">Borrador para revisión del abogado titular. El contenido es informativo y no sustituye una consulta jurídica.</p>
+        </div>
+      </section>
+    </>
+  );
 }
