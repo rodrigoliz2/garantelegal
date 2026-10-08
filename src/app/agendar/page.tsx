@@ -17,7 +17,7 @@ export default async function BookingPage({ searchParams }: { searchParams: Prom
     <div className="wrap grid gap-14 pb-24 pt-10 md:pt-16 lg:grid-cols-12 lg:gap-10">
       <div className="lg:col-span-4">
         <div className="lg:sticky lg:top-[calc(var(--header-h)+40px)]">
-          <h1 className="t-h1 max-w-[12ch]">Agenda una conversación.</h1>
+          <h1 className="t-h1 max-w-[12ch] lg:text-[clamp(3rem,4.4vw,4.75rem)]">Agenda una conversación.</h1>
           <p className="t-lead t-muted mt-6 max-w-[38ch]">Elige un horario disponible. La solicitud queda pendiente hasta que el despacho la confirme.</p>
           <dl className="mt-10 grid gap-0 border-t border-g-200 text-[.9375rem]">
             <div className="grid grid-cols-[7rem_1fr] gap-4 border-b border-g-200 py-4"><dt className="t-muted">Modalidad</dt><dd>Presencial en Guadalajara, videollamada o llamada</dd></div>

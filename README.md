@@ -56,7 +56,7 @@ npm run test:e2e
 npm run audit:routes
 ```
 
-`test:e2e` y `audit:routes` requieren el servidor y la base de datos locales activos. `audit:routes` guarda capturas de las rutas públicas y privadas en `docs/screenshots/` a 375 y 1280 px. La última auditoría cubrió 104 combinaciones sin desbordes ni texto recortado. Los reportes de Lighthouse móvil para `/` y `/urgencias` están en `docs/lighthouse/`: **97/100/100** y **98/100/100** en rendimiento/accesibilidad/SEO. El LCP de `/urgencias` fue 2.46 s en esa medición local. Las pruebas de disponibilidad y concurrencia usan PostgreSQL; esta última comprueba que solo una de dos inserciones simultáneas para el mismo horario prospera.
+`test:e2e` y `audit:routes` requieren el servidor y la base de datos locales activos. `audit:routes` guarda capturas de las rutas públicas y privadas en `docs/screenshots/390`, `768` y `1440` (con movimiento reducido para que sean deterministas). La última auditoría, del rediseño monocromo, cubrió 156 combinaciones sin desbordes ni texto recortado. Los reportes de Lighthouse móvil para `/` y `/urgencias` están en `docs/lighthouse/`: **94/100/100/100** y **98/100/100/100** en rendimiento, accesibilidad, buenas prácticas y SEO; LCP de 3.0 s y 2.5 s en esa medición local. Las pruebas de disponibilidad y concurrencia usan PostgreSQL; esta última comprueba que solo una de dos inserciones simultáneas para el mismo horario prospera.
 
 ## Marca y alcance
 

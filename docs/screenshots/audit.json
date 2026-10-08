@@ -1,834 +1,1250 @@
 [
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/home.jpg"
+    "screenshot": "docs/screenshots/390/inicio.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/urgencias",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/urgencias.jpg"
+    "screenshot": "docs/screenshots/390/urgencias.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios.jpg"
+    "screenshot": "docs/screenshots/390/servicios.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/agendar",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/agendar.jpg"
+    "screenshot": "docs/screenshots/390/agendar.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/contacto",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/contacto.jpg"
+    "screenshot": "docs/screenshots/390/contacto.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/nosotros",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/nosotros.jpg"
+    "screenshot": "docs/screenshots/390/nosotros.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/guias",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/guias.jpg"
+    "screenshot": "docs/screenshots/390/guias.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/aviso-de-privacidad",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/aviso-de-privacidad.jpg"
+    "screenshot": "docs/screenshots/390/aviso-de-privacidad.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/terminos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/terminos.jpg"
+    "screenshot": "docs/screenshots/390/terminos.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/urgencias",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--urgencias.jpg"
+    "screenshot": "docs/screenshots/390/servicios--urgencias.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/administrativo",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--administrativo.jpg"
+    "screenshot": "docs/screenshots/390/servicios--administrativo.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/constitucional",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--constitucional.jpg"
+    "screenshot": "docs/screenshots/390/servicios--constitucional.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/civil",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--civil.jpg"
+    "screenshot": "docs/screenshots/390/servicios--civil.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/mercantil",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--mercantil.jpg"
+    "screenshot": "docs/screenshots/390/servicios--mercantil.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/urgencias/asistencia-detenciones",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--urgencias--asistencia-detenciones.jpg"
+    "screenshot": "docs/screenshots/390/servicios--urgencias--asistencia-detenciones.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/urgencias/liberacion-vehiculo-corralon",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--urgencias--liberacion-vehiculo-corralon.jpg"
+    "screenshot": "docs/screenshots/390/servicios--urgencias--liberacion-vehiculo-corralon.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/urgencias/localizacion-persona-detenida",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--urgencias--localizacion-persona-detenida.jpg"
+    "screenshot": "docs/screenshots/390/servicios--urgencias--localizacion-persona-detenida.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/administrativo/impugnacion-multas-transito",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--administrativo--impugnacion-multas-transito.jpg"
+    "screenshot": "docs/screenshots/390/servicios--administrativo--impugnacion-multas-transito.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/administrativo/clausuras-sanciones-negocios",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--administrativo--clausuras-sanciones-negocios.jpg"
+    "screenshot": "docs/screenshots/390/servicios--administrativo--clausuras-sanciones-negocios.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/administrativo/defensa-autoridades-fiscales",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--administrativo--defensa-autoridades-fiscales.jpg"
+    "screenshot": "docs/screenshots/390/servicios--administrativo--defensa-autoridades-fiscales.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/administrativo/responsabilidad-patrimonial-estado",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--administrativo--responsabilidad-patrimonial-estado.jpg"
+    "screenshot": "docs/screenshots/390/servicios--administrativo--responsabilidad-patrimonial-estado.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/constitucional/amparo-indirecto",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--constitucional--amparo-indirecto.jpg"
+    "screenshot": "docs/screenshots/390/servicios--constitucional--amparo-indirecto.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/constitucional/amparo-leyes-actos-autoridad",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--constitucional--amparo-leyes-actos-autoridad.jpg"
+    "screenshot": "docs/screenshots/390/servicios--constitucional--amparo-leyes-actos-autoridad.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/civil/contratos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--civil--contratos.jpg"
+    "screenshot": "docs/screenshots/390/servicios--civil--contratos.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/civil/arrendamiento-desocupacion",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--civil--arrendamiento-desocupacion.jpg"
+    "screenshot": "docs/screenshots/390/servicios--civil--arrendamiento-desocupacion.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/civil/sucesiones-testamentos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--civil--sucesiones-testamentos.jpg"
+    "screenshot": "docs/screenshots/390/servicios--civil--sucesiones-testamentos.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/mercantil/cobro-pagares-titulos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--mercantil--cobro-pagares-titulos.jpg"
+    "screenshot": "docs/screenshots/390/servicios--mercantil--cobro-pagares-titulos.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/mercantil/constitucion-sociedades",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--mercantil--constitucion-sociedades.jpg"
+    "screenshot": "docs/screenshots/390/servicios--mercantil--constitucion-sociedades.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/urgencias/amparo-arresto-alcoholimetro",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--urgencias--amparo-arresto-alcoholimetro.jpg"
+    "screenshot": "docs/screenshots/390/servicios--urgencias--amparo-arresto-alcoholimetro.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/administrativo/licencias-permisos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--administrativo--licencias-permisos.jpg"
+    "screenshot": "docs/screenshots/390/servicios--administrativo--licencias-permisos.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/administrativo/juicio-contencioso-administrativo",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--administrativo--juicio-contencioso-administrativo.jpg"
+    "screenshot": "docs/screenshots/390/servicios--administrativo--juicio-contencioso-administrativo.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/mercantil/recuperacion-cartera",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--mercantil--recuperacion-cartera.jpg"
+    "screenshot": "docs/screenshots/390/servicios--mercantil--recuperacion-cartera.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/constitucional/amparo-directo",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--constitucional--amparo-directo.jpg"
+    "screenshot": "docs/screenshots/390/servicios--constitucional--amparo-directo.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/constitucional/suspension-acto-reclamado",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--constitucional--suspension-acto-reclamado.jpg"
+    "screenshot": "docs/screenshots/390/servicios--constitucional--suspension-acto-reclamado.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/constitucional/defensa-derechos-humanos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--constitucional--defensa-derechos-humanos.jpg"
+    "screenshot": "docs/screenshots/390/servicios--constitucional--defensa-derechos-humanos.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/civil/cobro-adeudos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--civil--cobro-adeudos.jpg"
+    "screenshot": "docs/screenshots/390/servicios--civil--cobro-adeudos.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/civil/danos-responsabilidad-civil",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--civil--danos-responsabilidad-civil.jpg"
+    "screenshot": "docs/screenshots/390/servicios--civil--danos-responsabilidad-civil.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/mercantil/contratos-mercantiles",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--mercantil--contratos-mercantiles.jpg"
+    "screenshot": "docs/screenshots/390/servicios--mercantil--contratos-mercantiles.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/mercantil/conflictos-socios",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--mercantil--conflictos-socios.jpg"
+    "screenshot": "docs/screenshots/390/servicios--mercantil--conflictos-socios.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/servicios/mercantil/concursos-mercantiles",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/servicios--mercantil--concursos-mercantiles.jpg"
+    "screenshot": "docs/screenshots/390/servicios--mercantil--concursos-mercantiles.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/guias/que-hacer-alcoholimetro",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/guias--que-hacer-alcoholimetro.jpg"
+    "screenshot": "docs/screenshots/390/guias--que-hacer-alcoholimetro.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/guias/como-impugnar-multa",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/guias--como-impugnar-multa.jpg"
+    "screenshot": "docs/screenshots/390/guias--como-impugnar-multa.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/guias/vehiculo-corralon",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/guias--vehiculo-corralon.jpg"
+    "screenshot": "docs/screenshots/390/guias--vehiculo-corralon.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/guias/que-es-amparo",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/guias--que-es-amparo.jpg"
+    "screenshot": "docs/screenshots/390/guias--que-es-amparo.jpg"
   },
   {
-    "viewport": "mobile",
-    "route": "/casos-de-exito",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/mobile/casos-de-exito.jpg"
-  },
-  {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/styleguide",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/styleguide.jpg"
+    "screenshot": "docs/screenshots/390/styleguide.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/admin/login",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/admin--login.jpg"
+    "screenshot": "docs/screenshots/390/admin--login.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
+    "route": "/no-existe",
+    "status": 404,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/390/no-existe.jpg"
+  },
+  {
+    "viewport": "390",
     "route": "/admin",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/admin.jpg"
+    "screenshot": "docs/screenshots/390/admin.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/admin/agenda",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/admin--agenda.jpg"
+    "screenshot": "docs/screenshots/390/admin--agenda.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/admin/prospectos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/admin--prospectos.jpg"
+    "screenshot": "docs/screenshots/390/admin--prospectos.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/admin/disponibilidad",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/admin--disponibilidad.jpg"
+    "screenshot": "docs/screenshots/390/admin--disponibilidad.jpg"
   },
   {
-    "viewport": "mobile",
+    "viewport": "390",
     "route": "/admin/contenido",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/mobile/admin--contenido.jpg"
+    "screenshot": "docs/screenshots/390/admin--contenido.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/home.jpg"
+    "screenshot": "docs/screenshots/768/inicio.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/urgencias",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/urgencias.jpg"
+    "screenshot": "docs/screenshots/768/urgencias.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios.jpg"
+    "screenshot": "docs/screenshots/768/servicios.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/agendar",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/agendar.jpg"
+    "screenshot": "docs/screenshots/768/agendar.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/contacto",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/contacto.jpg"
+    "screenshot": "docs/screenshots/768/contacto.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/nosotros",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/nosotros.jpg"
+    "screenshot": "docs/screenshots/768/nosotros.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/guias",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/guias.jpg"
+    "screenshot": "docs/screenshots/768/guias.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/aviso-de-privacidad",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/aviso-de-privacidad.jpg"
+    "screenshot": "docs/screenshots/768/aviso-de-privacidad.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/terminos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/terminos.jpg"
+    "screenshot": "docs/screenshots/768/terminos.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/urgencias",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--urgencias.jpg"
+    "screenshot": "docs/screenshots/768/servicios--urgencias.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/administrativo",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--administrativo.jpg"
+    "screenshot": "docs/screenshots/768/servicios--administrativo.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/constitucional",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--constitucional.jpg"
+    "screenshot": "docs/screenshots/768/servicios--constitucional.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/civil",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--civil.jpg"
+    "screenshot": "docs/screenshots/768/servicios--civil.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/mercantil",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--mercantil.jpg"
+    "screenshot": "docs/screenshots/768/servicios--mercantil.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/urgencias/asistencia-detenciones",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--urgencias--asistencia-detenciones.jpg"
+    "screenshot": "docs/screenshots/768/servicios--urgencias--asistencia-detenciones.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/urgencias/liberacion-vehiculo-corralon",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--urgencias--liberacion-vehiculo-corralon.jpg"
+    "screenshot": "docs/screenshots/768/servicios--urgencias--liberacion-vehiculo-corralon.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/urgencias/localizacion-persona-detenida",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--urgencias--localizacion-persona-detenida.jpg"
+    "screenshot": "docs/screenshots/768/servicios--urgencias--localizacion-persona-detenida.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/administrativo/impugnacion-multas-transito",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--administrativo--impugnacion-multas-transito.jpg"
+    "screenshot": "docs/screenshots/768/servicios--administrativo--impugnacion-multas-transito.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/administrativo/clausuras-sanciones-negocios",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--administrativo--clausuras-sanciones-negocios.jpg"
+    "screenshot": "docs/screenshots/768/servicios--administrativo--clausuras-sanciones-negocios.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/administrativo/defensa-autoridades-fiscales",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--administrativo--defensa-autoridades-fiscales.jpg"
+    "screenshot": "docs/screenshots/768/servicios--administrativo--defensa-autoridades-fiscales.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/administrativo/responsabilidad-patrimonial-estado",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--administrativo--responsabilidad-patrimonial-estado.jpg"
+    "screenshot": "docs/screenshots/768/servicios--administrativo--responsabilidad-patrimonial-estado.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/constitucional/amparo-indirecto",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--constitucional--amparo-indirecto.jpg"
+    "screenshot": "docs/screenshots/768/servicios--constitucional--amparo-indirecto.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/constitucional/amparo-leyes-actos-autoridad",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--constitucional--amparo-leyes-actos-autoridad.jpg"
+    "screenshot": "docs/screenshots/768/servicios--constitucional--amparo-leyes-actos-autoridad.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/civil/contratos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--civil--contratos.jpg"
+    "screenshot": "docs/screenshots/768/servicios--civil--contratos.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/civil/arrendamiento-desocupacion",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--civil--arrendamiento-desocupacion.jpg"
+    "screenshot": "docs/screenshots/768/servicios--civil--arrendamiento-desocupacion.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/civil/sucesiones-testamentos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--civil--sucesiones-testamentos.jpg"
+    "screenshot": "docs/screenshots/768/servicios--civil--sucesiones-testamentos.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/mercantil/cobro-pagares-titulos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--mercantil--cobro-pagares-titulos.jpg"
+    "screenshot": "docs/screenshots/768/servicios--mercantil--cobro-pagares-titulos.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/mercantil/constitucion-sociedades",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--mercantil--constitucion-sociedades.jpg"
+    "screenshot": "docs/screenshots/768/servicios--mercantil--constitucion-sociedades.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/urgencias/amparo-arresto-alcoholimetro",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--urgencias--amparo-arresto-alcoholimetro.jpg"
+    "screenshot": "docs/screenshots/768/servicios--urgencias--amparo-arresto-alcoholimetro.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/administrativo/licencias-permisos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--administrativo--licencias-permisos.jpg"
+    "screenshot": "docs/screenshots/768/servicios--administrativo--licencias-permisos.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/administrativo/juicio-contencioso-administrativo",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--administrativo--juicio-contencioso-administrativo.jpg"
+    "screenshot": "docs/screenshots/768/servicios--administrativo--juicio-contencioso-administrativo.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/mercantil/recuperacion-cartera",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--mercantil--recuperacion-cartera.jpg"
+    "screenshot": "docs/screenshots/768/servicios--mercantil--recuperacion-cartera.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/constitucional/amparo-directo",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--constitucional--amparo-directo.jpg"
+    "screenshot": "docs/screenshots/768/servicios--constitucional--amparo-directo.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/constitucional/suspension-acto-reclamado",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--constitucional--suspension-acto-reclamado.jpg"
+    "screenshot": "docs/screenshots/768/servicios--constitucional--suspension-acto-reclamado.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/constitucional/defensa-derechos-humanos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--constitucional--defensa-derechos-humanos.jpg"
+    "screenshot": "docs/screenshots/768/servicios--constitucional--defensa-derechos-humanos.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/civil/cobro-adeudos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--civil--cobro-adeudos.jpg"
+    "screenshot": "docs/screenshots/768/servicios--civil--cobro-adeudos.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/civil/danos-responsabilidad-civil",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--civil--danos-responsabilidad-civil.jpg"
+    "screenshot": "docs/screenshots/768/servicios--civil--danos-responsabilidad-civil.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/mercantil/contratos-mercantiles",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--mercantil--contratos-mercantiles.jpg"
+    "screenshot": "docs/screenshots/768/servicios--mercantil--contratos-mercantiles.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/mercantil/conflictos-socios",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--mercantil--conflictos-socios.jpg"
+    "screenshot": "docs/screenshots/768/servicios--mercantil--conflictos-socios.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/servicios/mercantil/concursos-mercantiles",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/servicios--mercantil--concursos-mercantiles.jpg"
+    "screenshot": "docs/screenshots/768/servicios--mercantil--concursos-mercantiles.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/guias/que-hacer-alcoholimetro",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/guias--que-hacer-alcoholimetro.jpg"
+    "screenshot": "docs/screenshots/768/guias--que-hacer-alcoholimetro.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/guias/como-impugnar-multa",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/guias--como-impugnar-multa.jpg"
+    "screenshot": "docs/screenshots/768/guias--como-impugnar-multa.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/guias/vehiculo-corralon",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/guias--vehiculo-corralon.jpg"
+    "screenshot": "docs/screenshots/768/guias--vehiculo-corralon.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/guias/que-es-amparo",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/guias--que-es-amparo.jpg"
+    "screenshot": "docs/screenshots/768/guias--que-es-amparo.jpg"
   },
   {
-    "viewport": "desktop",
-    "route": "/casos-de-exito",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/desktop/casos-de-exito.jpg"
-  },
-  {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/styleguide",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/styleguide.jpg"
+    "screenshot": "docs/screenshots/768/styleguide.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/admin/login",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/admin--login.jpg"
+    "screenshot": "docs/screenshots/768/admin--login.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
+    "route": "/no-existe",
+    "status": 404,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/768/no-existe.jpg"
+  },
+  {
+    "viewport": "768",
     "route": "/admin",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/admin.jpg"
+    "screenshot": "docs/screenshots/768/admin.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/admin/agenda",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/admin--agenda.jpg"
+    "screenshot": "docs/screenshots/768/admin--agenda.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/admin/prospectos",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/admin--prospectos.jpg"
+    "screenshot": "docs/screenshots/768/admin--prospectos.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/admin/disponibilidad",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/admin--disponibilidad.jpg"
+    "screenshot": "docs/screenshots/768/admin--disponibilidad.jpg"
   },
   {
-    "viewport": "desktop",
+    "viewport": "768",
     "route": "/admin/contenido",
     "status": 200,
     "overflow": 0,
     "clipped": [],
-    "screenshot": "docs/screenshots/desktop/admin--contenido.jpg"
+    "screenshot": "docs/screenshots/768/admin--contenido.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/inicio.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/urgencias",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/urgencias.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/agendar",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/agendar.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/contacto",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/contacto.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/nosotros",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/nosotros.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/guias",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/guias.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/aviso-de-privacidad",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/aviso-de-privacidad.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/terminos",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/terminos.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/urgencias",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--urgencias.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/administrativo",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--administrativo.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/constitucional",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--constitucional.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/civil",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--civil.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/mercantil",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--mercantil.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/urgencias/asistencia-detenciones",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--urgencias--asistencia-detenciones.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/urgencias/liberacion-vehiculo-corralon",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--urgencias--liberacion-vehiculo-corralon.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/urgencias/localizacion-persona-detenida",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--urgencias--localizacion-persona-detenida.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/administrativo/impugnacion-multas-transito",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--administrativo--impugnacion-multas-transito.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/administrativo/clausuras-sanciones-negocios",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--administrativo--clausuras-sanciones-negocios.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/administrativo/defensa-autoridades-fiscales",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--administrativo--defensa-autoridades-fiscales.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/administrativo/responsabilidad-patrimonial-estado",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--administrativo--responsabilidad-patrimonial-estado.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/constitucional/amparo-indirecto",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--constitucional--amparo-indirecto.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/constitucional/amparo-leyes-actos-autoridad",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--constitucional--amparo-leyes-actos-autoridad.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/civil/contratos",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--civil--contratos.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/civil/arrendamiento-desocupacion",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--civil--arrendamiento-desocupacion.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/civil/sucesiones-testamentos",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--civil--sucesiones-testamentos.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/mercantil/cobro-pagares-titulos",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--mercantil--cobro-pagares-titulos.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/mercantil/constitucion-sociedades",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--mercantil--constitucion-sociedades.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/urgencias/amparo-arresto-alcoholimetro",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--urgencias--amparo-arresto-alcoholimetro.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/administrativo/licencias-permisos",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--administrativo--licencias-permisos.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/administrativo/juicio-contencioso-administrativo",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--administrativo--juicio-contencioso-administrativo.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/mercantil/recuperacion-cartera",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--mercantil--recuperacion-cartera.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/constitucional/amparo-directo",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--constitucional--amparo-directo.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/constitucional/suspension-acto-reclamado",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--constitucional--suspension-acto-reclamado.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/constitucional/defensa-derechos-humanos",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--constitucional--defensa-derechos-humanos.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/civil/cobro-adeudos",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--civil--cobro-adeudos.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/civil/danos-responsabilidad-civil",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--civil--danos-responsabilidad-civil.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/mercantil/contratos-mercantiles",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--mercantil--contratos-mercantiles.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/mercantil/conflictos-socios",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--mercantil--conflictos-socios.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/servicios/mercantil/concursos-mercantiles",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/servicios--mercantil--concursos-mercantiles.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/guias/que-hacer-alcoholimetro",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/guias--que-hacer-alcoholimetro.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/guias/como-impugnar-multa",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/guias--como-impugnar-multa.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/guias/vehiculo-corralon",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/guias--vehiculo-corralon.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/guias/que-es-amparo",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/guias--que-es-amparo.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/styleguide",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/styleguide.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/admin/login",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/admin--login.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/no-existe",
+    "status": 404,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/no-existe.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/admin",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/admin.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/admin/agenda",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/admin--agenda.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/admin/prospectos",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/admin--prospectos.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/admin/disponibilidad",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/admin--disponibilidad.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/admin/contenido",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/admin--contenido.jpg"
   }
 ]
