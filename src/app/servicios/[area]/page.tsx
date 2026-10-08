@@ -9,6 +9,7 @@ import { siteConfig } from "@/site.config";
 import { AreaIllustration } from "@/components/site/illustrations";
 import { ParallaxImage } from "@/components/site/parallax-image";
 import { RevealHeading } from "@/components/site/reveal-heading";
+import { publicText } from "@/lib/public-text";
 
 export const dynamic = "force-dynamic";
 
@@ -52,7 +53,7 @@ export default async function AreaPage({ params }: Props) {
               <li key={service.id} className="border-b border-g-200">
                 <Link href={`/servicios/${area.slug}/${service.slug}`} className="group grid gap-3 py-7 md:grid-cols-8 md:gap-6">
                   <span className="t-h3 transition-transform duration-[260ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 md:col-span-4">{service.name}</span>
-                  <span className="t-muted md:col-span-4">{service.summary}</span>
+                  <span className="t-muted md:col-span-4">{publicText(service.summary)}</span>
                 </Link>
               </li>
             ))}

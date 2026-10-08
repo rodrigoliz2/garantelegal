@@ -3,6 +3,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { ServiceSearch } from "@/components/service-search";
 import { AreaIllustration } from "@/components/site/illustrations";
+import { publicText } from "@/lib/public-text";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Servicios jurídicos", description: "Explora las áreas de práctica y encuentra el servicio jurídico que necesitas." };
@@ -31,7 +32,7 @@ export default async function ServicesPage() {
       </nav>
 
       <section aria-label="Buscador de servicios" className="wrap py-16 md:py-24">
-        <ServiceSearch services={services.map(item => ({ name: item.name, slug: item.slug, summary: item.summary, areaName: item.area.name, areaSlug: item.area.slug }))} />
+        <ServiceSearch services={services.map(item => ({ name: item.name, slug: item.slug, summary: publicText(item.summary), areaName: item.area.name, areaSlug: item.area.slug }))} />
       </section>
     </>
   );
