@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { provided, siteConfig } from "@/site.config";
 import { LegalPage } from "@/components/site/legal-page";
 
-export const metadata: Metadata = { title: "Aviso de privacidad", description: `Cómo trata ${siteConfig.name} los datos personales que recibe a través de este sitio.` };
+export const metadata: Metadata = pageMetadata({ title: "Aviso de privacidad", path: "/aviso-de-privacidad", description: `Cómo trata ${siteConfig.name} los datos personales que recibe a través de su sitio, WhatsApp y correo.` });
 
 export default function PrivacyPage() {
   const address = provided(siteConfig.address);

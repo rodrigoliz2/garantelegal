@@ -25,54 +25,6 @@
   },
   {
     "viewport": "390",
-    "route": "/agendar",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/390/agendar.jpg"
-  },
-  {
-    "viewport": "390",
-    "route": "/contacto",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/390/contacto.jpg"
-  },
-  {
-    "viewport": "390",
-    "route": "/nosotros",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/390/nosotros.jpg"
-  },
-  {
-    "viewport": "390",
-    "route": "/guias",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/390/guias.jpg"
-  },
-  {
-    "viewport": "390",
-    "route": "/aviso-de-privacidad",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/390/aviso-de-privacidad.jpg"
-  },
-  {
-    "viewport": "390",
-    "route": "/terminos",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/390/terminos.jpg"
-  },
-  {
-    "viewport": "390",
     "route": "/servicios/urgencias",
     "status": 200,
     "overflow": 0,
@@ -425,6 +377,38 @@
   },
   {
     "viewport": "390",
+    "route": "/agendar",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/390/agendar.jpg"
+  },
+  {
+    "viewport": "390",
+    "route": "/contacto",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/390/contacto.jpg"
+  },
+  {
+    "viewport": "390",
+    "route": "/nosotros",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/390/nosotros.jpg"
+  },
+  {
+    "viewport": "390",
+    "route": "/guias",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/390/guias.jpg"
+  },
+  {
+    "viewport": "390",
     "route": "/guias/que-hacer-alcoholimetro",
     "status": 200,
     "overflow": 0,
@@ -454,6 +438,22 @@
     "overflow": 0,
     "clipped": [],
     "screenshot": "docs/screenshots/390/guias--que-es-amparo.jpg"
+  },
+  {
+    "viewport": "390",
+    "route": "/aviso-de-privacidad",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/390/aviso-de-privacidad.jpg"
+  },
+  {
+    "viewport": "390",
+    "route": "/terminos",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/390/terminos.jpg"
   },
   {
     "viewport": "390",
@@ -542,54 +542,6 @@
     "overflow": 0,
     "clipped": [],
     "screenshot": "docs/screenshots/768/servicios.jpg"
-  },
-  {
-    "viewport": "768",
-    "route": "/agendar",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/768/agendar.jpg"
-  },
-  {
-    "viewport": "768",
-    "route": "/contacto",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/768/contacto.jpg"
-  },
-  {
-    "viewport": "768",
-    "route": "/nosotros",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/768/nosotros.jpg"
-  },
-  {
-    "viewport": "768",
-    "route": "/guias",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/768/guias.jpg"
-  },
-  {
-    "viewport": "768",
-    "route": "/aviso-de-privacidad",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/768/aviso-de-privacidad.jpg"
-  },
-  {
-    "viewport": "768",
-    "route": "/terminos",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/768/terminos.jpg"
   },
   {
     "viewport": "768",
@@ -945,6 +897,38 @@
   },
   {
     "viewport": "768",
+    "route": "/agendar",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/768/agendar.jpg"
+  },
+  {
+    "viewport": "768",
+    "route": "/contacto",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/768/contacto.jpg"
+  },
+  {
+    "viewport": "768",
+    "route": "/nosotros",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/768/nosotros.jpg"
+  },
+  {
+    "viewport": "768",
+    "route": "/guias",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/768/guias.jpg"
+  },
+  {
+    "viewport": "768",
     "route": "/guias/que-hacer-alcoholimetro",
     "status": 200,
     "overflow": 0,
@@ -974,6 +958,22 @@
     "overflow": 0,
     "clipped": [],
     "screenshot": "docs/screenshots/768/guias--que-es-amparo.jpg"
+  },
+  {
+    "viewport": "768",
+    "route": "/aviso-de-privacidad",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/768/aviso-de-privacidad.jpg"
+  },
+  {
+    "viewport": "768",
+    "route": "/terminos",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/768/terminos.jpg"
   },
   {
     "viewport": "768",
@@ -1062,54 +1062,6 @@
     "overflow": 0,
     "clipped": [],
     "screenshot": "docs/screenshots/1440/servicios.jpg"
-  },
-  {
-    "viewport": "1440",
-    "route": "/agendar",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/1440/agendar.jpg"
-  },
-  {
-    "viewport": "1440",
-    "route": "/contacto",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/1440/contacto.jpg"
-  },
-  {
-    "viewport": "1440",
-    "route": "/nosotros",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/1440/nosotros.jpg"
-  },
-  {
-    "viewport": "1440",
-    "route": "/guias",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/1440/guias.jpg"
-  },
-  {
-    "viewport": "1440",
-    "route": "/aviso-de-privacidad",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/1440/aviso-de-privacidad.jpg"
-  },
-  {
-    "viewport": "1440",
-    "route": "/terminos",
-    "status": 200,
-    "overflow": 0,
-    "clipped": [],
-    "screenshot": "docs/screenshots/1440/terminos.jpg"
   },
   {
     "viewport": "1440",
@@ -1465,6 +1417,38 @@
   },
   {
     "viewport": "1440",
+    "route": "/agendar",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/agendar.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/contacto",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/contacto.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/nosotros",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/nosotros.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/guias",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/guias.jpg"
+  },
+  {
+    "viewport": "1440",
     "route": "/guias/que-hacer-alcoholimetro",
     "status": 200,
     "overflow": 0,
@@ -1494,6 +1478,22 @@
     "overflow": 0,
     "clipped": [],
     "screenshot": "docs/screenshots/1440/guias--que-es-amparo.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/aviso-de-privacidad",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/aviso-de-privacidad.jpg"
+  },
+  {
+    "viewport": "1440",
+    "route": "/terminos",
+    "status": 200,
+    "overflow": 0,
+    "clipped": [],
+    "screenshot": "docs/screenshots/1440/terminos.jpg"
   },
   {
     "viewport": "1440",

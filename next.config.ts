@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   devIndicators: false,
   // Servicios que pasaron de Mercantil a Corporativo: las direcciones antiguas siguen funcionando.
+  // Solo el dominio oficial se indexa; la dirección *.vercel.app y cualquier otra reciben noindex.
+  async headers() {
+    return [{ source: "/:path*", missing: [{ type: "host", value: "(www\\.)?garantejuridico\\.com" }], headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] }];
+  },
   async redirects() {
     return ["constitucion-sociedades", "conflictos-socios"].map(slug => ({ source: `/servicios/mercantil/${slug}`, destination: `/servicios/corporativo/${slug}`, permanent: true }));
   },

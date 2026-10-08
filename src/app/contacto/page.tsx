@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ContactForm } from "@/components/contact-form";
 import { turnstileSiteKey } from "@/lib/abuse";
 import { generalWhatsAppHref } from "@/lib/contact";
 import { provided, siteConfig } from "@/site.config";
 import { ParallaxImage } from "@/components/site/parallax-image";
 
-export const metadata: Metadata = { title: "Contacto", description: `Contacta a ${siteConfig.name} en ${siteConfig.city}.` };
+export const metadata: Metadata = pageMetadata({ title: "Contacto", path: "/contacto", description: `WhatsApp ${siteConfig.phoneDisplay} para llamadas y mensajes, correo ${siteConfig.contactEmail} e Instagram ${siteConfig.instagram.handle}. Sede en Guadalajara, Jalisco.` });
 export const dynamic = "force-dynamic";
 
 export default function ContactPage() {

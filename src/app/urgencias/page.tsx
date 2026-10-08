@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { MessageCircle } from "lucide-react";
 import { emergencyWhatsAppHref } from "@/lib/contact";
 import { provided, siteConfig } from "@/site.config";
 
-export const metadata: Metadata = {
-  title: "Urgencias jurídicas por detención y alcoholímetro",
-  description: `Ayuda jurídica ante detenciones y arrestos por alcoholímetro. Sede en ${siteConfig.city}, atención nacional.`
-};
+export const metadata: Metadata = pageMetadata({ title: "Abogado urgente por detención o alcoholímetro", path: "/urgencias", description: `Ayuda jurídica inmediata ante detenciones, arresto por alcoholímetro y vehículos en el corralón. Llámanos o escríbenos por WhatsApp al ${siteConfig.phoneDisplay}.` });
 
 // Página de aterrizaje para urgencias: sin animaciones, sin fotografías, todo estático.
 const steps = [

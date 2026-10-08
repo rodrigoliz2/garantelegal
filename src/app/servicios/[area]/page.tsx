@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { breadcrumbs, pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/site/json-ld";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MessageCircle } from "lucide-react";
@@ -18,7 +20,9 @@ type Props = { params: Promise<{ area: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { area: slug } = await params;
   const area = await prisma.practiceArea.findUnique({ where: { slug } });
-  return { title: area ? `${area.name} en ${siteConfig.city}` : "Área no encontrada", description: area?.description };
+  if (!area) return { title: "Área no encontrada" };
+  const label = area.slug === "urgencias" ? "Urgencias jurídicas" : `Derecho ${area.name.toLocaleLowerCase("es-MX")}`;
+  return pageMetadata({ title: `${label} en Guadalajara`, path: `/servicios/${area.slug}`, description: `${area.description} Sede en Guadalajara; atención en toda la República Mexicana.` });
 }
 
 export default async function AreaPage({ params }: Props) {
@@ -30,6 +34,10 @@ export default async function AreaPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd data={[
+        breadcrumbs([["Inicio", "/"], ["Servicios", "/servicios"], [area.name, `/servicios/${area.slug}`]]),
+        { "@context": "https://schema.org", "@type": "ItemList", name: `Servicios de ${area.name}`, itemListElement: area.services.map((service, index) => ({ "@type": "ListItem", position: index + 1, url: `${siteConfig.url}/servicios/${area.slug}/${service.slug}`, name: service.name })) }
+      ]} />
       <div className="wrap pt-8 md:pt-12"><nav className="t-small t-muted" aria-label="Ruta"><Link href="/servicios" className="u">Servicios</Link><span aria-hidden="true"> / </span><span aria-current="page">{area.name}</span></nav></div>
       <section className="wrap grid gap-8 pb-14 pt-10 md:pb-20 md:pt-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-8">

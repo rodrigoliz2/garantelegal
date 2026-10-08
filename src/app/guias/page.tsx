@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { publicText } from "@/lib/public-text";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { title: "Guías jurídicas", description: "Información general sobre detenciones, multas, vehículos retenidos y amparo." };
+export const metadata: Metadata = pageMetadata({ title: "Guías jurídicas", path: "/guias", description: "Guías prácticas sobre detenciones por alcoholímetro, multas, vehículos en el corralón y amparo, para entender tu situación antes de la consulta." });
 
 export default async function GuidesPage() {
   const posts = await prisma.post.findMany({ where: { published: true }, orderBy: { createdAt: "desc" } });

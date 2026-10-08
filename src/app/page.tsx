@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 import { appointmentMessage, emergencyWhatsAppHref } from "@/lib/contact";
@@ -10,12 +11,11 @@ import { PracticeList } from "@/components/site/practice-list";
 import { RevealHeading } from "@/components/site/reveal-heading";
 import { AttorneyCredit } from "@/components/site/attorney";
 import { IllustrationEntrada, IllustrationRevision, IllustrationRuta } from "@/components/site/illustrations";
+import { Testimonials } from "@/components/site/testimonials";
+import { CaseList } from "@/components/site/cases";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = {
-  title: { absolute: `Abogados en ${siteConfig.city} | ${siteConfig.name}` },
-  description: `Litigio estratégico y asesoría jurídica para personas y empresas: urgencias, derecho corporativo, constitucional, administrativo, civil y mercantil. Sede en ${siteConfig.city}; representación en toda la República.`
-};
+export const metadata: Metadata = pageMetadata({ title: `Abogados en Guadalajara | ${siteConfig.name}`, absoluteTitle: true, path: "/", description: "Litigio estratégico y asesoría jurídica para personas y empresas en Guadalajara y toda la República: urgencias, amparo, derecho corporativo, administrativo, civil y mercantil." });
 
 const heroLines = ["Defensa jurídica", "con criterio, desde", "la primera llamada."];
 
@@ -26,9 +26,11 @@ const steps = [
 ];
 
 export default async function HomePage() {
-  const [areas, posts] = await Promise.all([
+  const [areas, posts, testimonials, cases] = await Promise.all([
     prisma.practiceArea.findMany({ orderBy: { sortOrder: "asc" }, include: { services: { where: { published: true }, orderBy: { sortOrder: "asc" }, select: { name: true } } } }),
-    prisma.post.findMany({ where: { published: true }, orderBy: { createdAt: "desc" }, take: 3, select: { slug: true, title: true, summary: true } })
+    prisma.post.findMany({ where: { published: true }, orderBy: { createdAt: "desc" }, take: 3, select: { slug: true, title: true, summary: true } }),
+    prisma.testimonial.findMany({ where: { published: true, consented: true }, orderBy: { date: "desc" }, take: 8 }),
+    prisma.caseStudy.findMany({ where: { published: true, consented: true }, orderBy: { createdAt: "desc" }, take: 3, include: { area: true } })
   ]);
   const practice = areas.filter(area => area.services.length > 0).map(area => ({ slug: area.slug, name: area.name, description: area.description, services: area.services.map(service => service.name), image: areaImage(area.slug) }));
   const attorney = provided(siteConfig.leadAttorney);
@@ -123,6 +125,32 @@ export default async function HomePage() {
           </ol>
         </div>
       </section>
+
+      {/* Testimonios y casos: solo contenido real publicado con autorización */}
+      {testimonials.length > 0 && (
+        <section aria-labelledby="testimonios" className="on-dark bg-black text-white">
+          <div className="wrap grid gap-12 py-24 md:py-32 lg:grid-cols-12 lg:gap-10">
+            <div className="lg:col-span-4">
+              <RevealHeading id="testimonios" lines={["Lo que dicen", "nuestros clientes"]} className="t-h2" />
+              <Link href="/casos-de-exito" className="u mt-8 inline-block">Casos y testimonios</Link>
+            </div>
+            <div className="lg:col-span-7 lg:col-start-6">
+              <Testimonials items={testimonials.map(item => ({ id: item.id, author: item.author, text: item.text, date: item.date.toISOString(), source: item.source }))} />
+            </div>
+          </div>
+        </section>
+      )}
+      {cases.length > 0 && (
+        <section aria-labelledby="casos" className="section">
+          <div className="wrap">
+            <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+              <RevealHeading id="casos" lines={["Casos documentados"]} className="t-h1" />
+              <Link href="/casos-de-exito" className="u self-start md:self-auto">Todos los casos</Link>
+            </div>
+            <CaseList compact items={cases.map(item => ({ id: item.id, area: item.area.name, title: item.title, problem: item.problem, strategy: item.strategy, result: item.result, duration: item.duration }))} />
+          </div>
+        </section>
+      )}
 
       {/* 6. Guías recientes (solo si hay publicadas) */}
       {posts.length > 0 && (

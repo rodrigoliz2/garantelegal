@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { breadcrumbs, organizationId, pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/site/json-ld";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MessageCircle } from "lucide-react";
@@ -18,7 +20,8 @@ async function getService(params: Props["params"]) {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = await getService(params);
-  return { title: service ? `${service.name} en ${siteConfig.city}` : "Servicio no encontrado", description: service?.summary };
+  if (!service) return { title: "Servicio no encontrado" };
+  return pageMetadata({ title: `${service.name} en Guadalajara`, path: `/servicios/${service.area.slug}/${service.slug}`, description: publicText(service.summary) });
 }
 
 function Block({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
@@ -33,6 +36,7 @@ function Block({ id, title, children }: { id: string; title: string; children: R
 export default async function ServicePage({ params }: Props) {
   const service = await getService(params);
   if (!service) notFound();
+  const related = await prisma.service.findMany({ where: { areaId: service.areaId, published: true, NOT: { id: service.id } }, orderBy: { sortOrder: "asc" }, take: 6, select: { name: true, slug: true, summary: true } });
   const documents = Array.isArray(service.documents) ? service.documents.map(String) : [];
   const steps = Array.isArray(service.steps) ? service.steps.map(String) : [];
   const faqs = Array.isArray(service.faqs) ? service.faqs.filter((faq): faq is { question: string; answer: string } => Boolean(faq && typeof faq === "object" && !Array.isArray(faq) && "question" in faq && "answer" in faq)).map(faq => ({ question: String(faq.question), answer: String(faq.answer) })) : [];
@@ -50,7 +54,11 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <>
-      {faqs.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(faq => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) }).replace(/</g, "\\u003c") }} />}
+      <JsonLd data={[
+        { "@context": "https://schema.org", "@type": "Service", name: service.name, serviceType: service.name, description: publicText(service.summary), url: `${siteConfig.url}/servicios/${service.area.slug}/${service.slug}`, provider: { "@id": organizationId }, areaServed: { "@type": "Country", name: "México" }, category: service.area.name },
+        breadcrumbs([["Inicio", "/"], ["Servicios", "/servicios"], [service.area.name, `/servicios/${service.area.slug}`], [service.name, `/servicios/${service.area.slug}/${service.slug}`]]),
+        ...(faqs.length ? [{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(faq => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: publicText(faq.answer) } })) }] : [])
+      ]} />
 
       <div className="wrap pt-8 md:pt-12">
         <nav className="t-small t-muted" aria-label="Ruta"><Link href="/servicios" className="u">Servicios</Link><span aria-hidden="true"> / </span><Link href={`/servicios/${service.area.slug}`} className="u">{service.area.name}</Link></nav>
@@ -114,6 +122,26 @@ export default async function ServicePage({ params }: Props) {
 
         </article>
       </div>
+      {related.length > 0 && (
+        <section aria-labelledby="relacionados" className="border-t border-g-200 bg-g-50">
+          <div className="wrap py-16 md:py-24">
+            <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+              <h2 id="relacionados" className="t-h2">Otros servicios de {service.area.name.toLocaleLowerCase("es-MX")}</h2>
+              <Link href={`/servicios/${service.area.slug}`} className="u self-start md:self-auto">Ver el área completa</Link>
+            </div>
+            <ul className="mt-10 grid gap-x-10 border-t border-black md:grid-cols-2">
+              {related.map(item => (
+                <li key={item.slug} className="border-b border-g-200">
+                  <Link href={`/servicios/${service.area.slug}/${item.slug}`} className="group block py-6">
+                    <span className="t-h3 block transition-transform duration-[260ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2">{item.name}</span>
+                    <span className="t-muted mt-2 block text-[.9375rem]">{publicText(item.summary)}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
     </>
   );
 }

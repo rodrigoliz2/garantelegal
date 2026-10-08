@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { ServiceSearch } from "@/components/service-search";
@@ -6,7 +7,7 @@ import { AreaIllustration } from "@/components/site/illustrations";
 import { publicText } from "@/lib/public-text";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { title: "Servicios jurídicos", description: "Explora las áreas de práctica y encuentra el servicio jurídico que necesitas." };
+export const metadata: Metadata = pageMetadata({ title: "Servicios jurídicos", path: "/servicios", description: "Servicios legales en Guadalajara y todo México: urgencias, amparo, derecho administrativo, civil, mercantil y corporativo, con sociedades, SOFOMES y fideicomisos." });
 
 export default async function ServicesPage() {
   const services = await prisma.service.findMany({ where: { published: true }, include: { area: true }, orderBy: [{ area: { sortOrder: "asc" } }, { sortOrder: "asc" }] });

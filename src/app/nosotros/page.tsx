@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { provided, siteConfig } from "@/site.config";
 import { ParallaxImage } from "@/components/site/parallax-image";
 import { RevealHeading } from "@/components/site/reveal-heading";
 import { AttorneyCredit } from "@/components/site/attorney";
 
-export const metadata: Metadata = { title: "La firma", description: `Conoce cómo trabaja ${siteConfig.name}, con sede en ${siteConfig.city}.` };
+export const metadata: Metadata = pageMetadata({ title: "La firma", path: "/nosotros", description: `${siteConfig.name}: litigio estratégico y asesoría jurídica para personas y empresas, con sede en Guadalajara y representación en toda la República Mexicana.` });
 
 const principles = [
   { title: "Escuchar", text: "Revisamos los hechos y la documentación disponible antes de dar una opinión. Si el asunto no es de nuestras materias, te lo decimos." },

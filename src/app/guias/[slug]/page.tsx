@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { breadcrumbs, organizationId, pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/site/json-ld";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
@@ -11,18 +13,19 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await prisma.post.findUnique({ where: { slug } });
-  return { title: post?.title || "Guía no encontrada", description: post ? publicText(post.summary) : undefined };
+  if (!post?.published) return { title: "Guía no encontrada" };
+  return pageMetadata({ title: post.title, path: `/guias/${post.slug}`, description: publicText(post.summary), type: "article" });
 }
 
 export default async function GuidePage({ params }: Props) {
   const { slug } = await params;
   const post = await prisma.post.findUnique({ where: { slug } });
   if (!post?.published) notFound();
-  const jsonLd = { "@context": "https://schema.org", "@type": "Article", headline: post.title, description: publicText(post.summary), datePublished: post.createdAt.toISOString(), dateModified: post.updatedAt.toISOString(), author: { "@type": "Organization", name: siteConfig.name }, publisher: { "@type": "Organization", name: siteConfig.name }, mainEntityOfPage: `${siteConfig.url}/guias/${post.slug}` };
+  const jsonLd = { "@context": "https://schema.org", "@type": "Article", headline: post.title, description: publicText(post.summary), datePublished: post.createdAt.toISOString(), dateModified: post.updatedAt.toISOString(), author: { "@id": organizationId }, publisher: { "@id": organizationId }, inLanguage: "es-MX", image: `${siteConfig.url}/brand/og.png`, mainEntityOfPage: `${siteConfig.url}/guias/${post.slug}` };
   const paragraphs = post.content.split("\n\n").map(publicText).filter(Boolean);
   return (
     <article>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <JsonLd data={[jsonLd, breadcrumbs([["Inicio", "/"], ["Guías", "/guias"], [post.title, `/guias/${post.slug}`]])]} />
       <div className="wrap pt-8 md:pt-12"><nav aria-label="Ruta" className="t-small t-muted"><Link href="/guias" className="u">Guías</Link></nav></div>
       <header className="wrap pb-12 pt-10 md:pb-16 md:pt-14">
         <h1 className="t-h1 max-w-[18ch]">{post.title}</h1>

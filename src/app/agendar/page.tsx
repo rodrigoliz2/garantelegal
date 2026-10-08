@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { prisma } from "@/lib/prisma";
 import { BookingForm } from "@/components/booking-form";
 import { turnstileSiteKey } from "@/lib/abuse";
@@ -6,7 +7,7 @@ import { emergencyWhatsAppHref } from "@/lib/contact";
 import { provided, siteConfig } from "@/site.config";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { title: "Agendar consulta", description: `Elige servicio, modalidad y horario para solicitar una cita con ${siteConfig.name}.` };
+export const metadata: Metadata = pageMetadata({ title: "Agendar consulta", path: "/agendar", description: "Agenda una consulta jurídica presencial en Guadalajara, por videollamada o por llamada de WhatsApp. Elige día y hora y recibe tu folio." });
 
 export default async function BookingPage({ searchParams }: { searchParams: Promise<{ servicio?: string }> }) {
   const params = await searchParams;

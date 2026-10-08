@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/site.config";
 import { LegalPage } from "@/components/site/legal-page";
 
-export const metadata: Metadata = { title: "Términos de uso", description: `Condiciones de uso del sitio de ${siteConfig.name}.` };
+export const metadata: Metadata = pageMetadata({ title: "Términos de uso", path: "/terminos", description: `Condiciones de uso del sitio de ${siteConfig.name}.` });
 
 export default function TermsPage() {
   const email = siteConfig.contactEmail;

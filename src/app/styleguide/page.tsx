@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { MessageCircle } from "lucide-react";
 import { Wordmark } from "@/components/site/wordmark";
+import { Testimonials } from "@/components/site/testimonials";
+import { CaseList } from "@/components/site/cases";
 import { IllustrationAdministrativo, IllustrationCivil, IllustrationConstitucional, IllustrationCorporativo, IllustrationEntrada, IllustrationMercantil, IllustrationRevision, IllustrationRuta, IllustrationUrgencias } from "@/components/site/illustrations";
 
 export const metadata: Metadata = { title: "Guía de estilo", robots: { index: false, follow: false } };
@@ -124,6 +126,19 @@ export default function StyleguidePage() {
             <span className="b b-urgent flex w-full px-3"><MessageCircle size={18} strokeWidth={1.75} aria-hidden="true" />Llamar o escribir por WhatsApp</span>
           </div>
           <p className="t-small t-muted mt-4">Fija en móvil en todas las páginas; el cuerpo reserva su altura para no tapar contenido. El despacho solo atiende por WhatsApp (llamada o mensaje), así que hay una sola acción. No se anima.</p>
+        </Block>
+
+        <Block title="Testimonios y casos">
+          <p className="notice mb-8 text-[.9375rem]">Ejemplo de diseño con texto de muestra: no son testimonios ni casos reales. En el sitio público esta sección solo aparece con contenido real, capturado en el panel con el consentimiento de la persona.</p>
+          <div className="on-dark bg-black p-6 text-white md:p-10">
+            <Testimonials items={[
+              { id: "m1", author: "Nombre del cliente", text: "Texto de muestra del primer testimonio. Aquí irá, con su autorización, lo que un cliente real escriba sobre su experiencia con el despacho.", date: "2026-09-01", source: "Google" },
+              { id: "m2", author: "Iniciales del cliente", text: "Texto de muestra del segundo testimonio, para ver la transición entre una cita y la siguiente.", date: "2026-08-01", source: "Testimonio directo" }
+            ]} />
+          </div>
+          <div className="mt-10">
+            <CaseList compact items={[{ id: "c1", area: "Área de práctica", title: "Título de muestra de un caso documentado", problem: "", strategy: "", result: "Descripción de muestra del resultado de ese caso, sin datos que identifiquen al cliente.", duration: "Duración de muestra" }]} />
+          </div>
         </Block>
 
         <Block title="Movimiento">
