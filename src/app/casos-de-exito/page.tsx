@@ -1,10 +1,30 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { title: "Casos documentados", description: "Casos anonimizados y publicados con consentimiento, cuando estén disponibles." };
+export const metadata: Metadata = { title: "Casos documentados", description: "Casos anonimizados y publicados con consentimiento." };
 
+// Solo existe cuando hay casos reales, anonimizados y autorizados. Sin contenido, la ruta responde 404.
 export default async function CasesPage() {
   const cases = await prisma.caseStudy.findMany({ where: { published: true, consented: true }, include: { area: true }, orderBy: { createdAt: "desc" } });
-  return <div className="container-page section-pad"><p className="eyebrow text-brass">Experiencia documentada</p><h1 className="display mt-3 text-5xl">Casos documentados</h1>{cases.length ? <div className="mt-9 grid gap-4 md:grid-cols-2">{cases.map(item => <article className="card p-6" key={item.id}><p className="eyebrow text-brass">{item.area.name}</p><h2 className="display mt-3 text-3xl">{item.title}</h2><dl className="mt-5 space-y-3"><div><dt className="font-bold">Situación</dt><dd>{item.problem}</dd></div><div><dt className="font-bold">Estrategia</dt><dd>{item.strategy}</dd></div><div><dt className="font-bold">Resultado de ese caso</dt><dd>{item.result}</dd></div><div><dt className="font-bold">Duración</dt><dd>{item.duration}</dd></div></dl><p className="mt-4 text-sm">Este caso no predice el resultado de otro asunto.</p></article>)}</div> : <div className="card mt-9 max-w-2xl p-8"><h2 className="display text-3xl">Sin casos publicados por ahora</h2><p className="mt-3">Solo mostraremos casos reales, anonimizados y autorizados por la persona involucrada.</p></div>}</div>;
+  if (cases.length === 0) notFound();
+  return (
+    <>
+      <section className="wrap pb-14 pt-10 md:pb-20 md:pt-16">
+        <h1 className="t-h1 max-w-[14ch]">Casos documentados</h1>
+        <p className="t-lead t-muted mt-6 max-w-[52ch]">Casos reales, anonimizados y publicados con autorización. Ninguno predice el resultado de otro asunto.</p>
+      </section>
+      <section aria-label="Casos" className="wrap pb-24 md:pb-32">
+        {cases.map(item => (
+          <article key={item.id} className="grid gap-8 border-t border-black py-10 lg:grid-cols-12">
+            <div className="lg:col-span-4"><p className="t-small t-muted">{item.area.name}</p><h2 className="t-h3 mt-3">{item.title}</h2></div>
+            <dl className="grid gap-6 text-[1.0625rem] sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
+              {[["Situación", item.problem], ["Estrategia", item.strategy], ["Resultado de ese caso", item.result], ["Duración", item.duration]].map(([term, value]) => <div key={term}><dt className="t-small t-muted">{term}</dt><dd className="mt-1">{value}</dd></div>)}
+            </dl>
+          </article>
+        ))}
+      </section>
+    </>
+  );
 }
