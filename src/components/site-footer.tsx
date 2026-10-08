@@ -1,7 +1,0 @@
-import Image from "next/image";
-import Link from "next/link";
-import { siteConfig } from "@/site.config";
-
-export function SiteFooter() {
-  return <footer className="bg-navy py-12 text-white"><div className="container-page grid gap-8 md:grid-cols-3"><div><Image src="/brand/logo-header-negative.svg" alt={`${siteConfig.name} — ${siteConfig.tagline}`} width={250} height={60} className="h-auto w-[230px]" /><p className="mt-3 text-xs tracking-widest text-[#d5dce0]">{siteConfig.tagline.toLocaleUpperCase("es-MX")}</p><p className="mt-3 text-sm text-[#d5dce0]">Sede en {siteConfig.city}. Atención en {siteConfig.coverage}.</p></div><div className="text-sm"><p className="font-bold">Contacto</p><a className="mt-3 block underline" href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a><p className="mt-2 text-[#d5dce0]">{siteConfig.contactEmail}</p><p className="mt-2 text-[#d5dce0]">{siteConfig.address}</p></div><nav aria-label="Enlaces del pie" className="flex flex-col items-start gap-2 text-sm"><p className="font-bold">Información</p><Link href="/servicios">Servicios</Link><Link href="/guias">Guías</Link><Link href="/contacto">Contacto</Link><Link href="/aviso-de-privacidad">Aviso de privacidad</Link><Link href="/terminos">Términos de uso</Link><Link href="/styleguide">Guía de estilo</Link></nav></div><div className="container-page mt-10 border-t border-white/20 pt-5 text-xs text-[#d5dce0]">El contenido es informativo y no constituye asesoría legal ni crea una relación abogado-cliente.</div></footer>;
-}

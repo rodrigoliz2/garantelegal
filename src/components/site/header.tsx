@@ -20,8 +20,9 @@ export const navLinks = [
 
 const ease = [0.23, 1, 0.32, 1] as const;
 
-export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
+export function SiteHeader() {
   const pathname = usePathname();
+  const overlay = pathname === "/";
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [atTop, setAtTop] = useState(true);
@@ -67,20 +68,20 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
         )}
       >
         <div className="wrap flex h-16 items-center justify-between gap-6 lg:h-[72px]">
-          <Link href="/" aria-label={`${siteConfig.name}, inicio`} className="flex min-h-12 items-center"><Wordmark /></Link>
+          <Link href="/" aria-label={`${siteConfig.name}, inicio`} className="tap flex min-h-12 items-center"><Wordmark /></Link>
           <nav aria-label="Navegación principal" className="hidden items-center gap-7 text-[0.9375rem] lg:flex">
             {navLinks.map(link => (
-              <Link key={link.href} href={link.href} className={cn("u", pathname?.startsWith(link.href) && "u-on")} aria-current={pathname?.startsWith(link.href) ? "page" : undefined}>{link.label}</Link>
+              <Link key={link.href} href={link.href} className="u u-hover" aria-current={pathname?.startsWith(link.href) ? "page" : undefined}>{link.label}</Link>
             ))}
           </nav>
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="ml-auto hidden items-center gap-2 md:flex lg:ml-0">
             <Link href="/agendar" className={cn("b b-line !min-h-11 px-4 text-[0.9375rem]")}>Agendar consulta</Link>
             <a href={emergencyPhoneHref} className="b b-urgent !min-h-11 px-4 text-[0.9375rem]" data-event="clic_llamar" data-origin="encabezado"><Phone size={16} strokeWidth={1.75} aria-hidden="true" />Llamar ahora</a>
           </div>
           <button
             ref={menuButton}
             type="button"
-            className="-mr-3 flex h-12 min-w-12 items-center justify-center px-3 text-[0.9375rem] font-medium md:hidden"
+            className="tap -mr-3 flex h-12 min-w-12 items-center justify-center px-3 text-[0.9375rem] font-medium lg:hidden"
             aria-expanded={open}
             aria-controls="menu-movil"
             onClick={() => setOpen(value => !value)}
@@ -97,7 +98,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
             role="dialog"
             aria-modal="true"
             aria-label="Menú"
-            className="mono fixed inset-x-0 bottom-0 top-16 z-30 flex flex-col overflow-y-auto bg-[var(--black)] text-[var(--white)] md:hidden"
+            className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-30 flex flex-col overflow-y-auto bg-black text-white lg:hidden"
             initial={reduce ? { opacity: 0 } : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.15 } }}
@@ -111,7 +112,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
                   animate={{ opacity: 1, transform: "translateY(0px)" }}
                   transition={{ duration: 0.25, ease, delay: reduce ? 0 : 0.04 + index * 0.04 }}
                 >
-                  <Link ref={index === 0 ? firstLink : undefined} href={link.href} className="flex min-h-14 items-center border-b border-[var(--g-900)] py-2 text-[2.125rem] font-light leading-none tracking-[-0.04em]">{link.label}</Link>
+                  <Link ref={index === 0 ? firstLink : undefined} href={link.href} className="flex min-h-14 items-center border-b border-g-900 py-2 text-[2.125rem] font-light leading-none tracking-[-0.04em]">{link.label}</Link>
                 </motion.div>
               ))}
             </nav>
@@ -121,7 +122,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.25, delay: reduce ? 0 : 0.3 }}
             >
-              <p className="t-small text-[var(--g-400)]">Línea directa y WhatsApp</p>
+              <p className="t-small text-g-400">Línea directa y WhatsApp</p>
               <a href={emergencyPhoneHref} className="text-[1.75rem] font-light tracking-[-0.03em]" data-event="clic_llamar" data-origin="menu">{siteConfig.phoneDisplay}</a>
               <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="u self-start" data-event="clic_whatsapp" data-origin="menu">Escribir por WhatsApp</a>
             </motion.div>

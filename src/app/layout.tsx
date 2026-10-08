@@ -1,30 +1,39 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
-import { siteConfig } from "@/site.config";
-import { EmergencyBar } from "@/components/emergency-bar";
-import localFont from "next/font/local";
 import { Host_Grotesk, Newsreader } from "next/font/google";
-import { LegacyChrome } from "@/components/legacy-chrome";
+import { SiteHeader } from "@/components/site/header";
+import { SiteFooter } from "@/components/site/footer";
+import { UrgentBar } from "@/components/site/urgent-bar";
 import { Analytics } from "@/components/analytics";
+import { siteConfig } from "@/site.config";
 
-const displayFont = localFont({ src: [{ path: "../fonts/cormorant-garamond-500.woff2", weight: "500" }, { path: "../fonts/cormorant-garamond-600.woff2", weight: "600" }], variable: "--font-display", display: "swap" });
-const bodyFont = localFont({ src: [{ path: "../fonts/manrope-400.woff2", weight: "400" }, { path: "../fonts/manrope-600.woff2", weight: "600" }, { path: "../fonts/manrope-700.woff2", weight: "700" }], variable: "--font-body", display: "swap" });
-const sansFont = Host_Grotesk({ subsets: ["latin", "latin-ext"], weight: ["300", "400", "500"], variable: "--font-sans", display: "swap" });
-const serifFont = Newsreader({ subsets: ["latin"], style: ["italic"], weight: ["300"], variable: "--font-serif", display: "swap" });
-const brandFont = localFont({ src: "../fonts/cinzel-600.woff2", variable: "--font-brand", display: "swap" });
+const sans = Host_Grotesk({ subsets: ["latin", "latin-ext"], weight: ["300", "400", "500"], variable: "--font-sans", display: "swap" });
+const serif = Newsreader({ subsets: ["latin"], style: ["italic"], weight: ["300"], variable: "--font-serif", display: "swap", preload: false });
 
 export const metadata: Metadata = {
   title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
   description: `Despacho jurídico con sede en ${siteConfig.city} y atención en ${siteConfig.coverage}.`,
   metadataBase: new URL(siteConfig.url),
-  openGraph: { type: "website", locale: "es_MX", siteName: siteConfig.name, title: siteConfig.name, description: `Asistencia jurídica inmediata y consultas en ${siteConfig.city}.`, url: siteConfig.url, images: [{ url: "/brand/og.png", width: 1200, height: 630, alt: `${siteConfig.name} — ${siteConfig.tagline}` }] },
+  openGraph: { type: "website", locale: "es_MX", siteName: siteConfig.name, title: siteConfig.name, description: `Asistencia jurídica inmediata y consultas en ${siteConfig.city}.`, url: siteConfig.url, images: [{ url: "/brand/og.png", width: 1200, height: 630, alt: `${siteConfig.name}, ${siteConfig.tagline}` }] },
   twitter: { card: "summary_large_image", images: ["/brand/og.png"] },
   icons: { icon: [{ url: "/brand/favicon-16.png", sizes: "16x16", type: "image/png" }, { url: "/brand/favicon-32.png", sizes: "32x32", type: "image/png" }, { url: "/brand/favicon-48.png", sizes: "48x48", type: "image/png" }], apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" }] }
 };
 
+export const viewport: Viewport = { themeColor: "#0a0a0a", viewportFit: "cover" };
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const legalService = { "@context": "https://schema.org", "@type": "LegalService", name: siteConfig.name, slogan: siteConfig.tagline, url: siteConfig.url, telephone: siteConfig.phoneHref.replace("tel:", ""), image: `${siteConfig.url}/brand/og.png`, areaServed: { "@type": "Country", name: "México" }, address: { "@type": "PostalAddress", addressLocality: "Guadalajara", addressRegion: "Jalisco", addressCountry: "MX" } };
-  return <html lang="es-MX"><body className={`${displayFont.variable} ${bodyFont.variable} ${brandFont.variable} ${sansFont.variable} ${serifFont.variable} pb-[72px] md:pb-0`}><a href="#contenido" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-paper focus:p-3">Saltar al contenido</a><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(legalService).replace(/</g, "\\u003c") }} /><LegacyChrome><SiteHeader /></LegacyChrome><main id="contenido">{children}</main><LegacyChrome><SiteFooter /><EmergencyBar /></LegacyChrome><Analytics /></body></html>;
+  return (
+    <html lang="es-MX" className={`${sans.variable} ${serif.variable}`}>
+      <body>
+        <a href="#contenido" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-white focus:p-3 focus:text-black">Saltar al contenido</a>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(legalService).replace(/</g, "\\u003c") }} />
+        <SiteHeader />
+        <main id="contenido" tabIndex={-1} className="pt-[var(--header-h)]">{children}</main>
+        <SiteFooter />
+        <UrgentBar />
+        <Analytics />
+      </body>
+    </html>
+  );
 }

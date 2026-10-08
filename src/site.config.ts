@@ -24,3 +24,8 @@ export const siteConfig = {
 export function whatsappHref(message: string): string {
   return `${siteConfig.whatsappBase}?text=${encodeURIComponent(message)}`;
 }
+
+/** Devuelve el dato solo si el despacho ya lo proporcionó; los marcadores [PENDIENTE: …] no se muestran al público. */
+export function provided(value: string): string | null {
+  return value.trim().startsWith("[PENDIENTE") ? null : value;
+}
