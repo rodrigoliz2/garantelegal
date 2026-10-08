@@ -10,6 +10,16 @@ Antes o después del primer despliegue, completa en `src/site.config.ts` los dat
 
 **Dependencias:** `npm audit --omit=dev` (lo que corre en producción) reporta 0 vulnerabilidades. Las que corrige `overrides` en `package.json` son `postcss` dentro de Next 15, `deepmerge-ts` dentro de Prisma y `postcss-nested`/`postcss-selector-parser` dentro de Tailwind 3. Al actualizar Next, Prisma o Tailwind, revisa si los `overrides` siguen haciendo falta y quítalos cuando la versión nueva ya traiga la corrección. Quedan 7 avisos solo de desarrollo, de la cadena `braces` → `micromatch` → `fast-glob`/`chokidar`, que entra por Tailwind 3 y `eslint-config-next`. No existe versión corregida de `braces`, y estas herramientas solo procesan archivos del propio repositorio al compilar; no llegan al sitio publicado. Se eliminan al migrar a Tailwind 4 y a una versión futura de `eslint-config-next`.
 
+## Archivos de entorno (ninguno se sube a GitHub)
+
+| Archivo | Para qué | Quién lo carga |
+| --- | --- | --- |
+| `.env` | Desarrollo local: base local, claves de prueba de Turnstile, sin Resend | Next.js, Prisma y las pruebas, automáticamente |
+| `.env.deploy` | Producción: dirección **directa** de Neon y administrador del panel, para migraciones y semilla | Solo a propósito: `set -a; . ./.env.deploy; set +a; npx prisma migrate deploy` |
+| `.env.vercel` | Exactamente las variables de Vercel (Neon **con pooling**, NextAuth, Resend, Turnstile) | Se pega en Vercel → Settings → Environment Variables |
+
+**Nunca pongas credenciales de producción en `.env` ni en `.env.production(.local)`:** Next.js carga esos archivos automáticamente, y las pruebas locales escribirían en la base real y enviarían correos de verdad.
+
 ## 2. Crear Neon y aplicar la base de datos
 
 1. En Neon crea un proyecto PostgreSQL y una base de datos para producción. Copia su cadena de conexión **pooled** con SSL.

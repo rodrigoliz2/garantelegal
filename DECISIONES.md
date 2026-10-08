@@ -49,3 +49,8 @@
 - En Tailwind 3 se forzaron `postcss-nested@^7.0.2` y `postcss-selector-parser@^7.1.6`. Se comprobó que el CSS generado es idéntico byte a byte antes y después.
 - Riesgo aceptado: 7 avisos «altos» solo de desarrollo, de la cadena `braces` sin versión corregida. Detalle en DEPLOY.md.
 - LCP del inicio en Lighthouse móvil: 3.1 s simulados (rendimiento 94). El elemento LCP es la foto del hero (37 KB en AVIF, prioridad alta, unos 350 ms sin simulación). Bajarlo más exigiría quitar CSS o JS del arranque; no se justifica con el puntaje actual.
+
+## Correos y archivos de entorno (8 de octubre de 2026)
+
+- Los correos transaccionales se rediseñaron en monocromo (`src/lib/mail.ts` para la plantilla y `src/lib/emails.ts` para el contenido). En los correos al despacho, «Responder» le escribe directo al cliente. El cliente recibe el folio, la fecha en español, un botón para confirmar por WhatsApp y un enlace al archivo de calendario. Las vistas previas están en `docs/email/` (`npm run mail:test -- --preview`).
+- Separación de entornos: `.env` es solo local, `.env.deploy` sirve para migraciones y semilla en Neon, y `.env.vercel` contiene las variables de Vercel. Motivo: Next.js carga solo `.env.production.local` y `.env`. Con valores de producción en ellos, un servidor local de prueba se conectó a Neon. Se verificó que no quedó ningún dato ni salió ningún correo.
