@@ -12,3 +12,9 @@ export function appointmentMessage(service = "__", day = "__", modality = "__") 
 
 export const emergencyWhatsAppHref = whatsappHref(emergencyMessage);
 export const emergencyPhoneHref = siteConfig.phoneHref;
+
+export function clientWhatsAppHref(phone: string, message: string): string {
+  const digits = phone.replace(/\D/g, "");
+  const international = digits.length === 10 ? `52${digits}` : digits;
+  return `https://wa.me/${international}?text=${encodeURIComponent(message)}`;
+}

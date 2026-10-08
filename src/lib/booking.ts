@@ -23,7 +23,7 @@ export async function availableSlots(modality: (typeof modalities)[number]) {
   const end = new Date(now.getTime() + 23 * 24 * 60 * 60 * 1000);
   const [rules, appointments, blocks] = await Promise.all([
     prisma.availabilityRule.findMany({ where: { modality, active: true } }),
-    prisma.appointment.findMany({ where: { status: { in: ["PENDING", "CONFIRMED"] }, startsAt: { lt: end }, endsAt: { gt: now } }, select: { startsAt: true, endsAt: true } }),
+    prisma.appointment.findMany({ where: { status: { in: ["PENDING", "CONFIRMED", "RESCHEDULED"] }, startsAt: { lt: end }, endsAt: { gt: now } }, select: { startsAt: true, endsAt: true } }),
     prisma.blockedSlot.findMany({ where: { startsAt: { lt: end }, endsAt: { gt: now } }, select: { startsAt: true, endsAt: true } })
   ]);
   return buildAvailableSlots({ rules, appointments, blocks, modality, now });
