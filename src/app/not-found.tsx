@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { emergencyPhoneHref } from "@/lib/contact";
+import { emergencyWhatsAppHref } from "@/lib/contact";
 import { siteConfig } from "@/site.config";
 import { IllustrationEntrada } from "@/components/site/illustrations";
 
@@ -13,7 +13,7 @@ export default function NotFound() {
           <Link href="/" className="b b-solid">Ir al inicio</Link>
           <Link href="/servicios" className="b b-line">Ver servicios</Link>
         </div>
-        <p className="t-small t-muted mt-10">¿Es una urgencia? <a href={emergencyPhoneHref} className="u text-black" data-event="clic_llamar" data-origin="404">Llama al {siteConfig.phoneDisplay}</a></p>
+        <p className="t-small t-muted mt-10">¿Es una urgencia? <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="u text-black" data-event="clic_whatsapp" data-origin="404">Llámanos o escríbenos por WhatsApp al {siteConfig.phoneDisplay}</a></p>
       </div>
       <div className="hidden lg:col-span-4 lg:col-start-9 lg:block"><IllustrationEntrada className="w-full max-w-[320px]" /></div>
     </section>

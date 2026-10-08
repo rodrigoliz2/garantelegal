@@ -43,6 +43,21 @@ const areas = [
   ] }
 ] as const;
 
+export function serviceDescription(summary: string) {
+  return `${summary} El alcance concreto depende de los hechos, de la autoridad que intervino y de los documentos de tu caso; lo revisamos contigo en la consulta.`;
+}
+
+export function serviceAppliesWhen(name: string) {
+  return `Conviene consultarnos si tu asunto tiene que ver con ${name.toLocaleLowerCase("es-MX")}. En la primera consulta confirmamos si la vía procede y qué se necesita para avanzar.`;
+}
+
+export const guides = [
+  { slug: "que-hacer-alcoholimetro", title: "Qué hacer ante una detención por alcoholímetro", summary: "Datos útiles para pedir orientación jurídica si una persona fue arrestada tras una prueba de alcoholímetro.", content: "Si una persona fue detenida tras una prueba de alcoholímetro, anota el lugar, la hora y la autoridad que intervino, y pregunta a qué centro de sanciones administrativas la trasladarán.\n\nConserva la boleta o cualquier documento que te entreguen. Llámanos o escríbenos por WhatsApp para revisar el caso: las reglas y las vías de defensa cambian según el estado y el municipio." },
+  { slug: "como-impugnar-multa", title: "Cómo revisar una multa para impugnarla", summary: "Una guía inicial para ordenar la boleta, los hechos y los documentos antes de una consulta.", content: "Conserva la boleta completa y anota cuándo y dónde te la notificaron. Reúne fotografías, comprobantes y cualquier otro documento relacionado.\n\nEl plazo para impugnar y la autoridad competente dependen del lugar y del tipo de sanción, y el plazo suele correr desde la notificación. En la consulta revisamos si hay una vía de impugnación y qué documentos se necesitan." },
+  { slug: "vehiculo-corralon", title: "Qué reunir si un vehículo fue enviado al corralón", summary: "Documentos y datos básicos para consultar la recuperación de un vehículo retenido.", content: "Identifica el depósito, la autoridad que ordenó el traslado y la boleta o el inventario que te entregaron. Ten a mano los documentos del vehículo y tu identificación.\n\nLos requisitos para liberarlo cambian según el estado y el motivo de la retención. Revisamos contigo la documentación y te explicamos los pasos a seguir." },
+  { slug: "que-es-amparo", title: "Qué es un amparo", summary: "Explicación general de esta vía judicial y de por qué requiere revisar el acto concreto.", content: "El amparo es un juicio para pedir a un tribunal federal que proteja tus derechos frente a un acto de autoridad. No sirve para cualquier conflicto: procede contra ciertos actos y dentro de plazos estrictos.\n\nPara saber si procede en tu caso hacen falta los hechos, los documentos, la autoridad involucrada y las fechas. En la consulta revisamos los plazos y la vía adecuada." }
+];
+
 async function main() {
   for (const [areaIndex, entry] of areas.entries()) {
     const area = await prisma.practiceArea.upsert({ where: { slug: entry.slug }, update: { name: entry.name, description: entry.description, sortOrder: areaIndex }, create: { name: entry.name, slug: entry.slug, description: entry.description, sortOrder: areaIndex } });
@@ -54,8 +69,8 @@ async function main() {
         create: {
           areaId: area.id, name, slug, summary, sortOrder: serviceIndex, isEmergency,
           published: slug !== "asuntos-familiares",
-          description: `${summary} El alcance concreto requiere revisar los hechos, la autoridad y los documentos. [BORRADOR JURÍDICO: validar por el abogado titular]`,
-          appliesWhen: `Puede ser relevante cuando necesitas orientación sobre ${name.toLocaleLowerCase("es-MX")}. La procedencia se determina en una consulta individual.`,
+          description: serviceDescription(summary),
+          appliesWhen: serviceAppliesWhen(name),
           documents: ["Documento o aviso relacionado con el asunto, si lo tienes", "Identificación y datos de contacto", "Cronología breve de lo ocurrido"],
           steps: ["Escuchamos el contexto y revisamos los documentos disponibles", "Explicamos las vías posibles y el alcance del servicio", "Acordamos contigo los siguientes pasos"],
           faqs: [{ question: "¿Qué debo llevar a la consulta?", answer: "Los documentos que tengas y una cronología breve. Si no cuentas con todo, puedes consultar primero." }, { question: "¿Hay un resultado garantizado?", answer: "No. Cada caso depende de sus hechos, documentos y decisiones de la autoridad." }]
@@ -70,12 +85,6 @@ async function main() {
     }
   }
 
-  const guides = [
-    { slug: "que-hacer-alcoholimetro", title: "Qué hacer ante una detención por alcoholímetro", summary: "Datos útiles para pedir orientación jurídica si una persona fue arrestada tras una prueba de alcoholímetro.", content: "[BORRADOR JURÍDICO: validar por el abogado titular antes de publicar]. Si una persona fue detenida tras una prueba de alcoholímetro, anota el lugar, la hora y la autoridad que intervino. Pregunta a qué centro de sanciones administrativas será trasladada.\n\nConserva la boleta o cualquier documento entregado, sin divulgar datos sensibles por formularios públicos. Comunícate con el despacho para revisar el caso concreto. Las reglas y vías de defensa pueden variar según la entidad federativa." },
-    { slug: "como-impugnar-multa", title: "Cómo revisar una multa para impugnarla", summary: "Una guía inicial para ordenar la boleta, los hechos y los documentos antes de una consulta.", content: "[BORRADOR JURÍDICO: validar por el abogado titular antes de publicar]. Conserva la boleta completa y anota cuándo y dónde se notificó. Reúne fotografías, comprobantes y otros documentos relacionados.\n\nLos plazos y la autoridad competente dependen del lugar y del tipo de sanción. En una consulta se revisa si existe una vía de impugnación y qué documentos se necesitan." },
-    { slug: "vehiculo-corralon", title: "Qué reunir si un vehículo fue enviado al corralón", summary: "Documentos y datos básicos para consultar la recuperación de un vehículo retenido.", content: "[BORRADOR JURÍDICO: validar por el abogado titular antes de publicar]. Identifica el depósito, la autoridad que ordenó el traslado y la boleta o inventario que te entregaron. Ten a mano los documentos del vehículo y tu identificación.\n\nLos requisitos de liberación varían por entidad y motivo de retención. El despacho puede revisar la documentación y explicar los pasos posibles en tu situación." },
-    { slug: "que-es-amparo", title: "Qué es un amparo", summary: "Explicación general de esta vía judicial y de por qué requiere revisar el acto concreto.", content: "[BORRADOR JURÍDICO: validar por el abogado titular antes de publicar]. El amparo es un proceso judicial que puede solicitar protección frente a determinados actos de autoridad. No aplica automáticamente a cualquier conflicto.\n\nPara evaluar su procedencia se necesitan los hechos, documentos, autoridad involucrada y fechas relevantes. Un abogado debe revisar los plazos y la vía específica del caso." }
-  ];
   for (const guide of guides) await prisma.post.upsert({ where: { slug: guide.slug }, update: {}, create: { ...guide, published: true } });
 
   const email = process.env.ADMIN_EMAIL;
@@ -85,4 +94,5 @@ async function main() {
   console.log(`Seeded ${areas.length} practice areas and development admin ${email}.`);
 }
 
-main().finally(() => prisma.$disconnect());
+// Solo se ejecuta como script (npm run db:seed), no al importarse.
+if (process.argv[1]?.endsWith("seed.ts")) main().finally(() => prisma.$disconnect());

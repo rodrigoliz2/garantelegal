@@ -11,7 +11,7 @@ import { rescheduleAppointment, updateAppointmentStatus } from "@/app/admin/acti
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Agenda del despacho", robots: { index: false, follow: false } };
 const statusLabels: Record<string, string> = { PENDING: "Pendiente", CONFIRMED: "Confirmada", RESCHEDULED: "Reprogramada", CANCELLED: "Cancelada", ATTENDED: "Atendida" };
-const modalityLabels: Record<string, string> = { IN_PERSON: "Presencial", VIDEO: "Videollamada", PHONE: "Llamada" };
+const modalityLabels: Record<string, string> = { IN_PERSON: "Presencial", VIDEO: "Videollamada", PHONE: "Llamada por WhatsApp" };
 
 export default async function AgendaPage({ searchParams }: { searchParams: Promise<{ view?: string; date?: string; error?: string }> }) {
   await requireAdmin();

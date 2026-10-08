@@ -15,7 +15,7 @@ export default async function ServicesPage() {
     <>
       <section className="wrap pb-14 pt-10 md:pb-20 md:pt-16">
         <h1 className="t-h1 max-w-[16ch]">Servicios jurídicos</h1>
-        <p className="t-lead t-muted mt-6 max-w-[52ch]">Explora por área o busca el tema. Si hay una detención en este momento, usa la llamada o el WhatsApp directo.</p>
+        <p className="t-lead t-muted mt-6 max-w-[52ch]">Explora por área o busca el tema. Si hay una detención en este momento, llámanos o escríbenos por WhatsApp.</p>
       </section>
 
       <nav aria-label="Áreas de práctica" className="wrap">

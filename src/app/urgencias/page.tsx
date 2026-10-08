@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { MessageCircle, Phone } from "lucide-react";
-import { emergencyPhoneHref, emergencyWhatsAppHref } from "@/lib/contact";
+import { MessageCircle } from "lucide-react";
+import { emergencyWhatsAppHref } from "@/lib/contact";
 import { provided, siteConfig } from "@/site.config";
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 // Página de aterrizaje para urgencias: sin animaciones, sin fotografías, todo estático.
 const steps = [
-  { title: "Llama o escribe", text: "Dinos dónde está la persona y qué autoridad la tiene bajo custodia. No necesitas llenar un formulario antes." },
+  { title: "Llama o escribe por WhatsApp", text: "Dinos dónde está la persona y qué autoridad la tiene bajo custodia. No necesitas llenar un formulario antes." },
   { title: "Ten los datos a mano", text: "Nombre de la persona, lugar de la detención o centro de sanciones administrativas y hora aproximada." },
   { title: "Revisamos la situación", text: "El despacho escucha el caso y explica las opciones disponibles según la autoridad y el lugar." }
 ];
@@ -18,9 +18,9 @@ const steps = [
 const checklist = ["Nombre completo de la persona detenida y un teléfono donde localizarte.", "Ciudad, lugar o autoridad que realizó la detención.", "Hora aproximada y la boleta o documento que recibió, si existe."];
 
 const faqs = [
-  { question: "¿Debo esperar a tener todos los documentos?", answer: "No. Puedes llamar con los datos disponibles y reunir el resto después." },
-  { question: "¿Atienden fuera de Guadalajara?", answer: `Sí, el despacho indica opciones de atención en ${siteConfig.coverage} según el asunto.` },
-  { question: "¿Qué significa amparo?", answer: "Es un proceso judicial para pedir la protección de derechos frente a ciertos actos de autoridad. Su viabilidad depende del caso concreto." }
+  { question: "¿Debo esperar a tener todos los documentos?", answer: "No. Escríbenos o llámanos por WhatsApp con los datos que tengas y reúne el resto después." },
+  { question: "¿Atienden fuera de Guadalajara?", answer: `Sí. Atendemos asuntos en ${siteConfig.coverage}; según el caso, te indicamos cómo y dónde actuar.` },
+  { question: "¿Qué significa amparo?", answer: "Es un juicio para pedir a un tribunal federal que proteja tus derechos frente a un acto de autoridad, como una detención o una sanción. Si procede, depende de los hechos y de los plazos del caso; lo revisamos contigo." }
 ];
 
 export default function EmergenciesPage() {
@@ -36,10 +36,9 @@ export default function EmergenciesPage() {
             <p className="t-lead t-muted mt-6 max-w-[48ch]">Asistencia jurídica por arresto por alcoholímetro, detenciones y traslado a un centro de sanciones administrativas. Atención en {siteConfig.coverage}.</p>
           </div>
           <div className="lg:col-span-5">
-            <a href={emergencyPhoneHref} className="b b-urgent b-lg w-full" data-event="clic_llamar" data-origin="urgencias"><Phone size={20} strokeWidth={1.75} aria-hidden="true" />Llamar ahora</a>
-            <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="b b-solid b-lg mt-2 w-full" data-event="clic_whatsapp" data-origin="urgencias"><MessageCircle size={20} strokeWidth={1.75} aria-hidden="true" />Escribir por WhatsApp</a>
-            <p className="mt-5 text-[clamp(1.75rem,3vw,2.5rem)] font-light leading-none tracking-[-0.04em]"><a href={emergencyPhoneHref} className="u" data-event="clic_llamar" data-origin="urgencias-numero">{siteConfig.phoneDisplay}</a></p>
-            <p className="t-small t-muted mt-4">{hours ? `${hours}. ` : ""}Si no logramos atender la llamada, deja un mensaje por WhatsApp.</p>
+            <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="b b-urgent b-lg w-full" data-event="clic_whatsapp" data-origin="urgencias"><MessageCircle size={20} strokeWidth={1.75} aria-hidden="true" />Llamar o escribir por WhatsApp</a>
+            <p className="mt-5 text-[1.25rem] tracking-[-0.02em]">WhatsApp <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="u" data-event="clic_whatsapp" data-origin="urgencias-numero">{siteConfig.phoneDisplay}</a></p>
+            <p className="t-small t-muted mt-3 max-w-[46ch]">Se abre el chat del despacho: desde ahí puedes llamar o escribir. No atendemos llamadas telefónicas convencionales.{hours ? ` ${hours}.` : ""} Si no podemos contestar en ese momento, deja tu mensaje en el mismo chat.</p>
           </div>
         </div>
       </section>
@@ -77,7 +76,7 @@ export default function EmergenciesPage() {
               <p className="t-muted pb-6 pr-8">{faq.answer}</p>
             </details>
           ))}
-          <p className="t-small t-muted mt-10 max-w-[60ch]">Borrador para revisión del abogado titular. El contenido es informativo y no sustituye una consulta jurídica.</p>
+
         </div>
       </section>
     </>

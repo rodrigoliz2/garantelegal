@@ -1,5 +1,5 @@
 // Quita del texto público los marcadores internos ([BORRADOR JURÍDICO: …], [PENDIENTE: …]).
-// El contenido sigue intacto en la base de datos y en el panel; la página avisa que es un borrador.
+// Red de seguridad: si alguien vuelve a capturar un marcador desde el panel, no llega al público.
 const marker = String.raw`\[(?:BORRADOR|PENDIENTE)[^\]]*\]`;
 
 export function publicText(text: string): string {

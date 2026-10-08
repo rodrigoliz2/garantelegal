@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { areaImage } from "@/lib/areas";
-import { emergencyPhoneHref } from "@/lib/contact";
+import { emergencyWhatsAppHref } from "@/lib/contact";
 import { siteConfig } from "@/site.config";
 import { AreaIllustration } from "@/components/site/illustrations";
 import { ParallaxImage } from "@/components/site/parallax-image";
@@ -65,9 +65,9 @@ export default async function AreaPage({ params }: Props) {
 
       <section className="border-t border-g-200 bg-g-50">
         <div className="wrap flex flex-col justify-between gap-8 py-16 md:flex-row md:items-end md:py-20">
-          <p className="t-h2 max-w-[18ch]">{emergency ? "Si la detención es ahora, llama." : "Cuéntanos tu caso en una consulta."}</p>
+          <p className="t-h2 max-w-[18ch]">{emergency ? "Si la detención es ahora, contáctanos por WhatsApp." : "Cuéntanos tu caso en una consulta."}</p>
           {emergency ? (
-            <a href={emergencyPhoneHref} className="b b-urgent" data-event="clic_llamar" data-origin={`area-${area.slug}`}><Phone size={18} strokeWidth={1.75} aria-hidden="true" />Llamar ahora</a>
+            <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="b b-urgent" data-event="clic_whatsapp" data-origin={`area-${area.slug}`}><MessageCircle size={18} strokeWidth={1.75} aria-hidden="true" />Llamar por WhatsApp</a>
           ) : (
             <Link href="/agendar" className="b b-solid">Agendar consulta</Link>
           )}

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MessageCircle, Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { prisma } from "@/lib/prisma";
-import { serviceMessage } from "@/lib/contact";
+import { emergencyWhatsAppHref, serviceMessage } from "@/lib/contact";
 import { siteConfig, whatsappHref } from "@/site.config";
 import { AreaIllustration } from "@/components/site/illustrations";
 import { publicText } from "@/lib/public-text";
@@ -45,7 +45,7 @@ export default async function ServicePage({ params }: Props) {
     ...(faqs.length ? [{ id: "preguntas", title: "Preguntas frecuentes" }] : [])
   ];
   const primary = service.isEmergency
-    ? <a className="b b-urgent" href={siteConfig.phoneHref} data-event="clic_llamar" data-origin="servicio"><Phone size={18} strokeWidth={1.75} aria-hidden="true" />Llamar ahora</a>
+    ? <a className="b b-urgent" href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" data-event="clic_whatsapp" data-origin="servicio-urgente"><MessageCircle size={18} strokeWidth={1.75} aria-hidden="true" />Llamar por WhatsApp</a>
     : <Link className="b b-solid" href={`/agendar?servicio=${encodeURIComponent(service.id)}`}>Agendar consulta</Link>;
 
   return (
@@ -62,7 +62,7 @@ export default async function ServicePage({ params }: Props) {
           <p className="t-lead t-muted mt-6 max-w-[52ch]">{publicText(service.summary)}</p>
           <div className="mt-8 flex flex-col gap-2 sm:flex-row">
             {primary}
-            <a className="b b-line" href={whatsappHref(serviceMessage(service.name))} target="_blank" rel="noopener noreferrer" data-event="clic_whatsapp" data-origin="servicio"><MessageCircle size={18} strokeWidth={1.75} aria-hidden="true" />WhatsApp</a>
+            {!service.isEmergency && <a className="b b-line" href={whatsappHref(serviceMessage(service.name))} target="_blank" rel="noopener noreferrer" data-event="clic_whatsapp" data-origin="servicio"><MessageCircle size={18} strokeWidth={1.75} aria-hidden="true" />WhatsApp</a>}
           </div>
         </div>
         <div className="hidden items-end justify-end lg:col-span-3 lg:flex">
@@ -98,7 +98,7 @@ export default async function ServicePage({ params }: Props) {
               <ol className="grid gap-6 border-l border-black pl-6">{steps.map(publicText).map(item => <li key={item}>{item}</li>)}</ol>
             </Block>
           )}
-          <Block id="tiempos" title="Plazos orientativos"><p>Los tiempos dependen del procedimiento, la autoridad y los documentos disponibles. Te damos una estimación concreta en la consulta, una vez revisado tu caso.</p></Block>
+          <Block id="tiempos" title="Plazos orientativos"><p>Cada procedimiento tiene sus propios plazos, y algunos corren desde el día en que recibiste la notificación o ocurrieron los hechos. Por eso conviene consultarnos pronto. En la primera consulta, con tus documentos a la vista, te damos un estimado de tiempos para tu caso.</p></Block>
           {faqs.length > 0 && (
             <Block id="preguntas" title="Preguntas frecuentes">
               <div className="border-t border-g-200">
@@ -111,7 +111,7 @@ export default async function ServicePage({ params }: Props) {
               </div>
             </Block>
           )}
-          <p className="t-small t-muted border-t border-g-200 pt-6">Texto en borrador para revisión del abogado titular. Es información general y no sustituye una consulta.</p>
+
         </article>
       </div>
     </>

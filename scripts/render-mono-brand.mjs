@@ -28,7 +28,7 @@ for (const [size, file] of [[16, "favicon-16.png"], [32, "favicon-32.png"], [48,
 await render(`<div style="width:1200px;height:630px;background:#0a0a0a;color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:72px 80px">
   <div style="font-size:34px;letter-spacing:-0.035em"><span style="font-weight:500">Garante</span> <span style="font-weight:300">Jurídico</span></div>
   <div><div style="font-weight:300;font-size:92px;line-height:.95;letter-spacing:-0.05em">Defensa jurídica<br>con criterio, desde<br>la primera llamada.</div>
-  <div style="margin-top:36px;font-size:26px;color:#a3a3a3;letter-spacing:-0.01em">Guadalajara · Atención en todo México · 669 212 2543</div></div>
+  <div style="margin-top:36px;font-size:26px;color:#a3a3a3;letter-spacing:-0.01em">Guadalajara · Atención en todo México · WhatsApp 618 282 9873</div></div>
 </div>`, 1200, 630, "og.png");
 
 await browser.close();

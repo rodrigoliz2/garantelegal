@@ -3,14 +3,17 @@ import { prisma } from "../src/lib/prisma";
 import { siteConfig } from "../src/site.config";
 import { formatInTimeZone } from "date-fns-tz";
 
-test("persistent emergency actions are one tap away", async ({ page }) => {
+test("persistent emergency action opens WhatsApp in one tap", async ({ page }) => {
+  // El despacho solo atiende llamadas y mensajes por WhatsApp: no debe existir ningún enlace tel:.
   await page.goto("/servicios");
   const bar = page.locator('[aria-label="Contacto inmediato"]');
-  await expect(bar.getByRole("link", { name: "Llamar ahora" })).toHaveAttribute("href", siteConfig.phoneHref);
-  await expect(bar.getByRole("link", { name: "WhatsApp" })).toHaveAttribute("href", new RegExp(siteConfig.whatsappBase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  const whatsapp = bar.getByRole("link", { name: "Llamar o escribir por WhatsApp" });
+  await expect(whatsapp).toHaveAttribute("href", new RegExp(`^${siteConfig.whatsappBase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`));
+  await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
   await page.goto("/urgencias");
   await expect(page.getByRole("heading", { name: /Ante una detención/i })).toBeVisible();
-  await expect(bar.getByRole("link", { name: "Llamar ahora" })).toBeVisible();
+  await expect(whatsapp).toBeVisible();
+  await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
 });
 
 test("admin panel requires a seeded administrator", async ({ page }) => {

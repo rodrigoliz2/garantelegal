@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MessageCircle, Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Wordmark } from "@/components/site/wordmark";
 import { IllustrationAdministrativo, IllustrationCivil, IllustrationConstitucional, IllustrationEntrada, IllustrationMercantil, IllustrationRevision, IllustrationRuta, IllustrationUrgencias } from "@/components/site/illustrations";
 
@@ -65,7 +65,7 @@ export default function StyleguidePage() {
               </li>
             ))}
           </ul>
-          <p className="t-small t-muted mt-4">El rojo solo se usa en acciones de urgencia: llamar ahora y «Tengo una urgencia». Sin degradados de color, sin sombras, sin vidrio.</p>
+          <p className="t-small t-muted mt-4">El rojo solo se usa en acciones de urgencia: «Llamar por WhatsApp» y «Tengo una urgencia». Sin degradados de color, sin sombras, sin vidrio.</p>
         </Block>
 
         <Block title="Tipografía">
@@ -83,7 +83,7 @@ export default function StyleguidePage() {
           <div className="flex flex-wrap gap-2">
             <button className="b b-solid" type="button">Agendar consulta</button>
             <button className="b b-line" type="button">Ver servicios</button>
-            <button className="b b-urgent" type="button"><Phone size={18} strokeWidth={1.75} aria-hidden="true" />Llamar ahora</button>
+            <button className="b b-urgent" type="button"><MessageCircle size={18} strokeWidth={1.75} aria-hidden="true" />Llamar por WhatsApp</button>
             <button className="b b-solid" type="button" disabled>Deshabilitado</button>
           </div>
           <div className="mt-2 flex flex-wrap gap-2 bg-black p-4">
@@ -121,12 +121,9 @@ export default function StyleguidePage() {
 
         <Block title="Barra de urgencia">
           <div className="max-w-sm border border-g-200 bg-white p-2">
-            <div className="grid grid-cols-2 gap-2">
-              <span className="b b-urgent px-3"><Phone size={18} strokeWidth={1.75} aria-hidden="true" />Llamar ahora</span>
-              <span className="b b-solid px-3"><MessageCircle size={18} strokeWidth={1.75} aria-hidden="true" />WhatsApp</span>
-            </div>
+            <span className="b b-urgent flex w-full px-3"><MessageCircle size={18} strokeWidth={1.75} aria-hidden="true" />Llamar o escribir por WhatsApp</span>
           </div>
-          <p className="t-small t-muted mt-4">Fija en móvil en todas las páginas; el cuerpo reserva su altura para no tapar contenido. No se anima.</p>
+          <p className="t-small t-muted mt-4">Fija en móvil en todas las páginas; el cuerpo reserva su altura para no tapar contenido. El despacho solo atiende por WhatsApp (llamada o mensaje), así que hay una sola acción. No se anima.</p>
         </Block>
 
         <Block title="Movimiento">

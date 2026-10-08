@@ -1,4 +1,4 @@
-import { siteConfig, whatsappHref } from "@/site.config";
+import { whatsappHref } from "@/site.config";
 
 export const emergencyMessage = "URGENTE: necesito ayuda por una detención. Nombre: __ · Lugar: __ · Hora: __";
 
@@ -10,8 +10,11 @@ export function appointmentMessage(service = "__", day = "__", modality = "__") 
   return `Hola, quiero agendar una consulta. Servicio: ${service} · Día preferido: ${day} · Modalidad: ${modality}`;
 }
 
+export const generalMessage = "Hola, quiero información sobre sus servicios jurídicos.";
+
+// No hay enlaces tel:. Toda llamada o mensaje entra por WhatsApp.
 export const emergencyWhatsAppHref = whatsappHref(emergencyMessage);
-export const emergencyPhoneHref = siteConfig.phoneHref;
+export const generalWhatsAppHref = whatsappHref(generalMessage);
 
 export function clientWhatsAppHref(phone: string, message: string): string {
   const digits = phone.replace(/\D/g, "");

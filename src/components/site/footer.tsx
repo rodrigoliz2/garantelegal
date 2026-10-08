@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Wordmark } from "./wordmark";
-import { emergencyPhoneHref, emergencyWhatsAppHref } from "@/lib/contact";
+import { emergencyWhatsAppHref } from "@/lib/contact";
 import { provided, siteConfig } from "@/site.config";
 
 const groups = [
@@ -18,9 +18,10 @@ export function SiteFooter() {
         <div className="lg:col-span-5">
           <Link href="/" aria-label={`${siteConfig.name}, inicio`} className="tap inline-flex min-h-12 items-center"><Wordmark className="text-[1.5rem]" /></Link>
           <p className="t-muted mt-4 max-w-[34ch]">Sede en {siteConfig.city}. Atención en {siteConfig.coverage}.</p>
-          <a href={emergencyPhoneHref} className="u mt-10 text-[clamp(2rem,4vw,3.25rem)] font-light leading-none tracking-[-0.04em]" data-event="clic_llamar" data-origin="pie">{siteConfig.phoneDisplay}</a>
-          <p className="mt-4"><a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="u" data-event="clic_whatsapp" data-origin="pie">Escribir por WhatsApp</a></p>
-          {email && <p className="mt-2"><a className="u" href={`mailto:${email}`}>{email}</a></p>}
+          <dl className="mt-10 grid gap-3 text-[.9375rem]">
+            <div><dt className="t-muted t-small">WhatsApp: llamadas y mensajes</dt><dd className="mt-1"><a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="u" data-event="clic_whatsapp" data-origin="pie">{siteConfig.phoneDisplay}</a></dd></div>
+            {email && <div><dt className="t-muted t-small">Correo</dt><dd className="mt-1"><a className="u" href={`mailto:${email}`}>{email}</a></dd></div>}
+          </dl>
           {address && <p className="t-muted mt-2 max-w-[34ch]">{address}</p>}
         </div>
         <nav aria-label="Enlaces del pie" className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-6 lg:col-start-7">

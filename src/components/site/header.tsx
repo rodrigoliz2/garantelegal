@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
-import { Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Wordmark } from "./wordmark";
-import { emergencyPhoneHref, emergencyWhatsAppHref } from "@/lib/contact";
+import { emergencyWhatsAppHref } from "@/lib/contact";
 import { siteConfig } from "@/site.config";
 import { cn } from "@/lib/utils";
 
@@ -76,7 +76,7 @@ export function SiteHeader() {
           </nav>
           <div className="ml-auto hidden items-center gap-2 md:flex lg:ml-0">
             <Link href="/agendar" className={cn("b b-line !min-h-11 px-4 text-[0.9375rem]")}>Agendar consulta</Link>
-            <a href={emergencyPhoneHref} className="b b-urgent !min-h-11 px-4 text-[0.9375rem]" data-event="clic_llamar" data-origin="encabezado"><Phone size={16} strokeWidth={1.75} aria-hidden="true" />Llamar ahora</a>
+            <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="b b-urgent !min-h-11 px-4 text-[0.9375rem]" data-event="clic_whatsapp" data-origin="encabezado"><MessageCircle size={16} strokeWidth={1.75} aria-hidden="true" />Llamar por WhatsApp</a>
           </div>
           <button
             ref={menuButton}
@@ -122,9 +122,9 @@ export function SiteHeader() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.25, delay: reduce ? 0 : 0.3 }}
             >
-              <p className="t-small text-g-400">Línea directa y WhatsApp</p>
-              <a href={emergencyPhoneHref} className="text-[1.75rem] font-light tracking-[-0.03em]" data-event="clic_llamar" data-origin="menu">{siteConfig.phoneDisplay}</a>
-              <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="u self-start" data-event="clic_whatsapp" data-origin="menu">Escribir por WhatsApp</a>
+              <p className="t-small text-g-400">WhatsApp: llamadas y mensajes</p>
+              <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="u self-start text-[1.25rem] tracking-[-0.02em]" data-event="clic_whatsapp" data-origin="menu">{siteConfig.phoneDisplay}</a>
+              <a href={`mailto:${siteConfig.contactEmail}`} className="u self-start">{siteConfig.contactEmail}</a>
             </motion.div>
           </motion.div>
         )}

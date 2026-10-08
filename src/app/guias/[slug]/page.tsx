@@ -31,7 +31,7 @@ export default async function GuidePage({ params }: Props) {
       <div className="wrap grid gap-12 pb-24 lg:grid-cols-12">
         <div className="prose border-t border-black pt-4 lg:col-span-7 lg:col-start-4">
           {paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-          <p className="t-small t-muted border-t border-g-200 pt-6">Texto informativo en borrador, sujeto a revisión del abogado titular. No constituye asesoría legal individual.</p>
+
           <div className="mt-10 flex flex-col gap-2 sm:flex-row">
             <Link href="/agendar" className="b b-solid">Agendar consulta</Link>
             <Link href="/guias" className="b b-line">Todas las guías</Link>

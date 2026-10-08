@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MessageCircle, Phone } from "lucide-react";
-import { appointmentMessage, emergencyPhoneHref, emergencyWhatsAppHref } from "@/lib/contact";
+import { MessageCircle } from "lucide-react";
+import { appointmentMessage, emergencyWhatsAppHref } from "@/lib/contact";
 import { prisma } from "@/lib/prisma";
 import { areaImage } from "@/lib/areas";
 import { provided, siteConfig, whatsappHref } from "@/site.config";
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const heroLines = ["Defensa jurídica", "con criterio, desde", "la primera llamada."];
 
 const steps = [
-  { Illustration: IllustrationEntrada, title: "Nos cuentas qué pasó", text: "Por teléfono, WhatsApp o en una consulta agendada. Basta con lo esencial: qué ocurrió, cuándo y qué autoridad intervino." },
+  { Illustration: IllustrationEntrada, title: "Nos cuentas qué pasó", text: "Por WhatsApp, con una llamada o un mensaje, o en una consulta agendada. Basta con lo esencial: qué ocurrió, cuándo y qué autoridad intervino." },
   { Illustration: IllustrationRevision, title: "Revisamos documentos y plazos", text: "Leemos lo que tengas, como boletas, contratos o notificaciones, y ubicamos los plazos que pueden estar corriendo." },
   { Illustration: IllustrationRuta, title: "Explicamos las vías y los honorarios", text: "Te decimos qué opciones existen, cuánto suelen tardar y cuánto cuesta cada una. Tú decides si avanzamos." }
 ];
@@ -59,14 +59,11 @@ export default async function HomePage() {
         <div className="wrap grid gap-8 py-14 md:py-20 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-6">
             <h2 id="urgencia" className="t-h2">¿Hay una detención en este momento?</h2>
-            <p className="t-muted mt-5 max-w-[46ch]">Alcoholímetro, arresto administrativo o vehículo en el corralón. Llama o escribe; no hace falta llenar ningún formulario.</p>
+            <p className="t-muted mt-5 max-w-[46ch]">Alcoholímetro, arresto administrativo o vehículo en el corralón. Llámanos o escríbenos por WhatsApp; no hace falta llenar ningún formulario.</p>
           </div>
           <div className="lg:col-span-5 lg:col-start-8">
-            <a href={emergencyPhoneHref} className="u block w-fit text-[clamp(2.25rem,5vw,4.25rem)] font-light leading-[1.05] tracking-[-0.045em]" data-event="clic_llamar" data-origin="inicio-urgencia">{siteConfig.phoneDisplay}</a>
-            <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-              <a href={emergencyPhoneHref} className="b b-urgent" data-event="clic_llamar" data-origin="inicio-urgencia"><Phone size={18} strokeWidth={1.75} aria-hidden="true" />Llamar ahora</a>
-              <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="b b-line" data-event="clic_whatsapp" data-origin="inicio-urgencia"><MessageCircle size={18} strokeWidth={1.75} aria-hidden="true" />WhatsApp</a>
-            </div>
+            <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="b b-urgent b-lg w-full sm:w-auto" data-event="clic_whatsapp" data-origin="inicio-urgencia"><MessageCircle size={20} strokeWidth={1.75} aria-hidden="true" />Llamar o escribir por WhatsApp</a>
+            <p className="t-small t-muted mt-4">WhatsApp {siteConfig.phoneDisplay}. Solo atendemos llamadas por WhatsApp.</p>
             <p className="t-small mt-5"><Link href="/urgencias" className="u">Qué hacer mientras tanto</Link></p>
           </div>
         </div>
@@ -163,7 +160,7 @@ export default async function HomePage() {
         <ParallaxImage src="/fotos/escalera.jpg" alt="Escalera interior con barandal, en blanco y negro" sizes="(min-width: 1024px) 50vw, 100vw" quality={60} className="aspect-[4/3] lg:aspect-auto lg:min-h-[640px]" />
         <div className="wrap flex flex-col justify-center py-20 lg:max-w-[720px] lg:py-28 lg:pl-16">
           <RevealHeading id="agendar" lines={["Agenda", "una consulta"]} className="t-h1" />
-          <p className="t-lead t-muted mt-6 max-w-[40ch]">Presencial en Guadalajara, por videollamada o por teléfono. Eliges día y hora y recibes un folio de solicitud.</p>
+          <p className="t-lead t-muted mt-6 max-w-[40ch]">Presencial en Guadalajara, por videollamada o por llamada de WhatsApp. Eliges día y hora y recibes un folio de solicitud.</p>
           <div className="mt-8 flex flex-col gap-2 sm:flex-row">
             <Link href="/agendar" className="b b-solid">Elegir día y hora</Link>
             <a href={whatsappHref(appointmentMessage())} target="_blank" rel="noopener noreferrer" className="b b-line" data-event="clic_whatsapp" data-origin="inicio-agendar">Agendar por WhatsApp</a>

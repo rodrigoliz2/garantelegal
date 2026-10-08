@@ -12,7 +12,7 @@ export default async function GuidesPage() {
     <>
       <section className="wrap pb-14 pt-10 md:pb-20 md:pt-16">
         <h1 className="t-h1">Guías</h1>
-        <p className="t-lead t-muted mt-6 max-w-[50ch]">Textos breves para entender una situación antes de la consulta. Son informativos y no sustituyen una revisión individual.</p>
+        <p className="t-lead t-muted mt-6 max-w-[50ch]">Textos breves para entender tu situación y llegar preparado a la consulta.</p>
       </section>
       <section aria-label="Guías publicadas" className="wrap pb-24 md:pb-32">
         {posts.length ? (

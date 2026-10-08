@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: "#0a0a0a", viewportFit: "cover" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const legalService = { "@context": "https://schema.org", "@type": "LegalService", name: siteConfig.name, slogan: siteConfig.tagline, url: siteConfig.url, telephone: siteConfig.phoneHref.replace("tel:", ""), image: `${siteConfig.url}/brand/og.png`, areaServed: { "@type": "Country", name: "México" }, address: { "@type": "PostalAddress", addressLocality: "Guadalajara", addressRegion: "Jalisco", addressCountry: "MX" } };
+  const legalService = { "@context": "https://schema.org", "@type": "LegalService", name: siteConfig.name, slogan: siteConfig.tagline, url: siteConfig.url, telephone: siteConfig.phoneE164, email: siteConfig.contactEmail, image: `${siteConfig.url}/brand/og.png`, areaServed: { "@type": "Country", name: "México" }, address: { "@type": "PostalAddress", addressLocality: "Guadalajara", addressRegion: "Jalisco", addressCountry: "MX" } };
   return (
     <html lang="es-MX" className={`${sans.variable} ${serif.variable}`}>
       <body>
