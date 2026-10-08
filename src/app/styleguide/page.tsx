@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { MessageCircle } from "lucide-react";
 import { Wordmark } from "@/components/site/wordmark";
-import { IllustrationAdministrativo, IllustrationCivil, IllustrationConstitucional, IllustrationEntrada, IllustrationMercantil, IllustrationRevision, IllustrationRuta, IllustrationUrgencias } from "@/components/site/illustrations";
+import { IllustrationAdministrativo, IllustrationCivil, IllustrationConstitucional, IllustrationCorporativo, IllustrationEntrada, IllustrationMercantil, IllustrationRevision, IllustrationRuta, IllustrationUrgencias } from "@/components/site/illustrations";
 
 export const metadata: Metadata = { title: "Guía de estilo", robots: { index: false, follow: false } };
 
@@ -28,7 +28,7 @@ const type = [
 ];
 
 const illustrations = [
-  ["Urgencias", IllustrationUrgencias], ["Administrativo", IllustrationAdministrativo], ["Constitucional", IllustrationConstitucional], ["Civil", IllustrationCivil], ["Mercantil", IllustrationMercantil],
+  ["Urgencias", IllustrationUrgencias], ["Administrativo", IllustrationAdministrativo], ["Constitucional", IllustrationConstitucional], ["Civil", IllustrationCivil], ["Mercantil", IllustrationMercantil], ["Corporativo", IllustrationCorporativo],
   ["Proceso · entrada", IllustrationEntrada], ["Proceso · revisión", IllustrationRevision], ["Proceso · ruta", IllustrationRuta]
 ] as const;
 

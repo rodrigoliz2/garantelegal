@@ -86,6 +86,19 @@ export function IllustrationMercantil(props: Props) {
   );
 }
 
+/** Corporativo: una estructura de sociedades, controladora y subsidiarias. */
+export function IllustrationCorporativo(props: Props) {
+  return (
+    <Frame {...props}>
+      <path d="M72 34H128V72H72Z" />
+      <path d="M86 50H114" />
+      <path d="M100 72V94M46 94H154M46 94V114M100 94V114M154 94V114" />
+      <path d="M30 176V114H62V176M84 176V114H116V176M138 176V114H170V176" />
+      <path d="M30 140H62M84 140H116M138 140H170" />
+    </Frame>
+  );
+}
+
 /** Proceso, primer paso: una puerta que se abre. */
 export function IllustrationEntrada(props: Props) {
   return (
@@ -128,7 +141,8 @@ export const areaIllustrations: Record<string, (props: Props) => React.JSX.Eleme
   administrativo: IllustrationAdministrativo,
   constitucional: IllustrationConstitucional,
   civil: IllustrationCivil,
-  mercantil: IllustrationMercantil
+  mercantil: IllustrationMercantil,
+  corporativo: IllustrationCorporativo
 };
 
 export function AreaIllustration({ slug, ...props }: Props & { slug: string }) {

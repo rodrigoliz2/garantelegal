@@ -14,6 +14,7 @@ export const siteConfig = {
   emergencyHours: "[PENDIENTE: horario de atención por WhatsApp]",
   address: "[PENDIENTE: dirección de la oficina en Guadalajara]",
   contactEmail: "contacto@garantejuridico.com",
+  instagram: { handle: "@garantejuridico", url: "https://www.instagram.com/garantejuridico/" },
   consultationCost: "[PENDIENTE: costo de la consulta inicial]",
   fees: "[PENDIENTE: honorarios o política de cotización]",
   leadAttorney: "[PENDIENTE: nombre del abogado titular]",

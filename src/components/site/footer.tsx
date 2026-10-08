@@ -21,6 +21,7 @@ export function SiteFooter() {
           <dl className="mt-10 grid gap-3 text-[.9375rem]">
             <div><dt className="t-muted t-small">WhatsApp: llamadas y mensajes</dt><dd className="mt-1"><a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="u" data-event="clic_whatsapp" data-origin="pie">{siteConfig.phoneDisplay}</a></dd></div>
             {email && <div><dt className="t-muted t-small">Correo</dt><dd className="mt-1"><a className="u" href={`mailto:${email}`}>{email}</a></dd></div>}
+            <div><dt className="t-muted t-small">Instagram</dt><dd className="mt-1"><a className="u" href={siteConfig.instagram.url} target="_blank" rel="noopener noreferrer" data-event="clic_instagram" data-origin="pie">{siteConfig.instagram.handle}</a></dd></div>
           </dl>
           {address && <p className="t-muted mt-2 max-w-[34ch]">{address}</p>}
         </div>

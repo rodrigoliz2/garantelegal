@@ -69,19 +69,19 @@ export function SiteHeader() {
       >
         <div className="wrap flex h-16 items-center justify-between gap-6 lg:h-[72px]">
           <Link href="/" aria-label={`${siteConfig.name}, inicio`} className="tap flex min-h-12 items-center"><Wordmark /></Link>
-          <nav aria-label="Navegación principal" className="hidden items-center gap-7 text-[0.9375rem] lg:flex">
+          <nav aria-label="Navegación principal" className="hidden items-center gap-7 text-[0.9375rem] xl:flex">
             {navLinks.map(link => (
               <Link key={link.href} href={link.href} className="u u-hover" aria-current={pathname?.startsWith(link.href) ? "page" : undefined}>{link.label}</Link>
             ))}
           </nav>
-          <div className="ml-auto hidden items-center gap-2 md:flex lg:ml-0">
+          <div className="ml-auto hidden items-center gap-2 md:flex xl:ml-0">
             <Link href="/agendar" className={cn("b b-line !min-h-11 px-4 text-[0.9375rem]")}>Agendar consulta</Link>
             <a href={emergencyWhatsAppHref} target="_blank" rel="noopener noreferrer" className="b b-urgent !min-h-11 px-4 text-[0.9375rem]" data-event="clic_whatsapp" data-origin="encabezado"><MessageCircle size={16} strokeWidth={1.75} aria-hidden="true" />Llamar por WhatsApp</a>
           </div>
           <button
             ref={menuButton}
             type="button"
-            className="tap -mr-3 flex h-12 min-w-12 items-center justify-center px-3 text-[0.9375rem] font-medium lg:hidden"
+            className="tap -mr-3 flex h-12 min-w-12 items-center justify-center px-3 text-[0.9375rem] font-medium xl:hidden"
             aria-expanded={open}
             aria-controls="menu-movil"
             onClick={() => setOpen(value => !value)}
@@ -98,7 +98,7 @@ export function SiteHeader() {
             role="dialog"
             aria-modal="true"
             aria-label="Menú"
-            className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-30 flex flex-col overflow-y-auto bg-black text-white lg:hidden"
+            className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-30 flex flex-col overflow-y-auto bg-black text-white xl:hidden"
             initial={reduce ? { opacity: 0 } : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.15 } }}

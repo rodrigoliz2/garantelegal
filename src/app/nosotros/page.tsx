@@ -13,7 +13,7 @@ const principles = [
   { title: "Acompañar", text: "Mantenemos la comunicación durante el asunto por el canal que acordemos contigo." }
 ];
 
-const materias = ["Urgencias por detención, alcoholímetro y vehículos retenidos", "Derecho constitucional y amparo", "Derecho administrativo, multas y sanciones", "Derecho civil: contratos, arrendamiento, adeudos y sucesiones", "Derecho mercantil: títulos de crédito, sociedades y cartera"];
+const materias = ["Urgencias por detención, alcoholímetro y vehículos retenidos", "Derecho constitucional y amparo", "Derecho administrativo, multas y sanciones", "Derecho civil: contratos, arrendamiento, adeudos y sucesiones", "Derecho mercantil: contratos, títulos de crédito y cobranza", "Derecho corporativo: sociedades, gobierno corporativo, compraventa de empresas, SOFOMES, fideicomisos y cumplimiento"];
 
 export default function AboutPage() {
   const attorney = provided(siteConfig.leadAttorney);
@@ -22,7 +22,7 @@ export default function AboutPage() {
     <>
       <section className="wrap pb-14 pt-10 md:pb-20 md:pt-16">
         <h1 className="t-h1 max-w-[15ch]">Atención clara, con una estrategia para cada asunto.</h1>
-        <p className="t-lead t-muted mt-8 max-w-[52ch]">{siteConfig.name} tiene sede en {siteConfig.city} y atiende asuntos en {siteConfig.coverage}, en urgencias y en materia constitucional, administrativa, civil y mercantil.</p>
+        <p className="t-lead t-muted mt-8 max-w-[52ch]">{siteConfig.name} ofrece litigio estratégico y asesoría jurídica a personas y empresas, con sede en {siteConfig.city} y representación en {siteConfig.coverage}.</p>
       </section>
 
       <ParallaxImage src="/fotos/cabanas-interior.jpg" alt="Interior del Hospicio Cabañas, Guadalajara" priority sizes="100vw" quality={60} className="aspect-[4/3] md:aspect-[21/9]" imageClassName="object-[50%_40%]" />

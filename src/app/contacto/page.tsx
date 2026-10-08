@@ -23,6 +23,7 @@ export default function ContactPage() {
           <a className="u mt-2 text-[clamp(1.75rem,2.6vw,2.25rem)] font-light leading-none tracking-[-0.035em]" href={generalWhatsAppHref} target="_blank" rel="noopener noreferrer" data-event="clic_whatsapp" data-origin="contacto">{siteConfig.phoneDisplay}</a>
           <p className="t-small t-muted mt-3 max-w-[40ch]">No atendemos llamadas telefónicas convencionales: llama o escribe desde WhatsApp.</p>
           {hours && <p className="t-small t-muted mt-2">{hours}</p>}
+          <p className="mt-6"><span className="t-small t-muted block">Instagram</span><a className="u mt-1 text-[1.125rem]" href={siteConfig.instagram.url} target="_blank" rel="noopener noreferrer" data-event="clic_instagram" data-origin="contacto">{siteConfig.instagram.handle}</a></p>
         </div>
         {(email || address || fees) && (
           <dl className="mt-8 grid border-t border-g-200 text-[.9375rem]">

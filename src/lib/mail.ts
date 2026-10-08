@@ -52,7 +52,7 @@ export function renderEmail(content: EmailContent): string {
   </td></tr>
   <tr><td style="padding:24px 32px 32px;border-top:1px solid ${line};font-family:${font};font-size:13px;line-height:1.7;color:${gray}">
     WhatsApp, llamadas y mensajes: <a href="${whatsappHref("Hola, quiero información sobre sus servicios jurídicos.")}" style="color:${black};text-decoration:underline">${siteConfig.phoneDisplay}</a><br>
-    <a href="mailto:${siteConfig.contactEmail}" style="color:${black};text-decoration:underline">${siteConfig.contactEmail}</a> · <a href="${siteConfig.url}" style="color:${black};text-decoration:underline">${siteConfig.domain}</a><br>
+    <a href="mailto:${siteConfig.contactEmail}" style="color:${black};text-decoration:underline">${siteConfig.contactEmail}</a> · <a href="${siteConfig.url}" style="color:${black};text-decoration:underline">${siteConfig.domain}</a> · Instagram <a href="${siteConfig.instagram.url}" style="color:${black};text-decoration:underline">${siteConfig.instagram.handle}</a><br>
     Sede en ${escapeHtml(siteConfig.city)}. Atención en ${escapeHtml(siteConfig.coverage)}.
   </td></tr>
 </table>

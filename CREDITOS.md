@@ -15,6 +15,7 @@ Tratamiento común (`scripts/process-photos.mjs`): escala de grises, normalizaci
 | `via-nocturna.jpg` | Vía rápida de noche | Darya Grey_Owl | https://www.pexels.com/photo/expressway-at-night-17907568/ |
 | `escalera.jpg` | Escalera, interior | Nothing Ahead | https://www.pexels.com/photo/black-and-white-photo-of-staircase-3768247/ |
 | `escalera-concreto.jpg` | Escalera de concreto | Mitchell Luo | https://www.pexels.com/photo/gray-and-white-concrete-staircase-3707673/ |
+| `mesa-consejo.jpg` | Mesa de consejo, sala de juntas | Leandro Alamino | https://www.pexels.com/photo/black-leather-office-rolling-chairs-beside-brown-wooden-table-3906592/ |
 | `papel.jpg` | Textura de papel | Eva Bronzini | https://www.pexels.com/photo/a-texture-of-a-white-paper-7598248/ |
 | `piedra.jpg` | Textura de piedra | Kaboompics (@karola-g) | https://www.pexels.com/photo/black-and-white-stone-texture-4709454/ |
 

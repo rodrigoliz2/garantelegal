@@ -14,7 +14,7 @@ import { IllustrationEntrada, IllustrationRevision, IllustrationRuta } from "@/c
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: { absolute: `Abogados en ${siteConfig.city} | ${siteConfig.name}` },
-  description: `Asistencia jurídica ante detenciones y multas, y consultas en materia constitucional, administrativa, civil y mercantil. Sede en ${siteConfig.city}; atención nacional.`
+  description: `Litigio estratégico y asesoría jurídica para personas y empresas: urgencias, derecho corporativo, constitucional, administrativo, civil y mercantil. Sede en ${siteConfig.city}; representación en toda la República.`
 };
 
 const heroLines = ["Defensa jurídica", "con criterio, desde", "la primera llamada."];
@@ -45,7 +45,7 @@ export default async function HomePage() {
             {heroLines.map((line, index) => <span className="line" key={line} style={{ "--i": index } as React.CSSProperties}><span>{line}</span></span>)}
           </h1>
           <div className="lg:col-span-4 lg:pb-3">
-            <p className="seq-in t-lead max-w-[38ch] text-g-200" style={{ "--d": "380ms" } as React.CSSProperties}>Sede en Guadalajara, atención en todo México. Urgencias por detención o multa y asuntos constitucionales, administrativos, civiles y mercantiles.</p>
+            <p className="seq-in t-lead max-w-[38ch] text-g-200" style={{ "--d": "380ms" } as React.CSSProperties}>Litigio estratégico y asesoría jurídica para personas y empresas. Sede en Guadalajara, representación en toda la República Mexicana.</p>
             <div className="seq-in mt-7 flex flex-col gap-2 sm:flex-row" style={{ "--d": "480ms" } as React.CSSProperties}>
               <Link href="/agendar" className="b b-invert">Agendar consulta</Link>
               <Link href="/urgencias" className="b b-urgent">Tengo una urgencia</Link>

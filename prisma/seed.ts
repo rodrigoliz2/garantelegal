@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { hash } from "bcryptjs";
+import { corporateServices, corporativo, movedFromMercantil } from "./catalog-corporativo";
 
 const prisma = new PrismaClient();
 
@@ -33,11 +34,9 @@ const areas = [
     ["Sucesiones y testamentos", "sucesiones-testamentos", "Acompañamiento en organización patrimonial y trámites sucesorios."],
     ["Asuntos familiares (divorcio, pensión, custodia)", "asuntos-familiares", "Servicio sujeto a confirmación de que el despacho atiende esta materia."]
   ] },
-  { name: "Mercantil", slug: "mercantil", description: "Obligaciones comerciales, sociedades y recuperación de cartera.", services: [
+  { name: "Mercantil", slug: "mercantil", description: "Contratos, títulos de crédito, cobranza y litigio entre comerciantes.", services: [
     ["Cobro de pagarés y títulos de crédito (juicio ejecutivo mercantil)", "cobro-pagares-titulos", "Revisión de títulos de crédito y posibles vías de cobro."],
-    ["Constitución de sociedades", "constitucion-sociedades", "Orientación para estructurar una sociedad comercial."],
     ["Contratos mercantiles", "contratos-mercantiles", "Redacción y revisión de acuerdos comerciales."],
-    ["Conflictos entre socios", "conflictos-socios", "Análisis de documentos societarios y opciones de solución."],
     ["Recuperación de cartera", "recuperacion-cartera", "Diseño de acciones para gestionar cuentas pendientes."],
     ["Concursos mercantiles", "concursos-mercantiles", "Orientación inicial sobre procedimientos relacionados con insolvencia comercial."]
   ] }
@@ -79,6 +78,19 @@ async function main() {
     }
   }
 
+  // Derecho corporativo: contenido propio por servicio (prisma/catalog-corporativo.ts).
+  const corporate = await prisma.practiceArea.upsert({ where: { slug: corporativo.slug }, update: { name: corporativo.name, description: corporativo.description, sortOrder: areas.length }, create: { ...corporativo, sortOrder: areas.length } });
+  for (const [index, service] of corporateServices.entries()) {
+    const { name, slug, summary, ...detail } = service;
+    await prisma.service.upsert({
+      where: { areaId_slug: { areaId: corporate.id, slug } },
+      update: { name, summary, sortOrder: index },
+      create: { areaId: corporate.id, name, slug, summary, sortOrder: index, isEmergency: false, published: true, ...detail }
+    });
+  }
+  const mercantil = await prisma.practiceArea.findUnique({ where: { slug: "mercantil" } });
+  if (mercantil) await prisma.service.updateMany({ where: { areaId: mercantil.id, slug: { in: movedFromMercantil } }, data: { published: false } });
+
   for (let weekday = 1; weekday <= 5; weekday++) {
     for (const modality of ["IN_PERSON", "VIDEO", "PHONE"]) {
       await prisma.availabilityRule.upsert({ where: { weekday_startMinute_endMinute_modality: { weekday, startMinute: 540, endMinute: 1080, modality } }, update: { active: true }, create: { weekday, startMinute: 540, endMinute: 1080, modality } });
@@ -91,7 +103,7 @@ async function main() {
   const password = process.env.ADMIN_PASSWORD;
   if (!email || !password) throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD are required for the seed.");
   await prisma.adminUser.upsert({ where: { email }, update: { name: process.env.ADMIN_NAME || "Administrador", passwordHash: await hash(password, 12) }, create: { email, name: process.env.ADMIN_NAME || "Administrador", passwordHash: await hash(password, 12) } });
-  console.log(`Semilla aplicada: ${areas.length} áreas de práctica, guías y administrador ${email}.`);
+  console.log(`Semilla aplicada: ${areas.length + 1} áreas de práctica, guías y administrador ${email}.`);
 }
 
 // Solo se ejecuta como script (npm run db:seed), no al importarse.

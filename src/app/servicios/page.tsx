@@ -19,11 +19,11 @@ export default async function ServicesPage() {
       </section>
 
       <nav aria-label="Áreas de práctica" className="wrap">
-        <ul className="grid border-t border-g-200 lg:grid-cols-5 lg:border-b">
+        <ul className="grid border-t border-g-200 xl:grid-cols-6 xl:border-b">
           {areas.map(area => (
-            <li key={area.slug} className="border-b border-g-200 lg:border-b-0 lg:border-r lg:last:border-r-0">
-              <Link href={`/servicios/${area.slug}`} className="group flex items-center gap-6 py-5 lg:h-full lg:flex-col lg:items-start lg:gap-8 lg:px-6 lg:py-10">
-                <AreaIllustration slug={area.slug} className="w-[72px] shrink-0 transition-transform duration-[260ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:-translate-y-1 lg:w-24" />
+            <li key={area.slug} className="border-b border-g-200 xl:border-b-0 xl:border-r xl:last:border-r-0">
+              <Link href={`/servicios/${area.slug}`} className="group flex items-center gap-6 py-5 xl:h-full xl:flex-col xl:items-start xl:gap-8 xl:px-6 xl:py-10">
+                <AreaIllustration slug={area.slug} className="w-[72px] shrink-0 transition-transform duration-[260ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:-translate-y-1 xl:w-24" />
                 <span className="text-[1.375rem] tracking-[-0.02em]"><span className="u u-hover">{area.name}</span></span>
               </Link>
             </li>
