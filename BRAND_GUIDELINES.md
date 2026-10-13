@@ -38,6 +38,8 @@ Los tokens viven en `src/app/globals.css` y se exponen en Tailwind (`tailwind.co
 
 No existe `public/brand/logo.svg`. Se usa un wordmark tipográfico (`src/components/site/wordmark.tsx`): «Garante» en 500 y «Jurídico» en 300, en negro sobre blanco o blanco sobre negro. El ícono (favicon, PWA, Apple) es una «G» de Host Grotesk en blanco sobre negro, generada con `scripts/render-mono-brand.mjs`, que también produce `og.png`.
 
+Las copias estables para buscadores y navegadores viven en `/favicon.png` (192 × 192), `/favicon-512.png` (512 × 512) y `/favicon.ico`; se regeneran con `npm run brand:favicons` desde el isotipo activo.
+
 Los SVG con monograma de la versión anterior (`logo-*.svg`, `isotype*.svg`) y las plantillas de `public/brand/templates/` siguen en el repositorio, pero ya no se usan en el sitio. Deben rehacerse en monocromo antes de imprimir papelería (ver PENDIENTES.md).
 
 ## Forma

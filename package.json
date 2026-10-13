@@ -15,6 +15,7 @@
     "local:start": "prisma generate && prisma migrate deploy && tsx prisma/seed.ts && next dev",
     "test:e2e": "playwright test",
     "audit:routes": "node scripts/audit-routes.mjs",
+    "brand:favicons": "node scripts/build-favicons.mjs",
     "mail:test": "tsx scripts/test-mail.ts"
   },
   "license": "UNLICENSED",

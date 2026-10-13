@@ -32,4 +32,5 @@ await render(`<div style="width:1200px;height:630px;background:#0a0a0a;color:#ff
 </div>`, 1200, 630, "og.png");
 
 await browser.close();
+await import("./build-favicons.mjs");
 console.log("Recursos monocromos generados en public/brand/");
