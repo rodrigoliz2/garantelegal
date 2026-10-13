@@ -15,7 +15,7 @@ import { Testimonials } from "@/components/site/testimonials";
 import { CaseList } from "@/components/site/cases";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = pageMetadata({ title: `Abogados en Guadalajara | ${siteConfig.name}`, absoluteTitle: true, path: "/", description: "Litigio estratégico y asesoría jurídica para personas y empresas en Guadalajara y toda la República: urgencias, amparo, derecho corporativo, administrativo, civil y mercantil." });
+export const metadata: Metadata = pageMetadata({ title: `${siteConfig.name} | ${siteConfig.tagline}`, absoluteTitle: true, path: "/", description: "Defensa jurídica estratégica y asesoría en amparo, derecho administrativo, fiscal, civil, mercantil y corporativo. Sede en Guadalajara; atención en toda la República Mexicana." });
 
 const heroLines = ["Defensa jurídica", "con criterio, desde", "la primera llamada."];
 

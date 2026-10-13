@@ -32,7 +32,36 @@ test("canonical pages expose crawlable official favicons", async ({ page, reques
   const robots = await (await request.get("/robots.txt")).text();
   expect(robots).toContain(`Sitemap: ${siteConfig.url}/sitemap.xml`);
   expect(robots).not.toMatch(/Disallow: \/favicon/);
+  expect(robots).not.toMatch(/Disallow: \/(?:admin|styleguide)/);
   const sitemap = await (await request.get("/sitemap.xml")).text();
   expect(sitemap).toContain(`<loc>${siteConfig.url}</loc>`);
   expect(sitemap).not.toContain(`www.${siteConfig.domain}`);
+});
+
+test("home metadata and structured data identify the firm without a personal profile", async ({ page }) => {
+  await page.goto("/");
+  const commercialTitle = `${siteConfig.name} | ${siteConfig.tagline}`;
+  await expect(page).toHaveTitle(commercialTitle);
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", commercialTitle);
+  await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute("content", commercialTitle);
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /Guadalajara.*República Mexicana/);
+
+  const graphs = await page.locator('script[type="application/ld+json"]').allTextContents();
+  const nodes = graphs.flatMap(raw => {
+    const value = JSON.parse(raw);
+    return value["@graph"] ?? (Array.isArray(value) ? value : [value]);
+  });
+  const firm = nodes.find(node => node["@type"] === "LegalService");
+  const website = nodes.find(node => node["@type"] === "WebSite");
+  expect(firm).toMatchObject({ name: siteConfig.name, alternateName: siteConfig.alternateName, url: siteConfig.url });
+  expect(website).toMatchObject({ name: siteConfig.name, alternateName: siteConfig.alternateName, publisher: { "@id": firm["@id"] } });
+  expect(JSON.stringify(nodes)).not.toMatch(/Rodrigo|Liz[aá]rraga|founder|worksFor|employee|member/i);
+  expect(await page.locator("body").innerText()).not.toMatch(/Rodrigo|Liz[aá]rraga/i);
+});
+
+test("private and design reference pages expose noindex to crawlers", async ({ page }) => {
+  for (const path of ["/admin/login", "/styleguide"]) {
+    await page.goto(path);
+    await expect(page.locator('meta[name="robots"][content*="noindex"]').first()).toBeAttached();
+  }
 });

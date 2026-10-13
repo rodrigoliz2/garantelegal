@@ -34,6 +34,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         "@type": "LegalService",
         "@id": organizationId,
         name: siteConfig.name,
+        alternateName: siteConfig.alternateName,
         slogan: siteConfig.tagline,
         description: "Litigio estratégico y asesoría jurídica para personas y empresas: urgencias, derecho corporativo, constitucional, administrativo, civil y mercantil.",
         url: siteConfig.url,
@@ -47,7 +48,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         contactPoint: { "@type": "ContactPoint", telephone: siteConfig.phoneE164, email: siteConfig.contactEmail, contactType: "customer service", availableLanguage: "es", areaServed: "MX" },
         knowsAbout: ["Amparo", "Derecho constitucional", "Derecho administrativo", "Derecho civil", "Derecho mercantil", "Derecho corporativo", "Sociedades mercantiles", "SOFOM", "Fideicomisos", "Prevención de lavado de dinero"]
       },
-      { "@type": "WebSite", "@id": `${siteConfig.url}/#sitio`, url: siteConfig.url, name: siteConfig.name, inLanguage: "es-MX", publisher: { "@id": organizationId } }
+      { "@type": "WebSite", "@id": `${siteConfig.url}/#sitio`, url: siteConfig.url, name: siteConfig.name, alternateName: siteConfig.alternateName, inLanguage: "es-MX", publisher: { "@id": organizationId } }
     ]
   };
   return (

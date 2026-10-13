@@ -1,5 +1,6 @@
 export const siteConfig = {
   name: "Garante Jurídico",
+  alternateName: "Garante Juridico",
   tagline: "Soluciones Legales Estratégicas",
   domain: "garantejuridico.com",
   url: "https://garantejuridico.com",
