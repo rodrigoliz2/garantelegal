@@ -65,3 +65,15 @@ test("private and design reference pages expose noindex to crawlers", async ({ p
     await expect(page.locator('meta[name="robots"][content*="noindex"]').first()).toBeAttached();
   }
 });
+
+test("urgent and guide pages link to the matching published services", async ({ page }) => {
+  await page.goto("/urgencias");
+  await expect(page.getByRole("link", { name: "Arresto por alcoholímetro" })).toHaveAttribute("href", "/servicios/urgencias/amparo-arresto-alcoholimetro");
+  await expect(page.getByRole("link", { name: "Persona detenida" })).toHaveAttribute("href", "/servicios/urgencias/asistencia-detenciones");
+  await expect(page.getByRole("link", { name: "Vehículo en el corralón" })).toHaveAttribute("href", "/servicios/urgencias/liberacion-vehiculo-corralon");
+
+  await page.goto("/guias/como-impugnar-multa");
+  await expect(page.getByRole("link", { name: "Impugnación de multas de tránsito y fotomultas" })).toHaveAttribute("href", "/servicios/administrativo/impugnacion-multas-transito");
+  await page.goto("/servicios/administrativo/impugnacion-multas-transito");
+  await expect(page.getByRole("link", { name: "Cómo revisar una multa para impugnarla" })).toHaveAttribute("href", "/guias/como-impugnar-multa");
+});

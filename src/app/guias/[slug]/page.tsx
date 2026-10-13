@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { publicText } from "@/lib/public-text";
 import { siteConfig } from "@/site.config";
+import { relatedServiceForGuide } from "@/lib/related-guides";
 
 export const dynamic = "force-dynamic";
 type Props = { params: Promise<{ slug: string }> };
@@ -21,6 +22,8 @@ export default async function GuidePage({ params }: Props) {
   const { slug } = await params;
   const post = await prisma.post.findUnique({ where: { slug } });
   if (!post?.published) notFound();
+  const related = relatedServiceForGuide(post.slug);
+  const service = related ? await prisma.service.findFirst({ where: { slug: related.serviceSlug, published: true, area: { slug: related.areaSlug } }, select: { name: true } }) : null;
   const jsonLd = { "@context": "https://schema.org", "@type": "Article", headline: post.title, description: publicText(post.summary), datePublished: post.createdAt.toISOString(), dateModified: post.updatedAt.toISOString(), author: { "@id": organizationId }, publisher: { "@id": organizationId }, inLanguage: "es-MX", image: `${siteConfig.url}/brand/og.png`, mainEntityOfPage: `${siteConfig.url}/guias/${post.slug}` };
   const paragraphs = post.content.split("\n\n").map(publicText).filter(Boolean);
   return (
@@ -34,6 +37,13 @@ export default async function GuidePage({ params }: Props) {
       <div className="wrap grid gap-12 pb-24 lg:grid-cols-12">
         <div className="prose border-t border-black pt-4 lg:col-span-7 lg:col-start-4">
           {paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+
+          {related && service && (
+            <div className="mt-10 border-t border-g-200 pt-5">
+              <p className="t-small t-muted">Servicio relacionado</p>
+              <Link href={`/servicios/${related.areaSlug}/${related.serviceSlug}`} className="u mt-2 inline-block font-medium">{service.name}</Link>
+            </div>
+          )}
 
           <div className="mt-10 flex flex-col gap-2 sm:flex-row">
             <Link href="/agendar" className="b b-solid">Agendar consulta</Link>

@@ -3,6 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { MessageCircle } from "lucide-react";
 import { emergencyWhatsAppHref } from "@/lib/contact";
 import { provided, siteConfig } from "@/site.config";
+import Link from "next/link";
 
 export const metadata: Metadata = pageMetadata({ title: "Abogado urgente por detención o alcoholímetro", path: "/urgencias", description: `Ayuda jurídica inmediata ante detenciones, arresto por alcoholímetro y vehículos en el corralón. Llámanos o escríbenos por WhatsApp al ${siteConfig.phoneDisplay}.` });
 
@@ -75,6 +76,21 @@ export default function EmergenciesPage() {
             </details>
           ))}
 
+        </div>
+      </section>
+
+      <section aria-labelledby="atencion-especifica" className="border-t border-g-200 bg-g-50">
+        <div className="wrap grid gap-10 py-16 md:py-20 lg:grid-cols-12">
+          <h2 id="atencion-especifica" className="t-h2 lg:col-span-4">Atención según lo que ocurrió</h2>
+          <ul className="border-t border-black lg:col-span-8">
+            {[
+              ["Arresto por alcoholímetro", "/servicios/urgencias/amparo-arresto-alcoholimetro"],
+              ["Persona detenida", "/servicios/urgencias/asistencia-detenciones"],
+              ["Vehículo en el corralón", "/servicios/urgencias/liberacion-vehiculo-corralon"]
+            ].map(([label, href]) => (
+              <li key={href} className="border-b border-g-200"><Link href={href} className="u block py-5 text-[1.0625rem]">{label}</Link></li>
+            ))}
+          </ul>
         </div>
       </section>
     </>

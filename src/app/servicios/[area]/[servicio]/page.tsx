@@ -9,6 +9,7 @@ import { emergencyWhatsAppHref, serviceMessage } from "@/lib/contact";
 import { siteConfig, whatsappHref } from "@/site.config";
 import { AreaIllustration } from "@/components/site/illustrations";
 import { publicText } from "@/lib/public-text";
+import { relatedGuideForService } from "@/lib/related-guides";
 
 export const dynamic = "force-dynamic";
 type Props = { params: Promise<{ area: string; servicio: string }> };
@@ -37,6 +38,8 @@ export default async function ServicePage({ params }: Props) {
   const service = await getService(params);
   if (!service) notFound();
   const related = await prisma.service.findMany({ where: { areaId: service.areaId, published: true, NOT: { id: service.id } }, orderBy: { sortOrder: "asc" }, take: 6, select: { name: true, slug: true, summary: true } });
+  const guideRelation = relatedGuideForService(service.area.slug, service.slug);
+  const guide = guideRelation ? await prisma.post.findUnique({ where: { slug: guideRelation.guideSlug }, select: { title: true, published: true } }) : null;
   const documents = Array.isArray(service.documents) ? service.documents.map(String) : [];
   const steps = Array.isArray(service.steps) ? service.steps.map(String) : [];
   const faqs = Array.isArray(service.faqs) ? service.faqs.filter((faq): faq is { question: string; answer: string } => Boolean(faq && typeof faq === "object" && !Array.isArray(faq) && "question" in faq && "answer" in faq)).map(faq => ({ question: String(faq.question), answer: String(faq.answer) })) : [];
@@ -118,6 +121,13 @@ export default async function ServicePage({ params }: Props) {
                 ))}
               </div>
             </Block>
+          )}
+
+          {guide?.published && guideRelation && (
+            <div className="border-t border-g-200 py-10 md:py-14">
+              <p className="t-small t-muted">Guía relacionada</p>
+              <Link href={`/guias/${guideRelation.guideSlug}`} className="u mt-2 inline-block text-[1.0625rem] font-medium">{guide.title}</Link>
+            </div>
           )}
 
         </article>

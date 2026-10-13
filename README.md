@@ -2,7 +2,7 @@
 
 Sitio y sistema de captación para un despacho con sede en Guadalajara, Jalisco, y atención en toda la República Mexicana. El público puede llamar o escribir por WhatsApp (618 282 9873; el despacho no atiende llamadas convencionales), consultar servicios y solicitar una cita. El despacho administra agenda, prospectos, disponibilidad y contenido desde `/admin`.
 
-El contenido jurídico y los textos legales son **borradores para revisión del abogado titular**. Los datos por confirmar están en [PENDIENTES.md](PENDIENTES.md). No publiques el sitio antes de resolverlos.
+El contenido jurídico y los textos legales requieren revisión del abogado titular antes de cambios sustanciales. Los datos por confirmar están en [PENDIENTES.md](PENDIENTES.md); no se presentan como hechos en las páginas públicas.
 
 ## Instalación local en tres comandos
 
@@ -16,7 +16,7 @@ npm install
 
 Después inicia el proyecto con `npm run local:start`. Ese comando genera el cliente Prisma, aplica las migraciones, carga la semilla idempotente y arranca Next.js. Abre [http://localhost:3000](http://localhost:3000). El panel está en [http://localhost:3000/admin](http://localhost:3000/admin); usa las credenciales **solo de desarrollo** de `.env.example`. Cambia `ADMIN_PASSWORD` y `NEXTAUTH_SECRET` antes de usar datos reales. Si el puerto 3000 está ocupado, ajusta `NEXTAUTH_URL` y ejecuta `PORT=3001 npm run local:start`.
 
-La semilla carga cinco áreas y 27 servicios del brief (el servicio familiar permanece sin publicar), cuatro guías marcadas como borrador, horarios de ejemplo de lunes a viernes de 09:00 a 18:00 y un administrador. No crea casos, testimonios, reseñas ni abogados ficticios.
+La semilla carga seis áreas y su catálogo de servicios (el servicio familiar permanece sin publicar), cinco guías, horarios de ejemplo de lunes a viernes de 09:00 a 18:00 y un administrador. No crea casos, testimonios, reseñas ni abogados ficticios.
 
 ## Arquitectura y configuración
 
@@ -26,6 +26,7 @@ La semilla carga cinco áreas y 27 servicios del brief (el servicio familiar per
 - Resend para correo; sin clave, el mensaje aparece en la consola del servidor.
 - Plausible opcional; sin identificador, no se carga.
 - Vercel + Neon + Cloudflare + Resend para producción. Pasos en [DEPLOY.md](DEPLOY.md).
+- Auditoría SEO integral de la segunda fase, revisión individual de 59 URL y plan de medición en [docs/seo/FASE-2.md](docs/seo/FASE-2.md).
 
 El archivo [src/site.config.ts](src/site.config.ts) es la fuente única del nombre, teléfono, enlaces de llamada/WhatsApp, sede, cobertura, zona horaria, horario de urgencias y marcadores pendientes. Las citas se almacenan en UTC (`TIMESTAMPTZ`) y se presentan en `America/Mexico_City`. La exclusión PostgreSQL `Appointment_no_active_overlap` evita traslapes de reservas activas incluso ante solicitudes concurrentes; requiere `btree_gist`. Consulta [DECISIONES.md](DECISIONES.md) para las decisiones de implementación.
 
